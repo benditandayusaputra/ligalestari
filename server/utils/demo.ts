@@ -3,10 +3,10 @@ import { SETORAN_HARI_INI } from '#shared/data/admin'
 import { LOKASI_SEKOLAH_BAWAAN } from '#shared/data/peta'
 
 /**
- * "Database" memori sementara untuk tahap pengembangan API.
- * Data awal diambil dari data demo di `shared/data` dan perubahan
- * bertahan selama proses server hidup. Akan digantikan database
- * sungguhan (mis. SQLite/Postgres) tanpa mengubah bentuk endpoint.
+ * Cadangan data di memori proses, dipakai HANYA saat database Neon
+ * belum dikonfigurasi (atau tidak terjangkau). Nilai awalnya diambil
+ * dari data demo di `shared/data`; perubahan bertahan selama server
+ * hidup sehingga alur demo tetap terasa utuh tanpa database.
  */
 
 export interface KelasBaru {
@@ -17,7 +17,7 @@ export interface KelasBaru {
   kode: string
 }
 
-export const db = {
+export const demo = {
   setoran: [...SETORAN_HARI_INI] as SetoranSampah[],
   keputusanBukti: {} as Record<number, 'disetujui' | 'ditolak'>,
   kelasBaru: [] as KelasBaru[],

@@ -6,22 +6,26 @@ import { KLASEMEN_PER_ID } from '#shared/data/klasemen'
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id') ?? ''
 
-  const sb = pakaiSupabase()
-  if (sb) {
+  const hasil = await kueri(async (sql) => {
     const [tim, siswa] = await Promise.all([
-      sb.from('tim').select().eq('id', id).maybeSingle(),
-      sb.from('siswa').select('nama, nis, poin').eq('kelas_id', id).order('poin', { ascending: false }),
+      sql`select id, nama, julukan, emblem, warna, poin, kg, pohon, co2, tren,
+                 jumlah_siswa as "jumlahSiswa", coalesce(kode_gabung, '') as kode
+            from tim
+           where id = ${id}`,
+      sql`select nama, nis, poin from siswa where kelas_id = ${id} order by poin desc`,
     ])
-    if (!tim.error && !siswa.error) {
-      if (!tim.data) {
-        throw createError({ statusCode: 404, statusMessage: 'Kelas tidak ditemukan' })
-      }
-      return {
-        tim: tim.data as unknown as TimKelas,
-        jumlahSiswa: tim.data.jumlah_siswa as number,
-        kode: (tim.data.kode_gabung ?? '') as string,
-        siswa: siswa.data ?? [],
-      }
+    return { tim: tim[0] ?? null, siswa }
+  })
+
+  if (hasil) {
+    if (!hasil.tim) {
+      throw createError({ statusCode: 404, statusMessage: 'Kelas tidak ditemukan' })
+    }
+    return {
+      tim: hasil.tim as unknown as TimKelas,
+      jumlahSiswa: hasil.tim.jumlahSiswa as number,
+      kode: hasil.tim.kode as string,
+      siswa: hasil.siswa,
     }
   }
 

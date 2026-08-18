@@ -22,9 +22,11 @@ export default defineEventHandler(async (event) => {
     poin: poinSetoran(kg, kategori),
   }
 
-  const sb = pakaiSupabase()
-  const gagalSimpan = !sb || (await sb.from('setoran').insert(baris)).error
-  if (gagalSimpan) db.setoran.unshift(baris) // fallback memori
+  const tersimpan = await kueri(
+    (sql) => sql`insert into setoran (waktu, kelas, kategori, kg, poin)
+                 values (${baris.waktu}, ${baris.kelas}, ${baris.kategori}, ${baris.kg}, ${baris.poin})`,
+  )
+  if (!tersimpan) demo.setoran.unshift(baris) // fallback memori
 
   return baris
 })

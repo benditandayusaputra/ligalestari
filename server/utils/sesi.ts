@@ -13,8 +13,3 @@ export async function wajibAdmin(event: H3Event): Promise<void> {
     throw createError({ statusCode: 403, statusMessage: 'Hanya admin yang boleh melakukan aksi ini' })
   }
 }
-
-/** Sintesis email Supabase Auth dari username/NIS. */
-export function emailDari(pengguna: string): string {
-  return `${pengguna.trim().toLowerCase()}@ligalestari.local`
-}

@@ -19,23 +19,14 @@ export default defineEventHandler(async (event) => {
     tahunAjaran: tahunAjaran ?? '2025/2026',
     kode: buatKode((emblem ?? 'EKOL').padEnd(2, 'X')),
   }
-
-  const sb = pakaiSupabase()
   const id = kelas.nama.toLowerCase().replace(/[^a-z0-9]+/g, '-')
-  const gagalSimpan =
-    !sb ||
-    (
-      await sb.from('tim').insert({
-        id,
-        nama: kelas.nama,
-        julukan: 'Tim Baru',
-        emblem: kelas.emblem,
-        warna: kelas.warna,
-        kode_gabung: kelas.kode,
-        tahun_ajaran: kelas.tahunAjaran,
-      })
-    ).error
-  if (gagalSimpan) db.kelasBaru.push(kelas) // fallback memori
+
+  const tersimpan = await kueri(
+    (sql) => sql`insert into tim (id, nama, julukan, emblem, warna, kode_gabung, tahun_ajaran)
+                 values (${id}, ${kelas.nama}, 'Tim Baru', ${kelas.emblem}, ${kelas.warna},
+                         ${kelas.kode}, ${kelas.tahunAjaran})`,
+  )
+  if (!tersimpan) demo.kelasBaru.push(kelas) // fallback memori
 
   return kelas
 })

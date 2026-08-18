@@ -39,7 +39,7 @@ const sesi = useUserSession()
 // kegagalan server sungguhan harus tampil sebagai galat, bukan sukses palsu.
 const authWajib = useRuntimeConfig().public.authWajib
 
-/** Daftarkan akun lewat API (Supabase Auth); fallback lokal saat statis. */
+/** Daftarkan akun lewat API (tabel profil); fallback lokal saat statis. */
 async function kirim() {
   if (!nama.value.trim() || !pengguna.value.trim() || !sandi.value || !kode.value.trim()) {
     galat.value = 'Lengkapi semua kolom wajib terlebih dahulu.'

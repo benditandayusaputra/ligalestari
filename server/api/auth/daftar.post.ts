@@ -1,8 +1,12 @@
 import { cariKelas } from '#shared/data/akun-demo'
 
+/** Kode unique_violation Postgres — username sudah dipakai. */
+const SUDAH_ADA = '23505'
+
 /**
- * Pendaftaran siswa: buat user Supabase Auth + baris siswa + profil,
- * lalu langsung masukkan ke sesi. Kode kelas menentukan timnya.
+ * Pendaftaran siswa: buat baris `siswa` + `profil` (sandi di-hash) dan
+ * naikkan jumlah siswa kelasnya, lalu langsung masukkan ke sesi.
+ * Kode kelas menentukan timnya.
  */
 export default defineEventHandler(async (event) => {
   const { nama, pengguna, sandi, kode } = await readBody<{
@@ -20,61 +24,44 @@ export default defineEventHandler(async (event) => {
   }
 
   const idPengguna = pengguna.trim().toLowerCase()
+  const namaBersih = nama.trim()
+  const nis = /^\d+$/.test(idPengguna) ? `NIS ${idPengguna}` : idPengguna
 
-  const sb = kunciRahasiaAktif() ? pakaiSupabase() : null
-  if (sb) {
-    const { data: tim, error: eTim } = await sb
-      .from('tim')
-      .select('id, nama, emblem, warna, jumlah_siswa')
-      .eq('kode_gabung', kode.trim().toUpperCase())
-      .maybeSingle()
-    if (!eTim && !tim) {
-      throw createError({ statusCode: 404, statusMessage: 'Kode gabung kelas tidak ditemukan' })
-    }
-
-    if (tim) {
-      const { data: sudahAda } = await sb.from('profil').select('id').eq('pengguna', idPengguna).maybeSingle()
-      if (sudahAda) {
-        throw createError({ statusCode: 409, statusMessage: 'Username sudah dipakai' })
+  const sql = pakaiDb()
+  if (sql) {
+    try {
+      const [tim] = await sql`select id, nama, emblem, warna from tim
+                               where kode_gabung = ${kode.trim().toUpperCase()}`
+      if (!tim) {
+        throw createError({ statusCode: 404, statusMessage: 'Kode gabung kelas tidak ditemukan' })
       }
 
-      const { data: baru, error: eAuth } = await sb.auth.admin.createUser({
-        email: emailDari(idPengguna),
-        password: sandi,
-        email_confirm: true,
-        user_metadata: { nama: nama.trim(), peran: 'siswa' },
-      })
-      if (eAuth || !baru.user) {
-        if (eAuth?.code === 'email_exists') {
-          throw createError({ statusCode: 409, statusMessage: 'Username sudah dipakai' })
-        }
-        throw createError({ statusCode: 500, statusMessage: 'Gagal membuat akun' })
-      }
-
-      const { data: siswa } = await sb
-        .from('siswa')
-        .insert({
-          kelas_id: tim.id,
-          nama: nama.trim(),
-          nis: /^\d+$/.test(idPengguna) ? `NIS ${idPengguna}` : idPengguna,
-        })
-        .select('id')
-        .single()
-
-      await sb.from('profil').insert({
-        id: baru.user.id,
-        pengguna: idPengguna,
-        nama: nama.trim(),
-        peran: 'siswa',
-        kelas_id: tim.id,
-        siswa_id: siswa?.id ?? null,
-      })
-      await sb.from('tim').update({ jumlah_siswa: tim.jumlah_siswa + 1 }).eq('id', tim.id)
+      // Siswa, profil, dan penambah jumlah siswa dijalankan sebagai SATU
+      // pernyataan (CTE) supaya tidak ada akun setengah jadi bila gagal.
+      await sql`
+        with s as (
+          insert into siswa (kelas_id, nama, nis) values (${tim.id}, ${namaBersih}, ${nis})
+          returning id
+        ), p as (
+          insert into profil (pengguna, nama, peran, sandi_hash, kelas_id, siswa_id)
+          select ${idPengguna}, ${namaBersih}, 'siswa', ${await hashPassword(sandi)}, ${tim.id}, s.id
+            from s
+          returning id
+        )
+        update tim set jumlah_siswa = jumlah_siswa + 1 where id = ${tim.id}`
 
       await setUserSession(event, {
-        user: { pengguna: idPengguna, nama: nama.trim(), peran: 'siswa', kelasId: tim.id },
+        user: { pengguna: idPengguna, nama: namaBersih, peran: 'siswa', kelasId: tim.id },
       })
       return { kelas: { nama: tim.nama as string, emblem: tim.emblem as string, warna: tim.warna as string } }
+    } catch (galat) {
+      if ((galat as { code?: string }).code === SUDAH_ADA) {
+        throw createError({ statusCode: 409, statusMessage: 'Username sudah dipakai' })
+      }
+      // Galat bisnis (404 di atas) diteruskan apa adanya; sisanya berarti
+      // database bermasalah sehingga alur jatuh ke fallback demo.
+      if ((galat as { statusCode?: number }).statusCode) throw galat
+      console.error('[db] pendaftaran gagal:', galat)
     }
   }
 
@@ -83,6 +70,6 @@ export default defineEventHandler(async (event) => {
   if (!kelas) {
     throw createError({ statusCode: 404, statusMessage: 'Kode gabung kelas tidak ditemukan' })
   }
-  await setUserSession(event, { user: { pengguna: idPengguna, nama: nama.trim(), peran: 'siswa', kelasId: 'rpl' } })
+  await setUserSession(event, { user: { pengguna: idPengguna, nama: namaBersih, peran: 'siswa', kelasId: 'rpl' } })
   return { kelas }
 })

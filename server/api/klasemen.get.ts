@@ -4,39 +4,44 @@ import { DAMPAK, KLASEMEN, MUSIM } from '#shared/data/klasemen'
 
 /** Data liga: musim berjalan, klasemen lengkap, ringkasan dampak, event aktif. */
 export default defineEventHandler(async () => {
-  const sb = pakaiSupabase()
-  if (sb) {
+  const hasil = await kueri(async (sql) => {
     const [musim, tim] = await Promise.all([
-      sb.from('musim').select().eq('id', 1).maybeSingle(),
-      sb
-        .from('tim')
-        .select('id, nama, julukan, emblem, warna, poin, kg, pohon, co2, tren, jumlahSiswa:jumlah_siswa')
-        .order('poin', { ascending: false }),
+      sql`select nama, pekan, total_pekan, berakhir, sisa_hari,
+                 event_label, event_nama, event_sisa_hari
+            from musim
+           where id = 1`,
+      sql`select id, nama, julukan, emblem, warna, poin, kg, pohon, co2, tren,
+                 jumlah_siswa as "jumlahSiswa"
+            from tim
+           order by poin desc`,
     ])
-    if (!musim.error && musim.data && !tim.error && tim.data.length) {
-      const daftar = tim.data as TimKelas[]
-      return {
-        musim: {
-          nama: musim.data.nama as string,
-          pekan: musim.data.pekan as number,
-          totalPekan: musim.data.total_pekan as number,
-          berakhir: musim.data.berakhir as string,
-          sisaHari: musim.data.sisa_hari as number,
-        },
-        tim: daftar,
-        dampak: {
-          sampahKg: daftar.reduce((a, t) => a + t.kg, 0),
-          pohon: daftar.reduce((a, t) => a + t.pohon, 0),
-          co2Kg: daftar.reduce((a, t) => a + t.co2, 0),
-        },
-        eventAktif: {
-          label: musim.data.event_label as string,
-          nama: musim.data.event_nama as string,
-          sisaHari: musim.data.event_sisa_hari as number,
-        },
-      }
+    return musim.length && tim.length ? { musim: musim[0]!, tim: tim as unknown as TimKelas[] } : null
+  })
+
+  if (hasil) {
+    const { musim, tim } = hasil
+    return {
+      musim: {
+        nama: musim.nama as string,
+        pekan: musim.pekan as number,
+        totalPekan: musim.total_pekan as number,
+        berakhir: musim.berakhir as string,
+        sisaHari: musim.sisa_hari as number,
+      },
+      tim,
+      dampak: {
+        sampahKg: tim.reduce((a, t) => a + t.kg, 0),
+        pohon: tim.reduce((a, t) => a + t.pohon, 0),
+        co2Kg: tim.reduce((a, t) => a + t.co2, 0),
+      },
+      eventAktif: {
+        label: musim.event_label as string,
+        nama: musim.event_nama as string,
+        sisaHari: musim.event_sisa_hari as number,
+      },
     }
   }
-  // Fallback: data demo lokal (Supabase belum dikonfigurasi / tidak terjangkau).
+
+  // Fallback: data demo lokal (database belum dikonfigurasi / tidak terjangkau).
   return { musim: MUSIM, tim: KLASEMEN, dampak: DAMPAK, eventAktif: EVENT_AKTIF }
 })

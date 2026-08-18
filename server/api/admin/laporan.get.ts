@@ -17,29 +17,34 @@ function komposisiLiga() {
 
 /** Bahan laporan dampak Adiwiyata musim berjalan. */
 export default defineEventHandler(async () => {
-  const sb = pakaiSupabase()
-  if (sb) {
-    const [musim, tim, bulanan, spesies] = await Promise.all([
-      sb.from('musim').select('nama').eq('id', 1).maybeSingle(),
-      sb.from('tim').select('kg, pohon, co2'),
-      sb.from('laporan_bulanan').select('bulan, kg').order('urutan'),
-      sb.from('laporan_spesies').select('nama, jumlah, co2, persen, warna').order('urutan'),
+  const hasil = await kueri(async (sql) => {
+    const [musim, total, bulanan, spesies] = await Promise.all([
+      sql`select nama from musim where id = 1`,
+      sql`select coalesce(sum(kg), 0)::int as sampah_kg,
+                 coalesce(sum(pohon), 0)::int as pohon,
+                 coalesce(sum(co2), 0)::int as co2_kg
+            from tim`,
+      sql`select bulan, kg from laporan_bulanan order by urutan`,
+      sql`select nama, jumlah, co2, persen, warna from laporan_spesies order by urutan`,
     ])
-    if (!musim.error && musim.data && !tim.error && tim.data && !bulanan.error && !spesies.error) {
-      return {
-        musim: musim.data.nama as string,
-        total: {
-          sampahKg: tim.data.reduce((a, t) => a + t.kg, 0),
-          pohon: tim.data.reduce((a, t) => a + t.pohon, 0),
-          co2Kg: tim.data.reduce((a, t) => a + t.co2, 0),
-        },
-        bulanan: bulanan.data ?? [],
-        spesies: spesies.data ?? [],
-        // Agregat per kategori memakai data demo sampai tabelnya tersedia.
-        komposisi: komposisiLiga(),
-      }
+    return musim.length ? { musim: musim[0]!, total: total[0]!, bulanan, spesies } : null
+  })
+
+  if (hasil) {
+    return {
+      musim: hasil.musim.nama as string,
+      total: {
+        sampahKg: hasil.total.sampah_kg as number,
+        pohon: hasil.total.pohon as number,
+        co2Kg: hasil.total.co2_kg as number,
+      },
+      bulanan: hasil.bulanan,
+      spesies: hasil.spesies,
+      // Agregat per kategori memakai data demo sampai tabelnya tersedia.
+      komposisi: komposisiLiga(),
     }
   }
+
   return {
     musim: MUSIM.nama,
     total: DAMPAK,

@@ -4,19 +4,20 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
+    "db:migrate": "node db/migrate.mjs",
     "dev": "nuxt dev",
     "generate": "NUXT_PUBLIC_AUTH_WAJIB=false nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.116",
     "@iconify-json/simple-icons": "^1.2.89",
+    "@neondatabase/serverless": "^1.1.0",
     "@nuxt/fonts": "^0.14.0",
     "@nuxt/icon": "^2.3.1",
     "@nuxtjs/color-mode": "^4.0.1",
     "@nuxtjs/seo": "^5.3.2",
-    "@supabase/supabase-js": "^2.110.1",
     "@tailwindcss/vite": "^4.3.2",
     "maplibre-gl": "^5.24.0",
     "nuxt": "^4.4.8",
@@ -26,6 +27,7 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@adonisjs/hash": "^10.1.1",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.6"
   }

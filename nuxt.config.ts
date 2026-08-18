@@ -53,13 +53,12 @@ export default defineNuxtConfig({
     },
   },
 
-  // Kredensial Supabase: kunci rahasia hanya di server, kunci publishable
-  // boleh ke klien. Nilai diisi dari .env (lihat .env.example).
+  // Koneksi database Neon — HANYA di sisi server (tidak ada padanannya
+  // di `public`, sehingga URL berisi kredensial tidak pernah sampai ke
+  // browser). Nilai diisi dari .env (lihat .env.example).
   runtimeConfig: {
-    supabaseServiceKey: process.env.SUPABASE_SERVICE_KEY ?? '',
+    databaseUrl: process.env.DATABASE_URL ?? '',
     public: {
-      supabaseUrl: process.env.SUPABASE_URL ?? '',
-      supabaseKey: process.env.SUPABASE_KEY ?? '',
       // Penjaga sesi /dasbor & /admin. Build statis lomba mematikannya
       // (tidak ada server sesi) lewat skrip `npm run generate`.
       authWajib: !buildStatis,

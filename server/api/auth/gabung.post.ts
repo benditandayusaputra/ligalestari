@@ -7,17 +7,13 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Masukkan kode gabung' })
   }
 
-  const sb = pakaiSupabase()
-  if (sb) {
-    const { data, error } = await sb
-      .from('tim')
-      .select('nama, emblem, warna')
-      .eq('kode_gabung', kode.trim().toUpperCase())
-      .maybeSingle()
-    if (!error) {
-      if (!data) throw createError({ statusCode: 404, statusMessage: 'Kode gabung kelas tidak ditemukan' })
-      return { kelas: { nama: data.nama as string, emblem: data.emblem as string, warna: data.warna as string } }
-    }
+  const baris = await kueri(
+    (sql) => sql`select nama, emblem, warna from tim where kode_gabung = ${kode.trim().toUpperCase()}`,
+  )
+  if (baris) {
+    const tim = baris[0]
+    if (!tim) throw createError({ statusCode: 404, statusMessage: 'Kode gabung kelas tidak ditemukan' })
+    return { kelas: { nama: tim.nama as string, emblem: tim.emblem as string, warna: tim.warna as string } }
   }
 
   const kelas = cariKelas(kode)
