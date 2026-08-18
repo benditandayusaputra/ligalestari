@@ -27,6 +27,8 @@ Terlestari); serta dua halaman publik baru **Aturan Liga** (/aturan) dan **Jadwa
 - **Font** — Inter & Archivo via `@nuxt/fonts`, di-host sendiri saat build.
 - **Ikon** — `@nuxt/icon` + koleksi Lucide & Simple Icons, dirender sebagai SVG inline.
 - **SEO** — `@nuxtjs/seo`: sitemap, robots, canonical, dan schema.org otomatis.
+- **Database** — [Neon](https://neon.tech) (Postgres serverless) lewat driver HTTP
+  `@neondatabase/serverless`; skema, seed, dan migrasinya ada di `db/`.
 - **Peta** — [MapLibre GL](https://maplibre.org) + tile **vektor** OpenFreeMap (gratis, tanpa
   API key). Pin pohon kustom per warna kelas, penanda sekolah, popup ringkasan, dan filter
   legenda. Pusat peta (lat/lng/zoom) diatur admin di **/admin/lokasi** — klik peta, seret
@@ -46,6 +48,7 @@ aksi tulis punya fallback lokal sehingga demo tetap berfungsi di Vercel/Netlify/
 
 ```bash
 npm install        # pasang dependensi
+npm run db:migrate # bangun skema + seed database Neon (butuh DATABASE_URL di .env)
 npm run dev        # mode pengembangan (API server aktif) → http://localhost:3000
 npm run generate   # build statis → .output/public (untuk pengumpulan lomba)
 npm run build      # build server Node lengkap (API hidup) → node .output/server/index.mjs
@@ -53,7 +56,8 @@ npm run preview    # pratinjau hasil build
 ```
 
 Saat deploy, atur env `NUXT_PUBLIC_SITE_URL` ke URL hosting agar canonical, sitemap, dan
-robots.txt menunjuk domain yang benar.
+robots.txt menunjuk domain yang benar, serta `DATABASE_URL` dan `NUXT_SESSION_PASSWORD`
+agar database dan sesi login aktif. Tanpa ketiganya situs tetap jalan memakai data demo.
 
 ## Struktur Proyek
 
@@ -81,7 +85,8 @@ ligalestari/
 │  └─ error.vue              # halaman 404/galat
 ├─ server/
 │  ├─ api/                   # endpoint API Nitro (klasemen, artikel, dasbor, admin, auth, …)
-│  └─ utils/db.ts            # "database" memori sementara — kelak diganti DB sungguhan
+│  └─ utils/                 # klien Neon (neon.ts), penjaga sesi, fallback memori (demo.ts)
+├─ db/                       # schema.sql + seed.sql + migrate.mjs (npm run db:migrate)
 ├─ shared/
 │  ├─ data/                  # data demo bertipe — sumber tunggal untuk server & fallback klien
 │  └─ types/                 # tipe domain yang dipakai app + server
@@ -108,42 +113,53 @@ Endpoint utama (`server/api/`); respons otomatis bertipe di sisi klien lewat `us
 Saat dihosting statis, respons GET sudah terbekukan ke payload build dan setiap aksi tulis
 jatuh ke fallback lokal dengan aturan yang sama (`shared/data`), sehingga perilaku demo identik.
 
-## Database (Supabase)
+## Database (Neon · Postgres)
 
-Endpoint API membaca/menulis **Supabase (Postgres)**. Sumber datanya berlapis:
+Endpoint API membaca/menulis **Neon (Postgres serverless)** lewat driver HTTP
+`@neondatabase/serverless`, sehingga tidak ada koneksi TCP yang perlu ditahan di
+lingkungan serverless. Sumber datanya berlapis:
 
-1. **Supabase** — bila kredensial di `.env` terisi dan tabel tersedia.
-2. **Fallback demo** (`shared/data` + memori server) — otomatis dipakai bila Supabase
+1. **Neon** — bila `DATABASE_URL` terisi dan tabelnya tersedia.
+2. **Fallback demo** (`shared/data` + memori server) — otomatis dipakai bila database
    belum dikonfigurasi/terjangkau, sehingga aplikasi selalu bisa berjalan (termasuk
    saat `nuxt generate` untuk pengumpulan lomba).
 
+Lapis kedua bukan sekadar jaring pengaman: bentuk responsnya identik dengan lapis
+pertama, jadi seluruh skenario tetap bisa diuji tanpa kredensial apa pun.
+
 Penyiapan:
 
-- Salin `.env.example` → `.env`, isi `SUPABASE_URL` + `SUPABASE_KEY` (publishable) dan
-  `SUPABASE_SERVICE_KEY` (secret — hanya dipakai server untuk aksi tulis, tidak pernah
-  terkirim ke browser).
-- Jalankan [`supabase/schema.sql`](supabase/schema.sql) sekali di **SQL Editor** dashboard
-  Supabase (atau via `psql`). Skrip ini membuat 15 tabel + seed data demo + kebijakan RLS:
-  publik hanya boleh membaca; tabel `akun` tidak terbaca publik sama sekali.
-- Tabel: `musim`, `tim`, `siswa`, `akun`, `artikel`, `jenis_pohon`, `titik_tanam`,
+- Salin `.env.example` → `.env`, lalu isi `DATABASE_URL` dengan connection string dari
+  dashboard Neon (pakai endpoint `-pooler`). URL ini **hanya** dibaca server —
+  `runtimeConfig` menaruhnya di luar `public` sehingga tidak pernah sampai ke browser.
+- Jalankan `npm run db:migrate` sekali. Skrip [`db/migrate.mjs`](db/migrate.mjs)
+  menjalankan [`db/schema.sql`](db/schema.sql) → [`db/seed.sql`](db/seed.sql) → seed akun
+  demo (sandi di-hash) di dalam satu transaksi; bila ada yang gagal, semuanya dibatalkan.
+  Skrip ini **membangun ulang skema dari nol**, jadi isi tabel lama ikut terhapus.
+- 16 tabel: `musim`, `tim`, `siswa`, `profil`, `artikel`, `jenis_pohon`, `titik_tanam`,
   `event_liga`, `setoran`, `bukti_tanam`, `notifikasi`, `badge`, `riwayat_tim`,
-  `laporan_bulanan`, `laporan_spesies`.
+  `laporan_bulanan`, `laporan_spesies`, `pengaturan`.
+- Saat deploy, isi `DATABASE_URL` di environment variables host (tersedia saat build,
+  ikut terbaca runtime). Untuk menimpanya khusus saat jalan, pakai `NUXT_DATABASE_URL`.
 
-## Autentikasi (Supabase Auth + sesi)
+## Autentikasi (sesi cookie + hash scrypt)
 
-Login memakai **Supabase Auth** dengan sesi cookie terenkripsi (`nuxt-auth-utils`):
+Login ditangani sendiri di tabel `profil` dengan sesi cookie terenkripsi
+(`nuxt-auth-utils`) — tanpa layanan auth pihak ketiga:
 
-- Pengguna masuk dengan **username/NIS** (tanpa email) — server menyintesis email
-  `<username>@ligalestari.local` untuk Supabase Auth; data aplikasi tersimpan di tabel `profil`.
-- **Pendaftaran sungguhan**: `POST /api/auth/daftar` membuat user Auth + baris `siswa` +
-  `profil`, menaikkan `jumlah_siswa` kelasnya, lalu langsung membuat sesi masuk.
+- Pengguna masuk dengan **username/NIS** (tanpa email). Satu kueri `join` mencocokkan
+  keduanya, lalu sandi diverifikasi terhadap hash **scrypt** (`verifyPassword`); sandi
+  teks polos tidak pernah tersimpan.
+- **Pendaftaran sungguhan**: `POST /api/auth/daftar` membuat baris `siswa` + `profil` dan
+  menaikkan `jumlah_siswa` kelasnya dalam **satu pernyataan CTE** (atomik, tidak mungkin
+  ada akun setengah jadi), lalu langsung membuat sesi masuk.
 - **Penjaga rute**: `/dasbor` butuh sesi, `/admin` butuh peran admin
   ([app/middleware/auth.global.ts](app/middleware/auth.global.ts)); endpoint tulis admin
   (setoran, verifikasi, buat kelas) menolak non-admin dengan 403.
-- Penyiapan: jalankan [`supabase/auth.sql`](supabase/auth.sql) setelah `schema.sql`, lalu
-  `node supabase/seed-auth.mjs` untuk membuat user demo (`aditya.p/hijau123`,
-  `admin/admin123`; NIS `2231045` juga bisa dipakai masuk). Isi `NUXT_SESSION_PASSWORD`
-  di `.env`.
+- Penyiapan: `npm run db:migrate` sekaligus membuat akun demo `aditya.p/hijau123` (siswa)
+  dan `admin/admin123` (admin); NIS `2231045` juga bisa dipakai masuk. Isi
+  `NUXT_SESSION_PASSWORD` (min. 32 karakter) di `.env` — di produksi wajib diisi sebagai
+  environment variable karena nilainya tidak ikut dibundel saat build.
 - **Build statis lomba**: skrip `npm run generate` mematikan penjaga sesi
   (`NUXT_PUBLIC_AUTH_WAJIB=false`) karena hosting statis tidak punya server sesi —
   dasbor tetap bisa dijelajahi juri sebagai demo terbuka.
@@ -235,4 +251,4 @@ filter kategori artikel · ekspor laporan CSV/cetak · animasi angka klasemen.
 - Ikon: [Lucide](https://lucide.dev) (ISC) & [Simple Icons](https://simpleicons.org) (CC0).
 
 Seluruh data klasemen, artikel, dan titik tanam adalah **data contoh** untuk kebutuhan demo
-babak penyisihan; otomatis digantikan data produksi begitu kredensial Supabase dikonfigurasi.
+babak penyisihan; otomatis digantikan data produksi begitu database Neon dikonfigurasi.

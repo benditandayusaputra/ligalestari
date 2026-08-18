@@ -76,7 +76,7 @@ Fitur aksesibilitas yang diimplementasikan:
   seperti aplikasi asli.
 - **Ilustrasi SVG inline** per artikel (tanpa foto): tajam di semua ukuran, 0 request
   tambahan.
-- **Fullstack + statis**: data via API Nitro + Supabase (fallback demo lokal), namun tetap
+- **Fullstack + statis**: data via API Nitro + Neon (fallback demo lokal), namun tetap
   bisa digenerate statis penuh — 72 rute, 0 error.
 
 ## Cara mereproduksi
