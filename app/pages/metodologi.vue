@@ -59,6 +59,11 @@ const serapanTertinggi = computed(() =>
             dibulatkan menjadi ≈ 85.520 kg CO₂ per tahun.
           </p>
         </div>
+
+        <p v-anim class="mt-4 text-small text-teks-redup">
+          Ingin mencoba rumus ini dengan angka sekolahmu sendiri?
+          <NuxtLink to="/kalkulator" class="font-semibold text-hijau-teks hover:underline">Buka Kalkulator Dampak</NuxtLink>.
+        </p>
       </div>
     </section>
 

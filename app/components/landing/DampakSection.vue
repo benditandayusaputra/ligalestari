@@ -44,6 +44,10 @@ const STATISTIK = [
           Baca metodologi perhitungannya
           <Icon name="lucide:chevron-right" size="15" aria-hidden="true" />
         </NuxtLink>
+        <NuxtLink to="/kalkulator" class="inline-flex items-center gap-1.5 text-small font-semibold text-lime hover:underline">
+          Hitung proyeksi untuk sekolahmu
+          <Icon name="lucide:chevron-right" size="15" aria-hidden="true" />
+        </NuxtLink>
       </div>
     </div>
   </section>

@@ -249,3 +249,43 @@ export interface TonggakDampak {
   judul: string
   teks: string
 }
+
+/* ---------- Kalkulator dampak ---------- */
+
+/** Asumsi yang diisi pengguna pada kalkulator proyeksi satu musim. */
+export interface InputKalkulator {
+  kelas: number
+  siswaPerKelas: number
+  /** Setoran sampah terpilah per siswa per pekan (kg). */
+  kgPerSiswaPerPekan: number
+  pohonPerKelas: number
+  /** Nama jenis pohon, merujuk tabel acuan metodologi. */
+  jenisPohon: string
+}
+
+/** Rincian satu kategori sampah pada hasil proyeksi. */
+export interface BarisKomposisiProyeksi {
+  kategori: KategoriSampah
+  label: string
+  warna: string
+  kg: number
+  persen: number
+  poin: number
+}
+
+/** Proyeksi dampak satu musim beserta angka antaranya. */
+export interface HasilKalkulator {
+  pekan: number
+  siswa: number
+  sampahKg: number
+  poinSampah: number
+  pohon: number
+  co2Kg: number
+  poinPohon: number
+  totalPoin: number
+  /** Tarif rata-rata tertimbang komposisi liga (poin/kg). */
+  tarifRata: number
+  /** Serapan acuan jenis pohon terpilih (kg CO2/pohon/tahun). */
+  serapan: number
+  komposisi: BarisKomposisiProyeksi[]
+}

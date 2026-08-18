@@ -7,6 +7,7 @@ const JELAJAHI = [
   { label: "Artikel & Edukasi", ke: "/artikel" },
   { label: "Peta Pohon", ke: "/peta" },
   { label: "Metodologi Dampak", ke: "/metodologi" },
+  { label: "Kalkulator Dampak", ke: "/kalkulator" },
 ];
 
 const AKUN = [
