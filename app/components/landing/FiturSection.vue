@@ -35,13 +35,22 @@ const FITUR = [
     <div class="mx-auto max-w-275">
       <div v-anim class="mb-9 flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <SectionHeading kicker="Yang Kamu Dapat" judul="Bukan sekadar mencatat sampah." />
-        <NuxtLink
-          to="/peta"
-          class="inline-flex items-center gap-1.5 py-1 text-small font-semibold text-hijau-teks hover:underline"
-        >
-          Lihat peta pohon
-          <Icon name="lucide:chevron-right" size="15" aria-hidden="true" />
-        </NuxtLink>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <NuxtLink
+            to="/mengapa-berbeda"
+            class="inline-flex items-center gap-1.5 py-1 text-small font-semibold text-hijau-teks hover:underline"
+          >
+            Mengapa kami berbeda
+            <Icon name="lucide:chevron-right" size="15" aria-hidden="true" />
+          </NuxtLink>
+          <NuxtLink
+            to="/peta"
+            class="inline-flex items-center gap-1.5 py-1 text-small font-semibold text-hijau-teks hover:underline"
+          >
+            Lihat peta pohon
+            <Icon name="lucide:chevron-right" size="15" aria-hidden="true" />
+          </NuxtLink>
+        </div>
       </div>
 
       <div class="grid items-start gap-9 lg:grid-cols-[1.35fr_1fr] lg:gap-12">

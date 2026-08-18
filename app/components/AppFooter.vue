@@ -3,6 +3,7 @@ const JELAJAHI = [
   { label: "Beranda", ke: "/" },
   { label: "Jadwal & Hasil", ke: "/jadwal" },
   { label: "Aturan Liga", ke: "/aturan" },
+  { label: "Mengapa Berbeda", ke: "/mengapa-berbeda" },
   { label: "Artikel & Edukasi", ke: "/artikel" },
   { label: "Peta Pohon", ke: "/peta" },
   { label: "Metodologi Dampak", ke: "/metodologi" },

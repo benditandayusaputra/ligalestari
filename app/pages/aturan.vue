@@ -248,7 +248,7 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
     </section>
 
     <!-- Verifikasi bukti -->
-    <section class="mt-12 bg-hijau-muda px-5 py-12 lg:mt-16 lg:px-10 lg:py-16" aria-labelledby="judul-verif">
+    <section id="verifikasi" class="mt-12 bg-hijau-muda px-5 py-12 lg:mt-16 lg:px-10 lg:py-16" aria-labelledby="judul-verif">
       <div class="mx-auto max-w-190">
         <SectionHeading v-anim id="judul-verif" kicker="Anti Klaim Kosong" judul="Verifikasi Bukti" />
         <div v-anim="80" class="mt-6 grid gap-4 md:grid-cols-2">
@@ -288,6 +288,11 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
             </div>
           </div>
         </div>
+
+        <p v-anim class="mt-6 text-small text-teks-redup">
+          Aturan seketat ini yang membedakan LigaLestari dari aplikasi lingkungan lain —
+          <NuxtLink to="/mengapa-berbeda" class="font-semibold text-hijau-teks hover:underline">lihat perbandingannya</NuxtLink>.
+        </p>
       </div>
     </section>
   </div>

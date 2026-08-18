@@ -209,3 +209,43 @@ export interface BuktiTanam {
   lokasi: string
   waktu: string
 }
+
+/* ---------- Halaman "Mengapa Berbeda" ---------- */
+
+/** Apakah sebuah platform memenuhi satu kriteria pembanding. */
+export type StatusKriteria = 'ada' | 'parsial' | 'tidak'
+
+/** Satu sel matriks: status + catatan singkat bila perlu dijelaskan. */
+export interface SelPembeda {
+  status: StatusKriteria
+  /** Nuansa yang tidak tertangkap simbol, mis. "geotag tanpa moderasi". */
+  catatan?: string
+}
+
+/** Satu baris matriks lanskap: sebuah platform dan enam selnya. */
+export interface PlatformPembeda {
+  nama: string
+  /** Fokus utama platform — konteks singkat di bawah namanya. */
+  fokus: string
+  /** Urutannya mengikuti KRITERIA_PEMBEDA (enam sel). */
+  sel: SelPembeda[]
+  /** Menandai baris LigaLestari sendiri agar disorot. */
+  kami?: boolean
+}
+
+/** Satu klaim keunikan beserta bukti yang bisa dibuka langsung di situs. */
+export interface KlaimPembeda {
+  klaim: string
+  penjelasan: string
+  /** Di mana klaim ini bisa dibuktikan sendiri oleh pembaca. */
+  bukti: string
+  /** Rute bukti bila halamannya publik (area pasca-masuk tanpa tautan). */
+  ke?: string
+}
+
+/** Satu tonggak rencana pengembangan lintas musim. */
+export interface TonggakDampak {
+  label: string
+  judul: string
+  teks: string
+}
