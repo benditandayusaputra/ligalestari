@@ -169,7 +169,7 @@ async function kirim() {
             v-model="kode"
             type="text"
             placeholder="mis. RPL1-7K2M"
-            class="w-full rounded-xl border-[1.5px] border-mint-garis bg-hijau-pucat py-3.25 pr-11 pl-3.5 font-display text-[0.9375rem] font-bold tracking-[0.04em] text-hijau-pekat uppercase transition outline-none placeholder:normal-case focus:border-hijau focus:shadow-[0_0_0_3px_rgba(14,107,70,0.18)] focus-visible:outline-none"
+            class="w-full rounded-xl border-[1.5px] border-mint-garis bg-hijau-pucat py-3.25 pr-11 pl-3.5 font-display text-[0.9375rem] font-bold tracking-[0.04em] text-hijau-teks uppercase transition outline-none placeholder:normal-case focus:border-hijau focus:shadow-[0_0_0_3px_rgba(14,107,70,0.18)] focus-visible:outline-none"
           />
           <Icon
             name="lucide:qr-code"

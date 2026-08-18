@@ -230,6 +230,17 @@
 
 /* Label "stempel verifikasi", uppercase renggang, bingkai dobel zamrud,
    sedikit miring seperti cap basah. */
+/* Teks berwarna merek (kategori sampah, tag notifikasi, sumber poin tim).
+   Kedua nilainya dihitung teksMerek() di app/utils/liga.ts supaya kontrasnya
+   lolos AA di tema terang MAUPUN gelap untuk warna apa pun. */
+.teks-merek {
+  color: var(--merek-terang);
+}
+
+.dark .teks-merek {
+  color: var(--merek-gelap);
+}
+
 @utility stempel-verif {
   display: inline-block;
   padding: 0.3em 0.85em;

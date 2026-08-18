@@ -35,12 +35,6 @@ export const DAFTAR_EVENT: EventLiga[] = [
   { nama: 'Tanam Pohon Hari Bumi', jenis: 'pohon', rate: '50 poin / pohon', status: 'Selesai', periode: '22 Apr 2026' },
 ]
 
-export const GAYA_STATUS_EVENT: Record<EventLiga['status'], { bg: string; teks: string }> = {
-  Aktif: { bg: '#E6F4EA', teks: '#0e6b46' },
-  Terjadwal: { bg: '#FBF1D9', teks: '#9A7B16' },
-  Selesai: { bg: '#EEEDE7', teks: '#8A8F86' },
-}
-
 export const BUKTI_TANAM: BuktiTanam[] = [
   { id: 1, kelasId: 'tkj', pohon: 6, jenisPohon: 'Trembesi', co2: 171, koordinat: '-6.91732, 107.61912', lokasi: 'Lapangan belakang sekolah', waktu: '20 mnt lalu' },
   { id: 2, kelasId: 'mm', pohon: 4, jenisPohon: 'Mangga', co2: 48, koordinat: '-6.91688, 107.62041', lokasi: 'Taman depan gerbang', waktu: '1 jam lalu' },

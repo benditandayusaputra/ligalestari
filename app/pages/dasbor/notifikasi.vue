@@ -17,15 +17,16 @@ const belumDibaca = computed(() => NOTIFIKASI.value.filter((n) => n.belumDibaca)
         :key="n.judul"
         class="flex gap-3 rounded-2xl border border-garis p-3.5"
         :class="n.belumDibaca ? 'bg-hijau-pucat' : 'bg-surface'"
-        :style="{ '--warna-notifikasi': n.warna }"
+        :style="{ '--warna-notifikasi': n.warna, ...teksMerek(n.warna) }"
       >
         <span class="ikon-notifikasi flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
-          <Icon :name="n.ikon" size="19" class="warna-notifikasi" aria-hidden="true" />
+          <Icon :name="n.ikon" size="19" class="teks-merek" aria-hidden="true" />
         </span>
         <div class="min-w-0 flex-1">
           <div class="mb-0.75 flex items-center gap-2">
-            <span class="warna-notifikasi text-[0.59375rem] font-bold tracking-[0.04em] uppercase">{{ n.tag }}</span>
-            <span v-if="n.belumDibaca" class="h-1.5 w-1.5 rounded-full bg-hijau-terang" aria-label="belum dibaca" />
+            <span class="teks-merek text-[0.59375rem] font-bold tracking-[0.04em] uppercase">{{ n.tag }}</span>
+            <span v-if="n.belumDibaca" class="h-1.5 w-1.5 shrink-0 rounded-full bg-hijau-terang" aria-hidden="true" />
+            <span v-if="n.belumDibaca" class="sr-only">Belum dibaca.</span>
             <span class="ml-auto text-[0.625rem] text-teks-samar">{{ n.waktu }}</span>
           </div>
           <h2 class="mb-0.5 text-[0.84375rem] leading-tight font-bold">{{ n.judul }}</h2>
@@ -37,16 +38,8 @@ const belumDibaca = computed(() => NOTIFIKASI.value.filter((n) => n.belumDibaca)
 </template>
 
 <style scoped>
-.warna-notifikasi {
-  color: var(--warna-notifikasi);
-}
-
 .ikon-notifikasi {
   background-color: color-mix(in srgb, var(--warna-notifikasi) 10%, transparent);
-}
-
-:global(.dark) .warna-notifikasi {
-  color: color-mix(in srgb, var(--warna-notifikasi) 65%, white);
 }
 
 :global(.dark) .ikon-notifikasi {

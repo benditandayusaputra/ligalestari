@@ -49,6 +49,7 @@ aksi tulis punya fallback lokal sehingga demo tetap berfungsi di Vercel/Netlify/
 ```bash
 npm install        # pasang dependensi
 npm run db:migrate # bangun skema + seed database Neon (butuh DATABASE_URL di .env)
+npm run audit      # audit aksesibilitas & responsif atas build statis (butuh generate dulu)
 npm run dev        # mode pengembangan (API server aktif) → http://localhost:3000
 npm run generate   # build statis → .output/public (untuk pengumpulan lomba)
 npm run build      # build server Node lengkap (API hidup) → node .output/server/index.mjs
@@ -87,6 +88,7 @@ ligalestari/
 │  ├─ api/                   # endpoint API Nitro (klasemen, artikel, dasbor, admin, auth, …)
 │  └─ utils/                 # klien Neon (neon.ts), penjaga sesi, fallback memori (demo.ts)
 ├─ db/                       # schema.sql + seed.sql + migrate.mjs (npm run db:migrate)
+├─ scripts/audit.mjs         # axe-core + sapuan viewport atas build statis (npm run audit)
 ├─ shared/
 │  ├─ data/                  # data demo bertipe, sumber tunggal untuk server & fallback klien
 │  └─ types/                 # tipe domain yang dipakai app + server
@@ -176,6 +178,13 @@ Publik:
   filter legenda, dan statistik dinamis.
 - `/metodologi`: Transparansi rumus estimasi CO₂ + tabel acuan (berubah jadi kartu di layar
   kecil).
+- `/kalkulator`: **Kalkulator dampak interaktif**, proyeksi satu musim dari asumsi sekolahmu
+  memakai tarif dan rate serapan yang sama dengan mesin liga.
+- `/aturan`: Buku aturan musim: cara main, tarif 6 kategori, formula poin, Duel Pekan, dan
+  tiga jalur gelar.
+- `/jadwal`: **Jadwal & Hasil** duel pekanan ala fixture liga + klasemen duel.
+- `/mengapa-berbeda`: Matriks lanskap 9 platform pembanding x 6 kriteria + enam klaim
+  keunikan yang tiap-tiapnya bertaut ke halaman pembuktinya.
 - `/masuk`, `/daftar`: **Autentikasi mode demo** dengan login per peran, registrasi + kode kelas,
   gabung kelas, dan lupa password.
 

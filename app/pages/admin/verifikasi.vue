@@ -72,7 +72,7 @@ async function putuskan(id: number, hasil: Keputusan) {
             </div>
             <div class="rounded-[11px] border border-garis bg-surface-2 px-2.75 py-2.25">
               <div class="text-[0.625rem] font-semibold text-teks-samar">Calon poin</div>
-              <div class="text-[0.8125rem] font-bold text-hijau-terang">+{{ b.calonPoin }}</div>
+              <div class="text-[0.8125rem] font-bold text-hijau-teks">+{{ b.calonPoin }}</div>
             </div>
           </div>
 
@@ -88,7 +88,7 @@ async function putuskan(id: number, hasil: Keputusan) {
           <div v-if="!keputusan[b.id]" class="mt-auto flex gap-2.25">
             <button
               type="button"
-              class="flex-1 rounded-xl border-[1.5px] border-[#E0B5B0] bg-surface p-3 text-[0.8125rem] font-bold text-[#C0392B] hover:bg-[#FCEEEC]"
+              class="flex-1 rounded-xl border-[1.5px] border-merah-teks/40 bg-surface p-3 text-[0.8125rem] font-bold text-merah-teks hover:bg-surface-2"
               @click="putuskan(b.id, 'ditolak')"
             >
               Tolak
@@ -109,7 +109,7 @@ async function putuskan(id: number, hasil: Keputusan) {
             <Icon name="lucide:check" size="17" aria-hidden="true" />
             Disetujui · poin masuk klasemen
           </p>
-          <p v-else class="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[#FBEEEC] p-3 text-[0.8125rem] font-bold text-[#C0392B]" role="status">
+          <p v-else class="mt-auto flex items-center justify-center gap-2 rounded-xl bg-surface-2 p-3 text-[0.8125rem] font-bold text-merah-teks" role="status">
             <Icon name="lucide:x" size="17" aria-hidden="true" />
             Bukti ditolak
           </p>

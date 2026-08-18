@@ -79,7 +79,7 @@ const komposisi = computed(() => {
         <div v-for="(r, i) in RINCIAN_POIN" :key="r.label" :class="i > 0 && 'mt-3.5'">
           <div class="mb-1.5 flex justify-between text-xs">
             <span class="font-semibold">{{ r.label }}</span>
-            <span class="font-display font-bold" :style="{ color: r.warna }">{{ formatAngka(r.poin) }}</span>
+            <span class="teks-merek font-display font-bold" :style="teksMerek(r.warna)">{{ formatAngka(r.poin) }}</span>
           </div>
           <div
             class="h-2.5 overflow-hidden rounded-full bg-surface-3"

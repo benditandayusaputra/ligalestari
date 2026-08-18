@@ -68,3 +68,55 @@ export function inisial(nama: string): string {
     .join('')
     .toUpperCase()
 }
+
+/* ---------- Warna merek sebagai teks ---------- */
+
+// Latar kasus terburuk tiap tema: yang paling gelap di tema terang, dan
+// yang paling terang di tema gelap. Lolos di sini berarti lolos di
+// seluruh permukaan tema tersebut.
+const LATAR_TERANG = '#E3ECDF'
+const LATAR_GELAP = '#24332A'
+
+const keRgb = (heks: string): number[] => [1, 3, 5].map((i) => parseInt(heks.slice(i, i + 2), 16))
+
+const keHeks = (rgb: number[]): string =>
+  `#${rgb.map((c) => Math.round(c).toString(16).padStart(2, '0')).join('')}`
+
+/** Campur dua warna sRGB; `porsi` adalah bagian warna kedua (0..1). */
+function campur(a: string, b: string, porsi: number): string {
+  const x = keRgb(a)
+  const y = keRgb(b)
+  return keHeks(x.map((c, i) => c + (y[i]! - c) * porsi))
+}
+
+const rasio = (a: string, b: string) => kontras(luminansi(a), luminansi(b))
+
+/** Geser warna ke `tujuan` seminimal mungkin sampai lolos AA di atas `latar`. */
+function geserSampaiLolos(warna: string, latar: string, tujuan: string): string {
+  for (let p = 0; p <= 1; p += 0.02) {
+    const kandidat = campur(warna, tujuan, p)
+    if (rasio(kandidat, latar) >= 4.5) return kandidat
+  }
+  return tujuan
+}
+
+/**
+ * Pasangan warna teks aman untuk warna merek bebas (kategori sampah, tag
+ * notifikasi, sumber poin tim). Warna aslinya dirancang sebagai isian bar
+ * dan titik, jadi hampir semuanya gagal kontras bila dipakai apa adanya
+ * sebagai teks; di sini tiap warna digeser ke gelap (tema terang) atau ke
+ * terang (tema gelap) seminimal mungkin sampai lolos 4,5:1.
+ *
+ * Keduanya dipasang sekaligus sebagai custom property lalu dipilih kelas
+ * `.teks-merek` menurut tema aktif, sehingga tidak perlu JavaScript saat
+ * runtime dan hasil prerender tetap benar di kedua tema.
+ *
+ * `tint` adalah porsi warna merek yang ikut mewarnai latarnya, mis. chip
+ * kategori memakai latar 13% warna yang sama.
+ */
+export function teksMerek(warna: string, tint = 0): Record<string, string> {
+  return {
+    '--merek-terang': geserSampaiLolos(warna, campur(LATAR_TERANG, warna, tint), '#000000'),
+    '--merek-gelap': geserSampaiLolos(warna, campur(LATAR_GELAP, warna, tint), '#FFFFFF'),
+  }
+}

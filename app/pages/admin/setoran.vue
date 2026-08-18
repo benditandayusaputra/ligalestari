@@ -25,10 +25,13 @@ const infoKategori = computed(() => KATEGORI_SAMPAH[kategori.value])
 const kgBersih = computed(() => Number.parseFloat(berat.value) || 0)
 const perkiraanPoin = computed(() => poinSetoran(kgBersih.value, kategori.value))
 
-/** Gaya chip kategori: teks berwarna semantik + latar tipis warna yang sama. */
+/**
+ * Gaya chip kategori: latar tipis warna semantiknya, teks memakai turunan
+ * warna itu yang sudah dijamin lolos kontras di kedua tema (teksMerek).
+ */
 function gayaChip(k: KategoriSampah) {
   const warna = KATEGORI_SAMPAH[k].warna
-  return { color: warna, background: `color-mix(in oklab, ${warna} 13%, transparent)` }
+  return { ...teksMerek(warna, 0.13), background: `color-mix(in oklab, ${warna} 13%, transparent)` }
 }
 
 /** Catat lewat API; di hosting statis dicatat lokal dengan validator & rumus shared yang sama. */
@@ -142,7 +145,7 @@ async function catat() {
             <span class="w-11 text-[0.6875rem] font-semibold text-teks-samar">{{ r.waktu }}</span>
             <span class="min-w-0 flex-1">
               <span class="block text-[0.8125rem] font-bold">{{ r.kelas }}</span>
-              <span class="mt-0.5 inline-block rounded-md px-1.5 py-0.5 text-[0.625rem] font-bold" :style="gayaChip(r.kategori)">
+              <span class="teks-merek mt-0.5 inline-block rounded-md px-1.5 py-0.5 text-[0.625rem] font-bold" :style="gayaChip(r.kategori)">
                 {{ KATEGORI_SAMPAH[r.kategori].label }} · {{ KATEGORI_SAMPAH[r.kategori].tarif }}/kg
               </span>
             </span>

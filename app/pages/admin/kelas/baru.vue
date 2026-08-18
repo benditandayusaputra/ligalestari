@@ -63,8 +63,8 @@ async function buatKelas() {
         <!-- Pratinjau emblem -->
         <div class="mt-3.5 flex items-center justify-center gap-3.5 rounded-[18px] border border-garis bg-surface p-4.5">
           <span
-            class="flex h-16 w-16 items-center justify-center rounded-[18px] font-display text-2xl font-bold text-white shadow-[0_6px_16px_rgba(20,32,22,0.18)]"
-            :style="{ background: warna }"
+            class="flex h-16 w-16 items-center justify-center rounded-[18px] font-display text-2xl font-bold shadow-[0_6px_16px_rgba(20,32,22,0.18)]"
+            :style="gayaEmblem(warna)"
           >
             {{ (emblem || 'R2').toUpperCase() }}
           </span>

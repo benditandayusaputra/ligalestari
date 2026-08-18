@@ -1,6 +1,16 @@
 <script setup lang="ts">
-import { GAYA_STATUS_EVENT } from '#shared/data/admin'
+import type { EventLiga } from '#shared/types'
 import { RENTANG_TARIF } from '#shared/data/kategori-sampah'
+
+/**
+ * Gaya lencana status event. Memakai token tema, bukan heks tetap: pasangan
+ * warna lamanya hanya dirancang untuk tema terang dan gagal kontras AA.
+ */
+const GAYA_STATUS_EVENT: Record<EventLiga['status'], string> = {
+  Aktif: 'bg-mint text-hijau-teks',
+  Terjadwal: 'bg-sorot text-emas-teks',
+  Selesai: 'bg-surface-3 text-teks-redup',
+}
 
 definePageMeta({ layout: 'dasbor' })
 useSeoMeta({ title: 'Kelola Event' })
@@ -75,7 +85,7 @@ const infoBackend = ref(false)
             </div>
             <span
               class="rounded-full px-2.25 py-1 text-[0.625rem] font-bold"
-              :style="{ background: GAYA_STATUS_EVENT[e.status].bg, color: GAYA_STATUS_EVENT[e.status].teks }"
+              :class="GAYA_STATUS_EVENT[e.status]"
             >
               {{ e.status.toUpperCase() }}
             </span>

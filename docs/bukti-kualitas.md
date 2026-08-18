@@ -1,9 +1,17 @@
 # Bukti Kualitas LigaLestari: Data untuk Presentasi
 
 Seluruh angka di bawah terukur pada build produksi (`npm run generate`), bukan klaim.
-Tanggal audit: 13 Juli 2026.
 
-## 1. Lighthouse (emulasi seluler, CPU 4× lebih lambat)
+| Pemeriksaan | Terakhir diukur | Cara |
+|---|---|---|
+| Aksesibilitas (axe-core) | **18 Agustus 2026** | `npm run audit`, otomatis |
+| Responsif (sapuan viewport) | **18 Agustus 2026** | `npm run audit`, otomatis |
+| Lighthouse | 13 Juli 2026 | manual di Chrome Incognito |
+
+Angka Lighthouse belum diukur ulang setelah penambahan halaman Aturan Liga, Jadwal & Hasil,
+Mengapa Berbeda, dan Kalkulator Dampak, jadi tanggalnya sengaja dibedakan.
+
+## 1. Lighthouse (emulasi seluler, CPU 4× lebih lambat, 13 Juli 2026)
 
 | Halaman | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
@@ -26,8 +34,19 @@ viewport.
 
 ## 2. Aksesibilitas: axe-core (WCAG 2.1 AA)
 
-**0 pelanggaran** pada 7 halaman kunci × 2 tema (gelap & terang) = 14 kombinasi:
-`/`, `/peta`, `/artikel`, `/metodologi`, `/masuk`, `/dasbor`, `/admin`.
+**0 pelanggaran** pada **seluruh 25 halaman × 2 tema** (gelap & terang) = 50 pemindaian:
+11 halaman publik, 5 halaman dasbor siswa, dan 9 halaman panel admin. Aturan yang diuji
+mencakup `wcag2a`, `wcag2aa`, `wcag21a`, dan `wcag21aa`.
+
+Audit ini kini **berupa skrip** ([`scripts/audit.mjs`](../scripts/audit.mjs), `npm run audit`)
+yang berjalan atas build statis dengan Playwright, jadi bisa diulang kapan saja dan dipasang
+di CI. Sapuan pertamanya pada 18 Agustus 2026 menemukan **37 node bermasalah** di 7 halaman
+yang belum pernah masuk audit sebelumnya; seluruhnya sudah diperbaiki. Akar masalahnya satu:
+warna merek dari data (kategori sampah, tag notifikasi, sumber poin tim) dipakai apa adanya
+sebagai warna teks, padahal warna itu dirancang sebagai isian bar dan titik. Perbaikannya
+memakai `teksMerek()` di [`app/utils/liga.ts`](../app/utils/liga.ts), yang menggeser tiap
+warna ke gelap atau terang seminimal mungkin sampai lolos 4,5:1 di temanya masing-masing,
+lalu memilihnya lewat CSS tanpa JavaScript saat runtime.
 
 Fitur aksesibilitas yang diimplementasikan:
 
@@ -46,8 +65,10 @@ Fitur aksesibilitas yang diimplementasikan:
 
 ## 3. Responsif: semua perangkat
 
-**70/70 kombinasi lolos tanpa overflow mendatar**: 7 viewport × 10 halaman
-(publik + dasbor + admin).
+**175/175 kombinasi lolos tanpa overflow mendatar**: 7 viewport × 25 halaman
+(publik + dasbor + admin), diukur otomatis oleh `npm run audit`. Termasuk halaman Mengapa
+Berbeda yang memuat tabel perbandingan 7 kolom, elemen terlebar di seluruh situs; tabelnya
+menggulir di dalam wadahnya sendiri sehingga halamannya tetap bebas gulir mendatar.
 
 | Viewport | Mewakili |
 |---|---|
@@ -77,12 +98,22 @@ Fitur aksesibilitas yang diimplementasikan:
 - **Ilustrasi SVG inline** per artikel (tanpa foto): tajam di semua ukuran, 0 request
   tambahan.
 - **Fullstack + statis**: data via API Nitro + Neon (fallback demo lokal), namun tetap
-  bisa digenerate statis penuh, 72 rute, 0 error.
+  bisa digenerate statis penuh: 80 rute, 0 error.
+- **Kalkulator dampak interaktif**: proyeksi satu musim dari asumsi yang diisi pengguna,
+  memakai tarif kategori dan rate serapan yang sama persis dengan mesin liga.
+- **Halaman Mengapa Berbeda**: matriks 9 platform pembanding x 6 kriteria, dan tiap klaim
+  keunikan bertaut ke halaman yang membuktikannya.
 
 ## Cara mereproduksi
 
 ```bash
-npm run generate                 # build statis produksi
-npx serve .output/public        # sajikan di localhost
-# Lighthouse: Chrome Incognito → DevTools → Lighthouse → jalankan per halaman
+npm run generate   # build statis produksi
+npm run audit      # axe-core 25 halaman x 2 tema + sapuan 7 viewport
+
+# Lighthouse masih manual: sajikan build lalu ukur per halaman.
+npx serve .output/public
+# Chrome Incognito -> DevTools -> Lighthouse
 ```
+
+`npm run audit` keluar dengan kode 1 bila ada temuan, jadi bisa langsung dipakai sebagai
+gerbang di GitHub Actions.
