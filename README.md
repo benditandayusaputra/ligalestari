@@ -1,4 +1,4 @@
-# LigaLestari — Pilah Sampah, Rebut Juara
+# LigaLestari: Pilah Sampah, Rebut Juara
 
 > Satu musim, satu aksi, satu bumi.
 
@@ -7,11 +7,11 @@ menjalankan misi hijau (memilah dan menyetor sampah, menanam pohon), setiap aksi
 diverifikasi lewat bukti lalu dikonversi menjadi **Poin Hijau** dan **dampak CO₂
 terukur**, dan kelas-kelas bersaing di klasemen ala liga olahraga sepanjang satu musim.
 
-Karya **Bendi Tandayu Saputra** untuk **INVENTION 2026 — Web Design Competition** ·
+Karya **Bendi Tandayu Saputra** untuk **INVENTION 2026, Web Design Competition** ·
 Subtema: _Going Green Through Smart Digital Solutions_.
 
 **Pengembangan signifikan dari karya sebelumnya (EkoLiga).** LigaLestari dibangun sebagai
-pengembangan menyeluruh atas karya sebelumnya, EkoLiga — sesuai aturan improvement lomba,
+pengembangan menyeluruh atas karya sebelumnya, EkoLiga, sesuai aturan improvement lomba,
 perubahan pokoknya: **rebrand penuh** (nama, palet zamrud–tembaga, monogram LL, tipografi
 Archivo, tagline); **tarif poin 6 kategori sampah** (organik/kertas/plastik/kaca/logam/B3
 ringan dengan tarif poin per kg berbeda, bukan tarif tunggal); **Duel Pekan** (jadwal
@@ -22,26 +22,26 @@ Terlestari); serta dua halaman publik baru **Aturan Liga** (/aturan) dan **Jadwa
 
 ## Teknologi
 
-- **Framework** — [Nuxt 4](https://nuxt.com) (Vue 3, TypeScript, SSG).
-- **Styling** — [Tailwind CSS v4](https://tailwindcss.com) dengan token tema di CSS.
-- **Font** — Inter & Archivo via `@nuxt/fonts`, di-host sendiri saat build.
-- **Ikon** — `@nuxt/icon` + koleksi Lucide & Simple Icons, dirender sebagai SVG inline.
-- **SEO** — `@nuxtjs/seo`: sitemap, robots, canonical, dan schema.org otomatis.
-- **Database** — [Neon](https://neon.tech) (Postgres serverless) lewat driver HTTP
+- **Framework**: [Nuxt 4](https://nuxt.com) (Vue 3, TypeScript, SSG).
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com) dengan token tema di CSS.
+- **Font**: Inter & Archivo via `@nuxt/fonts`, di-host sendiri saat build.
+- **Ikon**: `@nuxt/icon` + koleksi Lucide & Simple Icons, dirender sebagai SVG inline.
+- **SEO**: `@nuxtjs/seo` untuk sitemap, robots, canonical, dan schema.org otomatis.
+- **Database**: [Neon](https://neon.tech) (Postgres serverless) lewat driver HTTP
   `@neondatabase/serverless`; skema, seed, dan migrasinya ada di `db/`.
-- **Peta** — [MapLibre GL](https://maplibre.org) + tile **vektor** OpenFreeMap (gratis, tanpa
+- **Peta**: [MapLibre GL](https://maplibre.org) + tile **vektor** OpenFreeMap (gratis, tanpa
   API key). Pin pohon kustom per warna kelas, penanda sekolah, popup ringkasan, dan filter
-  legenda. Pusat peta (lat/lng/zoom) diatur admin di **/admin/lokasi** — klik peta, seret
+  legenda. Pusat peta (lat/lng/zoom) diatur admin di **/admin/lokasi**: klik peta, seret
   penanda, atau isi manual; semua titik tanam digambar skematis di sekitar pusat itu (privasi).
   Contoh bawaan: **SMK Negeri 26 Jakarta** (Rawamangun, Jakarta Timur), koordinat OpenStreetMap.
   Bila peta gagal dimuat (luring), halaman otomatis jatuh ke denah kanvas lokal.
-- **Animasi gulir** — directive `v-anim` buatan sendiri (±40 baris, IntersectionObserver,
+- **Animasi gulir**: directive `v-anim` buatan sendiri (±40 baris, IntersectionObserver,
   tanpa dependensi): fade-up halus + stagger di halaman publik, nonaktif total saat
   pengguna menyetel _prefers-reduced-motion_ (konten tidak pernah disembunyikan).
 
 Aplikasi sudah **fullstack**: seluruh data disajikan lewat **API server Nitro** (`server/api/`)
 dan halaman mengambilnya dengan `useFetch`. Untuk ketentuan lomba, situs tetap bisa digenerate
-**statis penuh** (`nuxt generate`) — data API dibekukan ke payload statis saat build, dan setiap
+**statis penuh** (`nuxt generate`), data API dibekukan ke payload statis saat build, dan setiap
 aksi tulis punya fallback lokal sehingga demo tetap berfungsi di Vercel/Netlify/GitHub Pages.
 
 ## Menjalankan
@@ -88,7 +88,7 @@ ligalestari/
 │  └─ utils/                 # klien Neon (neon.ts), penjaga sesi, fallback memori (demo.ts)
 ├─ db/                       # schema.sql + seed.sql + migrate.mjs (npm run db:migrate)
 ├─ shared/
-│  ├─ data/                  # data demo bertipe — sumber tunggal untuk server & fallback klien
+│  ├─ data/                  # data demo bertipe, sumber tunggal untuk server & fallback klien
 │  └─ types/                 # tipe domain yang dipakai app + server
 ├─ public/                   # favicon, OG image, aset statis
 └─ nuxt.config.ts
@@ -98,17 +98,17 @@ ligalestari/
 
 Endpoint utama (`server/api/`); respons otomatis bertipe di sisi klien lewat `useFetch`:
 
-- `GET /api/klasemen` — musim, klasemen 8 tim, total dampak, event aktif.
-- `GET /api/artikel` · `GET /api/artikel/[slug]` — daftar & detail artikel (+terkait, 404 bila tak ada).
-- `GET /api/peta` — titik tanam yang sudah digabung data kelasnya.
-- `GET /api/metodologi` — tabel serapan CO₂ + sumber.
-- `GET /api/dasbor` — profil siswa, rincian poin, anggota, riwayat, badge, notifikasi.
-- `POST /api/asisten` — jawaban Asisten Hijau (tempat integrasi AI berikutnya).
-- `POST /api/auth/masuk` · `POST /api/auth/gabung` — validasi akun demo & kode kelas.
+- `GET /api/klasemen`: musim, klasemen 8 tim, total dampak, event aktif.
+- `GET /api/artikel` · `GET /api/artikel/[slug]`: daftar & detail artikel (+terkait, 404 bila tak ada).
+- `GET /api/peta`: titik tanam yang sudah digabung data kelasnya.
+- `GET /api/metodologi`: tabel serapan CO₂ + sumber.
+- `GET /api/dasbor`: profil siswa, rincian poin, anggota, riwayat, badge, notifikasi.
+- `POST /api/asisten`: jawaban Asisten Hijau (tempat integrasi AI berikutnya).
+- `POST /api/auth/masuk` · `POST /api/auth/gabung`: validasi akun demo & kode kelas.
 - `GET|POST /api/admin/setoran` · `GET /api/admin/event` · `GET /api/admin/ringkasan` ·
-  `GET /api/admin/laporan` — data panel admin; setoran baru tersimpan di memori server.
-- `GET /api/admin/bukti` · `PATCH /api/admin/bukti/[id]` — verifikasi bukti tanam.
-- `GET|POST /api/admin/kelas` · `GET /api/admin/kelas/[id]` — kelola kelas + kode gabung.
+  `GET /api/admin/laporan`: data panel admin; setoran baru tersimpan di memori server.
+- `GET /api/admin/bukti` · `PATCH /api/admin/bukti/[id]`: verifikasi bukti tanam.
+- `GET|POST /api/admin/kelas` · `GET /api/admin/kelas/[id]`: kelola kelas + kode gabung.
 
 Saat dihosting statis, respons GET sudah terbekukan ke payload build dan setiap aksi tulis
 jatuh ke fallback lokal dengan aturan yang sama (`shared/data`), sehingga perilaku demo identik.
@@ -119,8 +119,8 @@ Endpoint API membaca/menulis **Neon (Postgres serverless)** lewat driver HTTP
 `@neondatabase/serverless`, sehingga tidak ada koneksi TCP yang perlu ditahan di
 lingkungan serverless. Sumber datanya berlapis:
 
-1. **Neon** — bila `DATABASE_URL` terisi dan tabelnya tersedia.
-2. **Fallback demo** (`shared/data` + memori server) — otomatis dipakai bila database
+1. **Neon**: bila `DATABASE_URL` terisi dan tabelnya tersedia.
+2. **Fallback demo** (`shared/data` + memori server), otomatis dipakai bila database
    belum dikonfigurasi/terjangkau, sehingga aplikasi selalu bisa berjalan (termasuk
    saat `nuxt generate` untuk pengumpulan lomba).
 
@@ -130,7 +130,7 @@ pertama, jadi seluruh skenario tetap bisa diuji tanpa kredensial apa pun.
 Penyiapan:
 
 - Salin `.env.example` → `.env`, lalu isi `DATABASE_URL` dengan connection string dari
-  dashboard Neon (pakai endpoint `-pooler`). URL ini **hanya** dibaca server —
+  dashboard Neon (pakai endpoint `-pooler`). URL ini **hanya** dibaca server;
   `runtimeConfig` menaruhnya di luar `public` sehingga tidak pernah sampai ke browser.
 - Jalankan `npm run db:migrate` sekali. Skrip [`db/migrate.mjs`](db/migrate.mjs)
   menjalankan [`db/schema.sql`](db/schema.sql) → [`db/seed.sql`](db/seed.sql) → seed akun
@@ -145,7 +145,7 @@ Penyiapan:
 ## Autentikasi (sesi cookie + hash scrypt)
 
 Login ditangani sendiri di tabel `profil` dengan sesi cookie terenkripsi
-(`nuxt-auth-utils`) — tanpa layanan auth pihak ketiga:
+(`nuxt-auth-utils`), tanpa layanan auth pihak ketiga:
 
 - Pengguna masuk dengan **username/NIS** (tanpa email). Satu kueri `join` mencocokkan
   keduanya, lalu sandi diverifikasi terhadap hash **scrypt** (`verifyPassword`); sandi
@@ -158,47 +158,47 @@ Login ditangani sendiri di tabel `profil` dengan sesi cookie terenkripsi
   (setoran, verifikasi, buat kelas) menolak non-admin dengan 403.
 - Penyiapan: `npm run db:migrate` sekaligus membuat akun demo `aditya.p/hijau123` (siswa)
   dan `admin/admin123` (admin); NIS `2231045` juga bisa dipakai masuk. Isi
-  `NUXT_SESSION_PASSWORD` (min. 32 karakter) di `.env` — di produksi wajib diisi sebagai
+  `NUXT_SESSION_PASSWORD` (min. 32 karakter) di `.env`: di produksi wajib diisi sebagai
   environment variable karena nilainya tidak ikut dibundel saat build.
 - **Build statis lomba**: skrip `npm run generate` mematikan penjaga sesi
-  (`NUXT_PUBLIC_AUTH_WAJIB=false`) karena hosting statis tidak punya server sesi —
+  (`NUXT_PUBLIC_AUTH_WAJIB=false`) karena hosting statis tidak punya server sesi;
   dasbor tetap bisa dijelajahi juri sebagai demo terbuka.
 
 ## Halaman
 
 Publik:
 
-- `/` — Landing: hero + podium, klasemen 5 besar, masalah, cara kerja, fitur, dampak,
+- `/` (Landing): hero + podium, klasemen 5 besar, masalah, cara kerja, fitur, dampak,
   subtema, dan ajakan bergabung.
-- `/artikel` — Daftar artikel edukasi + **filter kategori** (tersimpan di URL).
-- `/artikel/[slug]` — Detail artikel + sumber + artikel terkait (schema.org `Article`).
-- `/peta` — **Peta interaktif** persebaran pohon: pin per kelas, popup ringkasan, filter
-  legenda, statistik dinamis.
-- `/metodologi` — Transparansi rumus estimasi CO₂ + tabel acuan (berubah jadi kartu di layar
+- `/artikel`: Daftar artikel edukasi + **filter kategori** (tersimpan di URL).
+- `/artikel/[slug]`: Detail artikel + sumber + artikel terkait (schema.org `Article`).
+- `/peta`: **Peta interaktif** persebaran pohon dengan pin per kelas, popup ringkasan,
+  filter legenda, dan statistik dinamis.
+- `/metodologi`: Transparansi rumus estimasi CO₂ + tabel acuan (berubah jadi kartu di layar
   kecil).
-- `/masuk`, `/daftar` — **Autentikasi mode demo**: login per peran, registrasi + kode kelas,
+- `/masuk`, `/daftar`: **Autentikasi mode demo** dengan login per peran, registrasi + kode kelas,
   gabung kelas, dan lupa password.
 
-Dasbor siswa (view statis, `noindex` — data dari `app/data/`):
+Dasbor siswa (view statis, `noindex`; data dari `app/data/`):
 
-- `/dasbor` — Klasemen: progres musim, banner event, tampilan **Podium** / **Balapan**.
-- `/dasbor/tim` — Profil tim: rincian poin, anggota, riwayat, + **kartu pencapaian** yang bisa
+- `/dasbor`: klasemen dengan progres musim, banner event, dan tampilan **Podium** / **Balapan**.
+- `/dasbor/tim`: profil tim berisi rincian poin, anggota, riwayat, + **kartu pencapaian** yang bisa
   dibagikan (WhatsApp/X/Telegram + salin caption).
-- `/dasbor/saya` — Kontribusi pribadi: level, statistik, koleksi badge.
-- `/dasbor/notifikasi` — Daftar notifikasi liga.
-- `/dasbor/asisten` — **Chatbot Asisten Hijau** dengan jawaban edukasi lokal (tanpa backend).
+- `/dasbor/saya`: kontribusi pribadi berupa level, statistik, dan koleksi badge.
+- `/dasbor/notifikasi`: Daftar notifikasi liga.
+- `/dasbor/asisten`: **Chatbot Asisten Hijau** dengan jawaban edukasi lokal (tanpa backend).
 
 Panel admin (view statis, `noindex`):
 
-- `/admin` — Ringkasan KPI harian + aksi cepat + pemuncak klasemen.
-- `/admin/setoran` — **CRUD setoran (demo)**: form catat setoran → estimasi poin → masuk tabel.
-- `/admin/event` — Musim berjalan + daftar event dan rate poinnya.
-- `/admin/verifikasi` — **Moderasi bukti tanam**: setujui/tolak per kartu bukti.
-- `/admin/laporan` — Grafik bulanan, sebaran spesies, ekspor **Cetak/PDF** & **CSV** (berfungsi).
-- `/admin/kelas`, `/admin/kelas/[id]`, `/admin/kelas/baru` — Kelola kelas: kode gabung + pratinjau
-  QR, salin/buat ulang kode, daftar siswa, form kelas baru.
+- `/admin`: Ringkasan KPI harian + aksi cepat + pemuncak klasemen.
+- `/admin/setoran`: **CRUD setoran (demo)** dengan alur form catat setoran → estimasi poin → masuk tabel.
+- `/admin/event`: Musim berjalan + daftar event dan rate poinnya.
+- `/admin/verifikasi`: **Moderasi bukti tanam**, setujui/tolak per kartu bukti.
+- `/admin/laporan`: Grafik bulanan, sebaran spesies, ekspor **Cetak/PDF** & **CSV** (berfungsi).
+- `/admin/kelas`, `/admin/kelas/[id]`, `/admin/kelas/baru`: kelola kelas dengan kode gabung + pratinjau
+  QR, salin/buat ulang kode, daftar siswa, dan form kelas baru.
 
-**Fitur interaktif** (ketentuan lomba: fitur utama wajib berfungsi sesuai konsep — semua
+**Fitur interaktif** (ketentuan lomba: fitur utama wajib berfungsi sesuai konsep, semua
 berjalan bahkan tanpa backend): autentikasi demo
 dengan validasi & indikator kekuatan password · chatbot Asisten Hijau · peta pohon interaktif ·
 pencatatan setoran + verifikasi bukti (CRUD demo) · kartu pencapaian yang dapat dibagikan ·
@@ -208,12 +208,12 @@ filter kategori artikel · ekspor laporan CSV/cetak · animasi angka klasemen.
 
 - **Dua tema** via `@nuxtjs/color-mode` (kelas `.dark` di `<html>`, gelap sebagai bawaan,
   pilihan tersimpan, tanpa kedipan saat muat). Toggle 🌙/☀️ ada di navbar publik,
-  sidebar dasbor, dan bilah tab ponsel — bisa dioperasikan penuh lewat keyboard.
+  sidebar dasbor, dan bilah tab ponsel, bisa dioperasikan penuh lewat keyboard.
 - **Design token dua mode** di [main.css](app/assets/css/main.css): permukaan
-  (`bg/surface/surface-2/3/sorot`), teks 4 tingkat, garis, dan semburat hijau —
+  (`bg/surface/surface-2/3/sorot`), teks 4 tingkat, garis, dan semburat hijau;
   seluruh pasangan teks/latar terverifikasi **WCAG AA di kedua mode** (skrip kontras).
 - **Ukuran huruf bisa diatur pengguna** (aksesibilitas): tombol **Aa** di navbar, sidebar
-  dasbor, dan panel "Tampilan" di ponsel — empat tingkat (87,5% / 100% / 115% / 130%),
+  dasbor, dan panel "Tampilan" di ponsel, empat tingkat (87,5% / 100% / 115% / 130%),
   berlaku seketika tanpa muat ulang, tersimpan di perangkat, dan diterapkan sebelum cat
   pertama (tanpa kedipan). Seluruh teks memakai satuan rem sehingga skala konsisten.
 - **Aksen liquid glass** (`glass`, `glass-hijau`, `glass-gelap`, `glass-tipis`) hanya di
@@ -228,7 +228,7 @@ filter kategori artikel · ekspor laporan CSV/cetak · animasi angka klasemen.
   Artikel **94 / 100 / 100 / 100**, Peta **84 / 100 / 100 / 100** (halaman peta vektor
   interaktif; TBT 110 ms, CLS 0), Dasbor **93 / 100 / 100** (SEO sengaja `noindex`).
 - **axe-core (WCAG 2.1 AA): 0 pelanggaran** pada 7 halaman kunci × 2 tema (gelap & terang).
-  Lencana tim memakai `gayaEmblem()` — kontras AA dijamin untuk warna kelas apa pun
+  Lencana tim memakai `gayaEmblem()`: kontras AA dijamin untuk warna kelas apa pun
   yang dipilih admin (tinta putih/gelap dipilih otomatis, warna digeser bila perlu).
 - **Responsif** dari ponsel kecil hingga monitor 4K: diuji **7 viewport (320 → 2560 px)
   × 10 halaman = 70 kombinasi, semuanya tanpa overflow mendatar**.
@@ -243,7 +243,7 @@ filter kategori artikel · ekspor laporan CSV/cetak · animasi angka klasemen.
 
 ## Sumber & Kredit
 
-- Data timbulan sampah nasional: **SIPSN — KLHK, 2023**.
+- Data timbulan sampah nasional: **SIPSN, KLHK, 2023**.
 - Angka serapan CO₂ per jenis pohon: **Endes N. Dahlan (2007), IPB** (nilai acuan; estimasi).
 - Logo & emblem LigaLestari: karya sendiri (arsip prototype disimpan di luar repo).
 - Font: [Inter](https://rsms.me/inter/) & [Archivo](https://fonts.google.com/specimen/Archivo)

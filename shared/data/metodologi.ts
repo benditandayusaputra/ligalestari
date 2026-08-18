@@ -13,7 +13,7 @@ export const JENIS_POHON: JenisPohon[] = [
 ]
 
 export const SUMBER_METODOLOGI = [
-  'Endes N. Dahlan (2007), IPB — kajian jumlah pohon penyerap karbon dioksida di kawasan perkotaan.',
-  'KLHK — Sistem Informasi Pengelolaan Sampah Nasional (SIPSN), 2023.',
+  'Endes N. Dahlan (2007), IPB: kajian jumlah pohon penyerap karbon dioksida di kawasan perkotaan.',
+  'KLHK: Sistem Informasi Pengelolaan Sampah Nasional (SIPSN), 2023.',
   'Nilai bersifat acuan; dapat berbeda menurut sumber, usia pohon, dan metode pengukuran.',
 ]

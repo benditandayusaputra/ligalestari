@@ -1,12 +1,12 @@
 import type { KlaimPembeda, PlatformPembeda, TonggakDampak } from '#shared/types'
 
 /**
- * Bahan halaman "Mengapa Berbeda" — posisi LigaLestari terhadap lanskap
+ * Bahan halaman "Mengapa Berbeda": posisi LigaLestari terhadap lanskap
  * aplikasi lingkungan yang sudah ada.
  *
  * Riset lanskap dilakukan atas sembilan platform pembanding: lima layanan
  * bank sampah/daur ulang Indonesia (Smash.id, Rekosistem, Octopus, Duitin,
- * Mallsampah), satu sistem pelaporan pemerintah (Sidia — KLHK), satu
+ * Mallsampah), satu sistem pelaporan pemerintah (Sidia, KLHK), satu
  * kampanye penghijauan (LindungiHutan), dan dua aplikasi lingkungan global
  * (Litterati, JouleBug). Status tiap sel mengacu pada fitur yang tersedia
  * untuk publik pada saat riset; URL sumber per platform dicantumkan di
@@ -87,27 +87,27 @@ export function jumlahAda(platform: PlatformPembeda): number {
   return platform.sel.filter((s) => s.status === 'ada').length
 }
 
-/** Pesaing dengan centang penuh terbanyak — dipakai kalimat kesimpulan. */
+/** Pesaing dengan centang penuh terbanyak, dipakai kalimat kesimpulan. */
 export const TERBANYAK_PESAING = Math.max(
   ...LANSKAP.filter((p) => !p.kami).map(jumlahAda),
 )
 
 /**
  * Enam klaim keunikan, masing-masing dengan bukti yang bisa dibuka
- * pembaca sendiri di situs ini — bukan klaim yang berhenti di teks.
+ * pembaca sendiri di situs ini, bukan klaim yang berhenti di teks.
  */
 export const KLAIM: KlaimPembeda[] = [
   {
     klaim: 'Liga antar-kelas bermusim',
     penjelasan:
-      'Klasemen persisten dengan musim, pekan, dan tren peringkat — struktur kompetisi utuh, bukan papan poin yang direset.',
+      'Klasemen persisten dengan musim, pekan, dan tren peringkat, struktur kompetisi utuh, bukan papan poin yang direset.',
     bukti: 'Klasemen musim berjalan beserta tren pekan-ke-pekan',
     ke: '/#klasemen',
   },
   {
     klaim: 'Poin lintas event',
     penjelasan:
-      'Dua aksi fisik yang berbeda — setor sampah terpilah dan tanam pohon — bertemu di satu papan skor dengan rumus yang sama-sama terbuka.',
+      'Dua aksi fisik yang berbeda (setor sampah terpilah dan tanam pohon) bertemu di satu papan skor dengan rumus yang sama-sama terbuka.',
     bukti: 'Formula Poin Hijau di halaman Aturan Liga',
     ke: '/aturan',
   },
@@ -121,14 +121,14 @@ export const KLAIM: KlaimPembeda[] = [
   {
     klaim: 'CO₂ melekat pada aksi siswa',
     penjelasan:
-      'Serapan karbon dihitung per jenis pohon dengan angka acuan ilmiah bersitasi, atas pohon yang ditanam siswa sendiri — bukan didelegasikan ke pihak ketiga.',
+      'Serapan karbon dihitung per jenis pohon dengan angka acuan ilmiah bersitasi, atas pohon yang ditanam siswa sendiri, bukan didelegasikan ke pihak ketiga.',
     bukti: 'Tabel acuan serapan CO₂ dan sumbernya',
     ke: '/metodologi',
   },
   {
     klaim: 'Jembatan bottom-up ke Adiwiyata',
     penjelasan:
-      'Data yang lahir dari aktivitas harian siswa langsung terangkum jadi bahan laporan sekolah — arah yang berlawanan dengan pelaporan top-down.',
+      'Data yang lahir dari aktivitas harian siswa langsung terangkum jadi bahan laporan sekolah, arah yang berlawanan dengan pelaporan top-down.',
     bukti: 'Laporan Dampak di panel admin (perlu masuk sebagai admin)',
   },
   {

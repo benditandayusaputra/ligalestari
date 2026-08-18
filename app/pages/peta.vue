@@ -62,7 +62,7 @@ function pilihTitik(indeks: number) {
       <p class="text-caption font-semibold tracking-[0.14em] text-hijau-teks uppercase">Transparansi Penghijauan</p>
       <h1 class="mt-2.5 max-w-170 text-h1 font-bold tracking-[-0.02em]">Peta Persebaran Pohon</h1>
       <p class="mt-3.5 max-w-140 text-body text-teks">
-        Setiap titik mewakili penanaman oleh sebuah kelas. Data ditampilkan per kelas — tanpa
+        Setiap titik mewakili penanaman oleh sebuah kelas. Data ditampilkan per kelas, tanpa
         identitas pribadi siswa.
       </p>
 

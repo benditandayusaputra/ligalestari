@@ -1,6 +1,6 @@
 import { cariKelas } from '#shared/data/akun-demo'
 
-/** Kode unique_violation Postgres — username sudah dipakai. */
+/** Kode unique_violation Postgres, username sudah dipakai. */
 const SUDAH_ADA = '23505'
 
 /**

@@ -96,7 +96,7 @@ const { data: liga } = await useFetch("/api/klasemen", { key: "klasemen" });
       >
         <p>© 2026 Bendi Tandayu Saputra</p>
         <p>
-          Subtema INVENTION 2026 — Going Green Through Smart Digital Solutions
+          Subtema INVENTION 2026: Going Green Through Smart Digital Solutions
         </p>
       </div>
     </div>

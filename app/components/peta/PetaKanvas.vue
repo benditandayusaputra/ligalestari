@@ -46,7 +46,7 @@ const titikAktif = computed(() => props.titik.find((t) => t.indeks === props.pil
         <span class="absolute inset-0 m-auto h-2 w-2 rotate-45 rounded-full bg-white/90" aria-hidden="true" />
       </button>
 
-      <!-- Kartu detail titik terpilih — menempel di dasar kanvas agar
+      <!-- Kartu detail titik terpilih, menempel di dasar kanvas agar
            tidak pernah terpotong tepi, berapa pun tinggi fotonya -->
       <div
         v-if="titikAktif"

@@ -3,7 +3,7 @@ import type { LokasiSekolah } from '#shared/types'
 /**
  * Ubah posisi skematis titik tanam (x/y % pada denah) menjadi koordinat
  * geografis di sekitar pusat sekolah. Denah dipetakan ke area ±300 × 220 m
- * sehingga saat admin memindah pusat sekolah, seluruh titik ikut pindah —
+ * sehingga saat admin memindah pusat sekolah, seluruh titik ikut pindah;
  * posisi tetap skematis demi privasi, bukan koordinat persis.
  */
 export function titikKeKoordinat(x: number, y: number, pusat: LokasiSekolah): { lat: number; lng: number } {

@@ -3,7 +3,7 @@ import { LOKASI_SEKOLAH_BAWAAN } from '#shared/data/peta'
 
 /**
  * Lokasi sekolah tersimpan di tabel `pengaturan` (kunci `lokasi_sekolah`,
- * nilai JSON). Tanpa database — atau bila kuerinya gagal — nilai jatuh
+ * nilai JSON). Tanpa database (atau bila kuerinya gagal) nilai jatuh
  * ke memori proses (`demo.lokasiSekolah`) agar demo tetap berfungsi.
  */
 export async function ambilLokasiSekolah(): Promise<LokasiSekolah> {

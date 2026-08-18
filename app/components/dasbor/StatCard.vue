@@ -6,7 +6,7 @@ defineProps<{
   satuan?: string
   ikon?: string
   tengah?: boolean
-  /** Aksen warna angka — kelas dua-tema agar kontras aman di terang & gelap. */
+  /** Aksen warna angka, kelas dua-tema agar kontras aman di terang & gelap. */
   aksen?: 'hijau' | 'biru' | 'emas'
 }>()
 

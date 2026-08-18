@@ -92,7 +92,7 @@ async function catat() {
             class="w-full cursor-pointer appearance-none rounded-xl border border-garis bg-surface-2 px-3.5 py-3 text-[0.84375rem] font-semibold outline-none focus:border-hijau focus-visible:outline-none"
           >
             <option v-for="k in DAFTAR_KATEGORI" :key="k" :value="k">
-              {{ KATEGORI_SAMPAH[k].label }} — {{ KATEGORI_SAMPAH[k].tarif }} poin/kg
+              {{ KATEGORI_SAMPAH[k].label }}, {{ KATEGORI_SAMPAH[k].tarif }} poin/kg
             </option>
           </select>
           <Icon name="lucide:chevron-down" size="16" class="pointer-events-none absolute top-3.5 right-3.5 text-teks-samar" aria-hidden="true" />

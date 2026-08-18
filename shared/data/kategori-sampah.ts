@@ -3,7 +3,7 @@ import type { InfoKategoriSampah, KategoriSampah } from '#shared/types'
 /**
  * SATU SUMBER KEBENARAN tarif poin sampah terpilah.
  * Dipakai server (validasi & hitung poin) dan klien (form, tabel tarif,
- * fallback build statis) — mengubah tarif cukup di berkas ini.
+ * fallback build statis), mengubah tarif cukup di berkas ini.
  *
  * Prinsip tarif: makin sulit dipilah/dikumpulkan dan makin besar nilai
  * lingkungannya, makin tinggi poin per kg.
@@ -34,7 +34,7 @@ export const KATEGORI_SAMPAH: Record<KategoriSampah, InfoKategoriSampah> = {
     label: 'Kaca',
     tarif: 12,
     warna: '#12a3a3',
-    deskripsi: 'Botol dan toples kaca utuh — bukan pecahan tajam.',
+    deskripsi: 'Botol dan toples kaca utuh, bukan pecahan tajam.',
     alasan: 'Berat, perlu penanganan hati-hati, dan bisa didaur ulang tanpa batas.',
   },
   logam: {
@@ -49,7 +49,7 @@ export const KATEGORI_SAMPAH: Record<KategoriSampah, InfoKategoriSampah> = {
     tarif: 20,
     warna: '#c2543a',
     deskripsi: 'Baterai, lampu bekas, dan elektronik kecil rumah tangga.',
-    alasan: 'Paling sulit dipilah dan paling berbahaya bila bocor ke lingkungan — tarif tertinggi.',
+    alasan: 'Paling sulit dipilah dan paling berbahaya bila bocor ke lingkungan, tarif tertinggi.',
   },
 }
 
@@ -73,7 +73,7 @@ export function poinSetoran(kg: number, kategori: KategoriSampah): number {
 }
 
 /**
- * Validator setoran — dipakai endpoint server DAN fallback klien agar
+ * Validator setoran: dipakai endpoint server DAN fallback klien agar
  * aturannya identik. Mengembalikan pesan kesalahan, atau null bila sah.
  */
 export function validasiSetoran(input: { kelas?: unknown; kategori?: unknown; kg?: unknown }): string | null {

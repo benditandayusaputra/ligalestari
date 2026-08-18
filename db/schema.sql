@@ -1,5 +1,5 @@
 -- ============================================================
--- Skema database LigaLestari — Neon (Postgres)
+-- Skema database LigaLestari, Neon (Postgres)
 -- Dijalankan lewat `npm run db:migrate` (lihat db/migrate.mjs),
 -- atau manual: psql "$DATABASE_URL" -f db/schema.sql
 --
@@ -132,7 +132,7 @@ create table event_liga (
   urutan int not null default 0
 );
 
--- Enam kategori terpilah yang diakui liga — sama persis dengan
+-- Enam kategori terpilah yang diakui liga, sama persis dengan
 -- `KategoriSampah` di shared/types (satu sumber kebenaran tarif ada
 -- di shared/data/kategori-sampah.ts).
 create table setoran (

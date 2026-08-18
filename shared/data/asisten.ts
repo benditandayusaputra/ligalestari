@@ -1,7 +1,7 @@
 import type { PesanChat } from '#shared/types'
 
 /**
- * Basis pengetahuan Asisten Hijau — dipakai widget mengambang,
+ * Basis pengetahuan Asisten Hijau: dipakai widget mengambang,
  * halaman /dasbor/asisten, dan endpoint /api/asisten.
  * Berjalan tanpa backend/API key; tinggal tambah entri untuk memperluas.
  */
@@ -28,12 +28,12 @@ const BASIS_PENGETAHUAN: { kunci: string[]; jawaban: string }[] = [
   {
     kunci: ['pohon apa', 'bagus ditanam', 'jenis pohon', 'trembesi', 'tanam apa'],
     jawaban:
-      'Trembesi juaranya — serapan CO₂-nya paling tinggi di tabel acuan kami. Mahoni dan Beringin juga bagus; Angsana paling mudah hidup untuk pemula. Lihat rinciannya di halaman Metodologi ya!',
+      'Trembesi juaranya, serapan CO₂-nya paling tinggi di tabel acuan kami. Mahoni dan Beringin juga bagus; Angsana paling mudah hidup untuk pemula. Lihat rinciannya di halaman Metodologi ya!',
   },
   {
     kunci: ['apa itu poin', 'poin hijau itu', 'maksud poin'],
     jawaban:
-      'Poin Hijau adalah skor tim kelasmu di liga. Semua aksi hijau — setor sampah dan tanam pohon — dihitung jadi poin, lalu kelas bersaing di klasemen sepanjang musim.',
+      'Poin Hijau adalah skor tim kelasmu di liga. Semua aksi hijau (setor sampah dan tanam pohon) dihitung jadi poin, lalu kelas bersaing di klasemen sepanjang musim.',
   },
   {
     kunci: ['dapat poin', 'cara dapat', 'kumpul poin', 'nambah poin', 'raih poin'],
@@ -43,7 +43,7 @@ const BASIS_PENGETAHUAN: { kunci: string[]; jawaban: string }[] = [
   {
     kunci: ['event', 'ikut lomba', 'ikut kegiatan'],
     jawaban:
-      'Event dibuka admin sekolah — misalnya Setoran Sampah Harian atau Pekan Tanam Pohon. Datang saat event berjalan, setor atau tanam bersama kelasmu, dan poinnya otomatis masuk klasemen.',
+      'Event dibuka admin sekolah, misalnya Setoran Sampah Harian atau Pekan Tanam Pohon. Datang saat event berjalan, setor atau tanam bersama kelasmu, dan poinnya otomatis masuk klasemen.',
   },
   {
     kunci: ['kompos'],
@@ -53,7 +53,7 @@ const BASIS_PENGETAHUAN: { kunci: string[]; jawaban: string }[] = [
   {
     kunci: ['co2', 'co₂', 'karbon', 'serapan'],
     jawaban:
-      'Tiap pohon dihitung estimasi serapan CO₂-nya per jenis — rumus dan tabel acuannya terbuka di halaman Metodologi, jadi dampak kelasmu bisa diperiksa siapa saja.',
+      'Tiap pohon dihitung estimasi serapan CO₂-nya per jenis; rumus dan tabel acuannya terbuka di halaman Metodologi, jadi dampak kelasmu bisa diperiksa siapa saja.',
   },
 ]
 

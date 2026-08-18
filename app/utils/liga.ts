@@ -54,9 +54,9 @@ export function warnaMedali(posisi: number): { background: string; color: string
     : { background: '#EFEDE4', color: '#6B746C' }
 }
 
-/** Label pergeseran peringkat: "▲ 2", "▼ 1", atau "—". */
+/** Label pergeseran peringkat: "▲ 2", "▼ 1", atau "=". */
 export function labelTren(tren: number): string {
-  return tren > 0 ? `▲ ${tren}` : tren < 0 ? `▼ ${Math.abs(tren)}` : '—'
+  return tren > 0 ? `▲ ${tren}` : tren < 0 ? `▼ ${Math.abs(tren)}` : '='
 }
 
 /** Inisial nama untuk avatar, mis. "Aditya Pratama" → "AP". */

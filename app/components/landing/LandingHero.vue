@@ -18,7 +18,7 @@ const musim = props.musim
     <div v-anim class="min-w-0 flex-1">
       <ChipMusim :musim="musim" />
       <h1 class="mt-5 max-w-150 text-display font-bold tracking-[-0.02em] text-balance">
-        <span class="sr-only">LigaLestari — </span>
+        <span class="sr-only">LigaLestari: </span>
         Pilah sampah, <span class="text-hijau-teks">rebut juara.</span>
       </h1>
       <p
@@ -27,7 +27,7 @@ const musim = props.musim
         Satu musim, satu aksi, satu bumi.
       </p>
       <p class="mt-3 max-w-115 text-body text-teks lg:text-lead">
-        Setor sampah, tanam pohon, dan kumpulkan Poin Hijau bersama teman sekelasmu —
+        Setor sampah, tanam pohon, dan kumpulkan Poin Hijau bersama teman sekelasmu,
         lalu bawa kelasmu ke puncak klasemen sekolah.
       </p>
       <div class="mt-7 flex flex-wrap gap-3">

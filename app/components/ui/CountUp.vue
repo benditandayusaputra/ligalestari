@@ -2,7 +2,7 @@
 /**
  * Angka yang berjalan naik saat pertama kali terlihat di layar.
  * Nilai penuh tetap dirender di HTML statis (baik untuk SEO), lalu animasi
- * dijalankan di sisi klien — kecuali pengguna memilih "kurangi gerakan".
+ * dijalankan di sisi klien, kecuali pengguna memilih "kurangi gerakan".
  */
 const props = withDefaults(defineProps<{ nilai: number; durasi?: number }>(), { durasi: 1400 })
 

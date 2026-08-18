@@ -44,7 +44,7 @@ function jatuhKeDenah() {
   emit('gagal')
 }
 
-/** Pin pohon berbentuk tetes dengan ikon pohon — warna mengikuti kelas. */
+/** Pin pohon berbentuk tetes dengan ikon pohon, warna mengikuti kelas. */
 function buatElemenPin(t: TitikPeta): HTMLButtonElement {
   const el = document.createElement('button')
   el.type = 'button'
@@ -73,7 +73,7 @@ function pasangPenanda() {
   }
 }
 
-/** Penanda pusat sekolah — pembeda visual, tidak interaktif. */
+/** Penanda pusat sekolah, pembeda visual, tidak interaktif. */
 function pasangPenandaSekolah() {
   if (!peta || !lib) return
   penandaSekolah?.remove()
@@ -115,7 +115,7 @@ let pengintai: IntersectionObserver | null = null
 
 onMounted(() => {
   window.addEventListener('keydown', tanganiEscape)
-  // Inisialisasi ditunda sampai peta mendekati viewport — memangkas kerja
+  // Inisialisasi ditunda sampai peta mendekati viewport, memangkas kerja
   // thread utama saat halaman dibuka (TBT/LCP), terutama di ponsel yang
   // menampilkan kartu statistik lebih dulu.
   pengintai = new IntersectionObserver(
@@ -159,7 +159,7 @@ async function nyalakanPeta() {
   })
   peta.addControl(new lib.NavigationControl({ showCompass: false }), 'top-right')
 
-  // Beberapa ikon POI dirujuk gaya Liberty tapi tak ada di sprite-nya —
+  // Beberapa ikon POI dirujuk gaya Liberty tapi tak ada di sprite-nya;
   // isi dengan piksel transparan agar konsol bersih dari peringatan.
   peta.on('styleimagemissing', (e) => {
     if (peta && !peta.hasImage(e.id)) peta.addImage(e.id, { width: 1, height: 1, data: new Uint8Array(4) })

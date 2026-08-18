@@ -3,7 +3,7 @@
  * Jalankan dari akar proyek: `npm run db:migrate`
  *
  * Urutannya: db/schema.sql → db/seed.sql → akun demo (sandi di-hash).
- * PERHATIAN: skrip ini membangun ulang skema dari nol — seluruh isi
+ * PERHATIAN: skrip ini membangun ulang skema dari nol, seluruh isi
  * tabel LigaLestari yang ada akan terhapus.
  *
  * Kredensial diambil dari DATABASE_URL (env proses atau berkas .env).
@@ -13,7 +13,7 @@ import { Client } from '@neondatabase/serverless'
 import { Hash } from '@adonisjs/hash'
 import { Scrypt } from '@adonisjs/hash/drivers/scrypt'
 
-/** Baca .env sederhana — cukup untuk KUNCI=nilai satu baris. */
+/** Baca .env sederhana, cukup untuk KUNCI=nilai satu baris. */
 function bacaEnv(berkas = '.env') {
   if (!existsSync(berkas)) return {}
   return Object.fromEntries(

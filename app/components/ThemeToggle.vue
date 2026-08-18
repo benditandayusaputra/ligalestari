@@ -1,12 +1,12 @@
 <script setup lang="ts">
 /**
  * Tombol ganti tema terang/gelap. Ikon matahari/bulan ditukar lewat CSS
- * (varian dark:) sehingga benar sejak render pertama — tanpa kedipan.
+ * (varian dark:) sehingga benar sejak render pertama, tanpa kedipan.
  */
 withDefaults(
   defineProps<{
     label?: string
-    /** Kelas ukuran/bingkai tombol ikon — override agar tidak ada utilitas bentrok. */
+    /** Kelas ukuran/bingkai tombol ikon, override agar tidak ada utilitas bentrok. */
     kelasTombol?: string
   }>(),
   { kelasTombol: 'h-9.5 w-9.5' },

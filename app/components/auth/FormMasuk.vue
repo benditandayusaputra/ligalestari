@@ -15,7 +15,7 @@ const PESAN_SALAH = 'Username atau password salah. Periksa kembali, atau pastika
 
 const sesi = useUserSession()
 // Bila penjaga rute aktif, sukses palsu tanpa sesi hanya membuat tombol
-// lanjut ditolak middleware tanpa pesan — jadi fallback lokal khusus
+// lanjut ditolak middleware tanpa pesan, jadi fallback lokal khusus
 // hosting statis TIDAK boleh menyamarkan kegagalan server.
 const authWajib = useRuntimeConfig().public.authWajib
 

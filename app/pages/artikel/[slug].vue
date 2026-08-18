@@ -13,7 +13,7 @@ if (error.value || !data.value) {
 const { artikel, terkait } = data.value
 const kategori = KATEGORI[artikel.kategori]
 
-// Paragraf pertama tampil sebagai lead — sedikit lebih besar dari isi.
+// Paragraf pertama tampil sebagai lead, sedikit lebih besar dari isi.
 const indeksLead = artikel.isi.findIndex((b) => b.jenis === 'paragraf')
 
 useSeoMeta({
@@ -122,7 +122,7 @@ useSchemaOrg([
       <div class="my-8.5 rounded-[18px] border border-mint-garis bg-mint px-6 py-5.5">
         <h2 class="font-display text-h3 font-semibold">Sudah paham? Praktikkan di kelasmu.</h2>
         <p class="mt-1.5 max-w-120 text-small text-teks">
-          Setiap ilmu di artikel ini bisa langsung jadi Poin Hijau — ikut event setoran atau
+          Setiap ilmu di artikel ini bisa langsung jadi Poin Hijau, ikut event setoran atau
           tanam pohon bersama kelasmu, dan pantau hasilnya di klasemen.
         </p>
         <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">

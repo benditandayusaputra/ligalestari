@@ -2,10 +2,10 @@
 import type { KategoriArtikel } from '#shared/types'
 
 /**
- * Ilustrasi SVG flat untuk kartu & header artikel — satu adegan unik per
+ * Ilustrasi SVG flat untuk kartu & header artikel: satu adegan unik per
  * artikel (fallback per kategori), digambar tangan dengan palet brand di
  * atas warna thumb kategori. Inline SVG: tanpa request, tajam di semua
- * ukuran, dan ikut membesar bersama kartunya. Dekoratif — teks alternatif
+ * ukuran, dan ikut membesar bersama kartunya. Dekoratif, teks alternatif
  * disediakan pembungkusnya.
  */
 const props = defineProps<{ slug: string; kategori: KategoriArtikel }>()

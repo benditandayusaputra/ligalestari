@@ -10,7 +10,7 @@ const judul = computed(() => (halamanHilang.value ? 'Bola keluar lapangan.' : 'P
 const keterangan = computed(() =>
   halamanHilang.value
     ? 'Halaman yang kamu cari tidak ada di daftar pertandingan musim ini. Yuk kembali ke tengah lapangan.'
-    : 'Ada gangguan di sisi kami — bukan di kamu. Coba muat ulang halaman, atau kembali ke beranda liga.',
+    : 'Ada gangguan di sisi kami, bukan di kamu. Coba muat ulang halaman, atau kembali ke beranda liga.',
 )
 
 useSeoMeta({ title: judul, robots: 'noindex' })

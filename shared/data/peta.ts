@@ -2,7 +2,7 @@ import type { LokasiSekolah, TitikTanam } from '#shared/types'
 
 /**
  * Lokasi sekolah bawaan untuk mode demo: SMK Negeri 26 Jakarta
- * (Jl. Balai Pustaka Baru, Rawamangun, Jakarta Timur) — koordinat dari
+ * (Jl. Balai Pustaka Baru, Rawamangun, Jakarta Timur), koordinat dari
  * OpenStreetMap. Admin menggantinya lewat panel Lokasi Peta; nilai
  * tersimpan di database.
  */

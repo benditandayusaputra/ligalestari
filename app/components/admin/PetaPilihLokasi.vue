@@ -7,7 +7,7 @@ import 'maplibre-gl/dist/maplibre-gl.css'
  * Mini-peta pemilih lokasi sekolah untuk panel admin: klik peta atau seret
  * penanda untuk menggeser pusat; zoom peta ikut tersimpan. Dua arah dengan
  * kolom isian lewat v-model. Bila peta gagal dimuat (offline), memancarkan
- * `gagal` — kolom isian manual tetap berfungsi.
+ * `gagal`: kolom isian manual tetap berfungsi.
  */
 const lokasi = defineModel<LokasiSekolah>({ required: true })
 const emit = defineEmits<{ gagal: [] }>()
@@ -109,7 +109,7 @@ watch(
       ref="wadah"
       class="peta-pilih h-72 w-full overflow-hidden rounded-[14px] border border-garis bg-[#DCEAD7] lg:h-85"
       role="application"
-      aria-label="Peta pemilih lokasi sekolah — klik atau seret penanda untuk memindah pusat"
+      aria-label="Peta pemilih lokasi sekolah, klik atau seret penanda untuk memindah pusat"
     />
     <div
       v-if="!dimuat"

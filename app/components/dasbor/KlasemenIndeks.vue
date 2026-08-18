@@ -3,7 +3,7 @@ import type { TimKelas } from '#shared/types'
 
 /**
  * Klasemen mode Indeks Lestari: poin per kapita (poin ÷ jumlah siswa),
- * diurutkan ulang — kelas kecil bisa mengalahkan kelas besar secara adil.
+ * diurutkan ulang, kelas kecil bisa mengalahkan kelas besar secara adil.
  */
 const props = defineProps<{ tim: TimKelas[] }>()
 
@@ -66,7 +66,7 @@ const terlestari = computed(() => terurut.value[0])
       </li>
     </ol>
     <p class="mt-3 px-1 text-center text-[0.6875rem] text-teks-samar">
-      Indeks Lestari menilai rerata kontribusi per siswa — adil untuk kelas kecil maupun besar.
+      Indeks Lestari menilai rerata kontribusi per siswa, adil untuk kelas kecil maupun besar.
     </p>
   </div>
 </template>

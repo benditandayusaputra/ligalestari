@@ -124,7 +124,7 @@ async function kirim() {
         label="Username atau NIS"
         placeholder="mis. aditya.p / 2231045"
         autocomplete="username"
-        keterangan="Email tidak wajib — cukup username atau NIS."
+        keterangan="Email tidak wajib, cukup username atau NIS."
       />
 
       <div>

@@ -16,7 +16,7 @@ const musim = computed(() => liga.value?.musim ?? MUSIM);
     <NuxtLink
       to="/"
       class="flex items-center gap-2.5 self-start"
-      aria-label="LigaLestari — beranda"
+      aria-label="LigaLestari, beranda"
     >
       <span
         class="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] bg-white"

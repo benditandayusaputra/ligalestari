@@ -4,7 +4,7 @@ import { artikelTerkait, getArtikel, pilihTerkait } from '#shared/data/artikel'
 export default defineEventHandler(async (event) => {
   const slug = getRouterParam(event, 'slug') ?? ''
 
-  // Enam artikel — ambil semua sekaligus untuk memilih yang terkait.
+  // Enam artikel, ambil semua sekaligus untuk memilih yang terkait.
   const semua = await ambilArtikel()
   if (semua) {
     const artikel = semua.find((a) => a.slug === slug)

@@ -1,4 +1,4 @@
-# Bukti Kualitas LigaLestari — Data untuk Presentasi
+# Bukti Kualitas LigaLestari: Data untuk Presentasi
 
 Seluruh angka di bawah terukur pada build produksi (`npm run generate`), bukan klaim.
 Tanggal audit: 13 Juli 2026.
@@ -15,28 +15,28 @@ Tanggal audit: 13 Juli 2026.
 
 Metrik inti beranda: FCP 2,4 s · TBT 10 ms · CLS 0. Di produksi Vercel (desktop): **FCP 0,5 s · LCP 0,5 s · CLS 0**.
 
-¹ Halaman peta memuat kanvas peta vektor interaktif (MapLibre GL) — LCP-nya adalah peta itu
+¹ Halaman peta memuat kanvas peta vektor interaktif (MapLibre GL), LCP-nya adalah peta itu
 sendiri. Total Blocking Time tetap rendah (110–140 ms) karena peta dimuat malas saat mendekati
 viewport.
-² Disengaja: area pasca-login memakai `noindex` — praktik SEO yang benar untuk halaman privat.
+² Disengaja: area pasca-login memakai `noindex`, praktik SEO yang benar untuk halaman privat.
 
 > Catatan pengukuran: jalankan Lighthouse pada build produksi dan **jendela Incognito**
-> (ekstensi browser ikut diaudit dan menurunkan skor — mis. sidebar AI menyuntikkan tombol
+> (ekstensi browser ikut diaudit dan menurunkan skor, mis. sidebar AI menyuntikkan tombol
 > tanpa nama aksesibel).
 
-## 2. Aksesibilitas — axe-core (WCAG 2.1 AA)
+## 2. Aksesibilitas: axe-core (WCAG 2.1 AA)
 
 **0 pelanggaran** pada 7 halaman kunci × 2 tema (gelap & terang) = 14 kombinasi:
 `/`, `/peta`, `/artikel`, `/metodologi`, `/masuk`, `/dasbor`, `/admin`.
 
 Fitur aksesibilitas yang diimplementasikan:
 
-- **Dua tema** (gelap bawaan / terang) — seluruh pasangan warna teks/latar lolos kontras
+- **Dua tema** (gelap bawaan / terang), seluruh pasangan warna teks/latar lolos kontras
   AA ≥ 4,5:1 di kedua tema, diverifikasi skrip.
 - **Ukuran huruf bisa diatur pengguna** (87,5–130%), berlaku seketika, tersimpan,
-  tanpa kedip saat muat — seluruh teks memakai satuan rem.
+  tanpa kedip saat muat, seluruh teks memakai satuan rem.
 - **Lencana warna kelas selalu terbaca**: `gayaEmblem()` memilih tinta putih/gelap
-  berdasar luminansi WCAG dan menggeser warna bila perlu — aman untuk warna apa pun
+  berdasar luminansi WCAG dan menggeser warna bila perlu, aman untuk warna apa pun
   yang dipilih admin.
 - **Skip-link** di semua layout; navigasi penuh keyboard termasuk pin peta (tombol asli),
   popup tertutup dengan Escape.
@@ -44,7 +44,7 @@ Fitur aksesibilitas yang diimplementasikan:
   dan konten tidak pernah disembunyikan.
 - HTML semantik, label ARIA pada semua kontrol ikon, `lang="id"`.
 
-## 3. Responsif — semua perangkat
+## 3. Responsif: semua perangkat
 
 **70/70 kombinasi lolos tanpa overflow mendatar**: 7 viewport × 10 halaman
 (publik + dasbor + admin).
@@ -72,12 +72,12 @@ Fitur aksesibilitas yang diimplementasikan:
 - **Peta vektor sungguhan** (MapLibre GL + OpenFreeMap, tanpa API key): pin pohon kustom
   per kelas, pusat sekolah diatur admin (klik/seret/manual), fallback denah kanvas saat
   luring, gestur dua jari di ponsel.
-- **PWA installable**: manifest + ikon maskable — bisa dipasang ke layar utama ponsel
+- **PWA installable**: manifest + ikon maskable, bisa dipasang ke layar utama ponsel
   seperti aplikasi asli.
 - **Ilustrasi SVG inline** per artikel (tanpa foto): tajam di semua ukuran, 0 request
   tambahan.
 - **Fullstack + statis**: data via API Nitro + Neon (fallback demo lokal), namun tetap
-  bisa digenerate statis penuh — 72 rute, 0 error.
+  bisa digenerate statis penuh, 72 rute, 0 error.
 
 ## Cara mereproduksi
 

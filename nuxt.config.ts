@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // Koneksi database Neon — HANYA di sisi server (tidak ada padanannya
+  // Koneksi database Neon, HANYA di sisi server (tidak ada padanannya
   // di `public`, sehingga URL berisi kredensial tidak pernah sampai ke
   // browser). Nilai diisi dari .env (lihat .env.example).
   runtimeConfig: {
@@ -65,7 +65,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // Identitas situs — dipakai modul SEO (sitemap, robots, schema.org, canonical).
+  // Identitas situs, dipakai modul SEO (sitemap, robots, schema.org, canonical).
   // Saat deploy cukup ganti lewat env NUXT_PUBLIC_SITE_URL tanpa mengubah kode.
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://ligalestari.vercel.app',
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
     '/api/peta': { cache: { maxAge: 60 } },
   },
 
-  // Identitas penerbit untuk JSON-LD (Organization) — memperkaya schema.org
+  // Identitas penerbit untuk JSON-LD (Organization), memperkaya schema.org
   // yang dihasilkan otomatis di seluruh halaman.
   schemaOrg: {
     identity: {
@@ -98,7 +98,7 @@ export default defineNuxtConfig({
 
   // Prerender HANYA untuk build statis: titik masuk area dasbor (halaman
   // lain ditemukan crawler dari tautan sidebar/tab) plus rute sesi agar
-  // konsol tidak 404. Pada build server rute-rute ini wajib dinamis —
+  // konsol tidak 404. Pada build server rute-rute ini wajib dinamis:
   // /api/_auth/session yang dibekukan akan disajikan CDN sebagai sesi
   // kosong, sehingga login tidak pernah dikenali penjaga rute.
   nitro: { prerender: { routes: buildStatis ? ['/dasbor', '/admin', '/api/_auth/session'] : [] } },
@@ -111,7 +111,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  // Ikon dirender sebagai <svg> inline saat prerender — tanpa request tambahan.
+  // Ikon dirender sebagai <svg> inline saat prerender, tanpa request tambahan.
   icon: {
     mode: 'svg',
     serverBundle: { collections: ['lucide', 'simple-icons'] },

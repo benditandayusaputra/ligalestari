@@ -1,5 +1,5 @@
 /**
- * Directive `v-anim` — animasi masuk halus saat elemen tergulir ke layar.
+ * Directive `v-anim`: animasi masuk halus saat elemen tergulir ke layar.
  * Dibuat sendiri (±40 baris) alih-alih memakai AOS: tanpa dependensi,
  * sekali jalan per elemen, dan sepenuhnya mati saat pengguna menyetel
  * "kurangi gerakan" (konten tidak pernah disembunyikan).

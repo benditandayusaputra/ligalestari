@@ -125,7 +125,7 @@ const selQr = computed(() => {
         </ul>
         <p class="flex items-center gap-2 px-0.5 pt-2.5 text-[0.65625rem] text-teks-samar">
           <Icon name="lucide:lock" size="13" aria-hidden="true" />
-          Data minimal — hanya nama &amp; NIS demi privasi siswa.
+          Data minimal, hanya nama &amp; NIS demi privasi siswa.
         </p>
       </section>
 

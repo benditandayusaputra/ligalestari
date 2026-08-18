@@ -1,10 +1,10 @@
 -- ============================================================
--- SEED data demo LigaLestari — dijalankan setelah db/schema.sql.
+-- SEED data demo LigaLestari, dijalankan setelah db/schema.sql.
 -- Nilainya sengaja dibuat identik dengan fallback demo di
 -- `shared/data/*` supaya tampilan dengan/tanpa database sama.
 --
 -- Akun (tabel `profil`) TIDAK diseed di sini: sandinya harus di-hash
--- lebih dulu — lihat db/migrate.mjs.
+-- lebih dulu, lihat db/migrate.mjs.
 -- ============================================================
 
 insert into musim values (1, 'Musim Genap ''25/''26', 9, 16, '12 Jul', 12,
@@ -32,7 +32,7 @@ insert into siswa (kelas_id, nama, nis, poin, peran, level, nama_level, kg, poho
   ('rpl', 'Rizki Ananda',   'NIS 2231049', 340, null,     4, 'Pejuang Hijau', 30, 4, 70,  60),
   ('rpl', 'Putri Maharani', 'NIS 2231050', 300, null,     4, 'Pejuang Hijau', 26, 3, 50, 100);
 
--- Tabel acuan serapan CO2 (Endes N. Dahlan, 2007 — IPB).
+-- Tabel acuan serapan CO2 (Endes N. Dahlan, 2007, IPB).
 insert into jenis_pohon values
   ('Trembesi', 'Samanea saman',          28488, 'Dahlan, IPB', '#4cc38a'),
   ('Beringin', 'Ficus benjamina',        535.9, 'Dahlan, IPB', '#0e6b46'),
@@ -108,7 +108,7 @@ insert into laporan_spesies (nama, jumlah, co2, persen, warna, urutan) values
   ('Mangga',   71,  852, 25, '#E6B422', 3),
   ('Ketapang', 31,  465, 11, '#C77F3E', 4);
 
--- Pusat peta bawaan: SMK Negeri 26 Jakarta (Rawamangun) — sumber OpenStreetMap.
+-- Pusat peta bawaan: SMK Negeri 26 Jakarta (Rawamangun), sumber OpenStreetMap.
 insert into pengaturan (kunci, nilai) values
   ('lokasi_sekolah', '{"lat":-6.194564,"lng":106.887387,"zoom":18}');
 
@@ -117,32 +117,32 @@ insert into artikel (slug, judul, kategori, menit_baca, ringkasan, tanggal, thum
   ('memilah-sampah-organik-anorganik', 'Memilah Sampah Organik & Anorganik dengan Benar', 'sampah', 5,
    'Langkah dasar yang sering terlewat: memisahkan sampah sejak dari sumbernya supaya mudah diolah dan bernilai poin.',
    '2026-02-09', 'foto · tempat sampah terpilah', 'dua tempat sampah berlabel organik dan anorganik',
-   '[{"jenis":"paragraf","teks":"Memilah sampah adalah fondasi dari semua program daur ulang. Tanpa pemilahan yang benar di sumbernya, sampah organik dan anorganik bercampur dan jauh lebih sulit diolah."},{"jenis":"judul","teks":"Kenali tiga kelompok utama"},{"jenis":"poin","teks":"Organik — sisa makanan, daun, kulit buah. Bisa dijadikan kompos."},{"jenis":"poin","teks":"Anorganik — plastik, kertas, logam, kaca. Bisa didaur ulang atau disetor."},{"jenis":"poin","teks":"Residu — popok, puntung, styrofoam. Sulit didaur ulang, dibuang terakhir."},{"jenis":"paragraf","teks":"Saat menyetor ke event LigaLestari, sampah yang sudah terpilah ditimbang lebih cepat dan langsung dihitung jadi Poin Hijau untuk kelasmu."},{"jenis":"judul","teks":"Tips di kelas"},{"jenis":"paragraf","teks":"Sediakan minimal dua wadah berbeda warna, beri label jelas, dan tunjuk piket harian untuk mengecek isinya. Kebiasaan kecil ini menjaga kualitas setoran tetap tinggi."}]',
-   '["KLHK — Sistem Informasi Pengelolaan Sampah Nasional (SIPSN), 2023.","Kementerian LHK — Panduan Pemilahan Sampah Rumah Tangga."]'),
+   '[{"jenis":"paragraf","teks":"Memilah sampah adalah fondasi dari semua program daur ulang. Tanpa pemilahan yang benar di sumbernya, sampah organik dan anorganik bercampur dan jauh lebih sulit diolah."},{"jenis":"judul","teks":"Kenali tiga kelompok utama"},{"jenis":"poin","teks":"Organik, sisa makanan, daun, kulit buah. Bisa dijadikan kompos."},{"jenis":"poin","teks":"Anorganik, plastik, kertas, logam, kaca. Bisa didaur ulang atau disetor."},{"jenis":"poin","teks":"Residu, popok, puntung, styrofoam. Sulit didaur ulang, dibuang terakhir."},{"jenis":"paragraf","teks":"Saat menyetor ke event LigaLestari, sampah yang sudah terpilah ditimbang lebih cepat dan langsung dihitung jadi Poin Hijau untuk kelasmu."},{"jenis":"judul","teks":"Tips di kelas"},{"jenis":"paragraf","teks":"Sediakan minimal dua wadah berbeda warna, beri label jelas, dan tunjuk piket harian untuk mengecek isinya. Kebiasaan kecil ini menjaga kualitas setoran tetap tinggi."}]',
+   '["KLHK: Sistem Informasi Pengelolaan Sampah Nasional (SIPSN), 2023.","Kementerian LHK: Panduan Pemilahan Sampah Rumah Tangga."]'),
   ('trembesi-raksasa-penyerap-karbon', 'Trembesi: Sang Raksasa Penyerap Karbon', 'pohon', 4,
    'Satu pohon trembesi dewasa diperkirakan menyerap puluhan ribu kilogram CO₂ per tahun. Kenapa ia begitu istimewa?',
    '2026-02-16', 'foto · pohon trembesi rindang', 'pohon trembesi besar dengan tajuk melebar',
-   '[{"jenis":"paragraf","teks":"Trembesi (Samanea saman) terkenal sebagai salah satu pohon peneduh dengan daya serap karbon tertinggi. Tajuknya yang lebar dan pertumbuhannya cepat membuatnya favorit untuk penghijauan."},{"jenis":"judul","teks":"Mengapa serapannya tinggi"},{"jenis":"paragraf","teks":"Estimasi yang banyak dikutip menyebut satu trembesi dewasa mampu menyerap sekitar 28.488 kg CO₂ per tahun. Angka ini adalah estimasi maksimum pada kondisi ideal dan akan bervariasi menurut usia serta lingkungan."},{"jenis":"judul","teks":"Catatan penanaman"},{"jenis":"poin","teks":"Butuh ruang luas — tajuk dewasa bisa melebar belasan meter."},{"jenis":"poin","teks":"Cocok untuk lapangan atau tepi area sekolah, bukan dekat bangunan."},{"jenis":"paragraf","teks":"Karena dampaknya besar, setiap trembesi yang ditanam di LigaLestari memberi kontribusi CO₂ yang signifikan pada total dampak kelasmu."}]',
-   '["Endes N. Dahlan, IPB — kajian serapan CO₂ pohon trembesi.","Lihat halaman Metodologi Dampak LigaLestari untuk rincian perhitungan."]'),
+   '[{"jenis":"paragraf","teks":"Trembesi (Samanea saman) terkenal sebagai salah satu pohon peneduh dengan daya serap karbon tertinggi. Tajuknya yang lebar dan pertumbuhannya cepat membuatnya favorit untuk penghijauan."},{"jenis":"judul","teks":"Mengapa serapannya tinggi"},{"jenis":"paragraf","teks":"Estimasi yang banyak dikutip menyebut satu trembesi dewasa mampu menyerap sekitar 28.488 kg CO₂ per tahun. Angka ini adalah estimasi maksimum pada kondisi ideal dan akan bervariasi menurut usia serta lingkungan."},{"jenis":"judul","teks":"Catatan penanaman"},{"jenis":"poin","teks":"Butuh ruang luas: tajuk dewasa bisa melebar belasan meter."},{"jenis":"poin","teks":"Cocok untuk lapangan atau tepi area sekolah, bukan dekat bangunan."},{"jenis":"paragraf","teks":"Karena dampaknya besar, setiap trembesi yang ditanam di LigaLestari memberi kontribusi CO₂ yang signifikan pada total dampak kelasmu."}]',
+   '["Endes N. Dahlan, IPB: kajian serapan CO₂ pohon trembesi.","Lihat halaman Metodologi Dampak LigaLestari untuk rincian perhitungan."]'),
   ('botol-plastik-jadi-ecobrick', 'Dari Botol Plastik ke Ecobrick', 'sampah', 6,
    'Mengubah sampah plastik lunak jadi bata padat yang bisa dipakai membuat bangku dan taman sekolah.',
    '2026-02-23', 'foto · ecobrick warna-warni', 'botol plastik diisi padat menjadi ecobrick',
-   '[{"jenis":"paragraf","teks":"Ecobrick adalah botol plastik yang diisi padat dengan sampah plastik bersih dan kering hingga menjadi bata yang kokoh. Ini cara menahan plastik agar tidak mencemari lingkungan."},{"jenis":"judul","teks":"Cara membuat"},{"jenis":"poin","teks":"Kumpulkan botol seragam dan plastik bersih-kering."},{"jenis":"poin","teks":"Potong kecil plastik, masukkan, padatkan dengan tongkat."},{"jenis":"poin","teks":"Timbang — botol 600 ml idealnya berisi ±200 gram plastik."},{"jenis":"paragraf","teks":"Ecobrick yang padat bisa dirangkai jadi bangku, meja, atau pembatas taman. Selain mengurangi sampah, hasilnya bermanfaat langsung untuk sekolah."}]',
-   '["Global Ecobrick Alliance — panduan kepadatan ecobrick."]'),
+   '[{"jenis":"paragraf","teks":"Ecobrick adalah botol plastik yang diisi padat dengan sampah plastik bersih dan kering hingga menjadi bata yang kokoh. Ini cara menahan plastik agar tidak mencemari lingkungan."},{"jenis":"judul","teks":"Cara membuat"},{"jenis":"poin","teks":"Kumpulkan botol seragam dan plastik bersih-kering."},{"jenis":"poin","teks":"Potong kecil plastik, masukkan, padatkan dengan tongkat."},{"jenis":"poin","teks":"Timbang, botol 600 ml idealnya berisi ±200 gram plastik."},{"jenis":"paragraf","teks":"Ecobrick yang padat bisa dirangkai jadi bangku, meja, atau pembatas taman. Selain mengurangi sampah, hasilnya bermanfaat langsung untuk sekolah."}]',
+   '["Global Ecobrick Alliance: panduan kepadatan ecobrick."]'),
   ('cara-menanam-pohon-optimal', 'Cara Menanam Pohon agar Tumbuh Optimal', 'pohon', 5,
    'Menanam itu mudah, merawat agar hidup itu kuncinya. Panduan singkat dari lubang tanam sampai perawatan awal.',
    '2026-03-02', 'foto · penanaman bibit', 'tangan menanam bibit pohon di lubang tanam',
    '[{"jenis":"paragraf","teks":"Keberhasilan penghijauan tidak diukur dari jumlah yang ditanam, tapi dari berapa yang bertahan hidup. Perawatan bulan-bulan pertama menentukan."},{"jenis":"judul","teks":"Langkah dasar"},{"jenis":"poin","teks":"Gali lubang dua kali lebar polybag bibit."},{"jenis":"poin","teks":"Lepas polybag hati-hati tanpa merusak akar."},{"jenis":"poin","teks":"Timbun, padatkan pelan, lalu siram sampai lembap."},{"jenis":"poin","teks":"Beri ajir/penyangga bila bibit masih lemah."},{"jenis":"paragraf","teks":"Catat tanggal tanam dan lokasinya. Di LigaLestari, data ini muncul di Peta Persebaran Pohon sebagai bukti dampak kelasmu."}]',
-   '["Kementerian LHK — pedoman teknis penanaman pohon."]'),
+   '["Kementerian LHK: pedoman teknis penanaman pohon."]'),
   ('kompos-sisa-makanan-kantin', 'Kompos dari Sisa Makanan Kantin', 'sampah', 7,
    'Sisa makanan kantin bukan masalah, tapi bahan baku. Ubah jadi kompos untuk taman sekolah.',
    '2026-03-09', 'foto · komposter sekolah', 'wadah komposter berisi sisa organik dan daun',
    '[{"jenis":"paragraf","teks":"Sampah organik mendominasi timbulan sampah sekolah. Dengan pengomposan sederhana, sisa makanan berubah jadi pupuk gratis sekaligus mengurangi beban TPA."},{"jenis":"judul","teks":"Metode sederhana"},{"jenis":"poin","teks":"Cacah sisa organik agar cepat terurai."},{"jenis":"poin","teks":"Selang-seling lapisan basah (sisa makanan) dan kering (daun)."},{"jenis":"poin","teks":"Aduk berkala, jaga kelembapan seperti spons diperas."},{"jenis":"paragraf","teks":"Dalam beberapa minggu kompos matang berbau tanah dan siap menyuburkan tanaman. Volume sampah yang dikelola juga dihitung sebagai kontribusi kelas."}]',
-   '["KLHK — panduan pengomposan skala komunitas."]'),
+   '["KLHK: panduan pengomposan skala komunitas."]'),
   ('mengenal-pohon-angsana', 'Mengenal Pohon Angsana di Lingkungan Sekolah', 'pohon', 3,
-   'Peneduh jalan yang umum, tumbuh cepat, dan ramah dirawat — pilihan aman untuk penghijauan pemula.',
+   'Peneduh jalan yang umum, tumbuh cepat, dan ramah dirawat; pilihan aman untuk penghijauan pemula.',
    '2026-03-16', 'foto · pohon angsana berbunga', 'pohon angsana dengan bunga kuning',
-   '[{"jenis":"paragraf","teks":"Angsana (Pterocarpus indicus) sering dijumpai sebagai pohon peneduh jalan. Pertumbuhannya cepat dan perawatannya relatif mudah, cocok untuk area sekolah."},{"jenis":"judul","teks":"Karakter singkat"},{"jenis":"poin","teks":"Bunga kuning harum saat musimnya."},{"jenis":"poin","teks":"Tajuk rindang, memberi keteduhan cepat."},{"jenis":"paragraf","teks":"Estimasi serapannya sekitar 11,1 kg CO₂ per pohon per tahun — lebih kecil dari trembesi, tapi mudah hidup dan tetap berkontribusi pada total dampak."}]',
+   '[{"jenis":"paragraf","teks":"Angsana (Pterocarpus indicus) sering dijumpai sebagai pohon peneduh jalan. Pertumbuhannya cepat dan perawatannya relatif mudah, cocok untuk area sekolah."},{"jenis":"judul","teks":"Karakter singkat"},{"jenis":"poin","teks":"Bunga kuning harum saat musimnya."},{"jenis":"poin","teks":"Tajuk rindang, memberi keteduhan cepat."},{"jenis":"paragraf","teks":"Estimasi serapannya sekitar 11,1 kg CO₂ per pohon per tahun, lebih kecil dari trembesi, tapi mudah hidup dan tetap berkontribusi pada total dampak."}]',
    '["Lihat tabel acuan di halaman Metodologi Dampak LigaLestari."]');
 
 -- Selaraskan urutan identitas setelah seed dengan id eksplisit.

@@ -4,7 +4,7 @@ import type { KategoriArtikel } from '#shared/types'
 useSeoMeta({
   title: 'Artikel & Edukasi',
   description:
-    'Panduan praktis memilah sampah dan menanam pohon — bekal supaya tiap misi LigaLestari benar-benar berdampak.',
+    'Panduan praktis memilah sampah dan menanam pohon, bekal supaya tiap misi LigaLestari benar-benar berdampak.',
 })
 
 const { data } = await useFetch('/api/artikel', { key: 'artikel' })
@@ -44,7 +44,7 @@ const tampil = computed(() =>
         <p class="text-caption font-semibold tracking-[0.14em] text-hijau-teks uppercase">Belajar Hijau</p>
         <h1 class="mt-2.5 max-w-170 text-h1 font-bold tracking-[-0.02em]">Artikel &amp; Edukasi</h1>
         <p class="mt-3.5 max-w-140 text-body text-teks">
-          Panduan praktis memilah sampah dan menanam pohon — bekal supaya tiap misi LigaLestari
+          Panduan praktis memilah sampah dan menanam pohon, bekal supaya tiap misi LigaLestari
           benar-benar berdampak.
         </p>
       </div>

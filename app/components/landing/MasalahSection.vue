@@ -6,7 +6,7 @@
         <h2 class="mt-2 text-h2 font-bold tracking-[-0.015em]">Imbauan saja tidak cukup.</h2>
         <p class="mt-4 max-w-130 text-body text-white/78">
           Poster hemat plastik dan slogan buang sampah pada tempatnya sering berhenti jadi
-          hiasan dinding sekolah — dibaca sekali, lalu dilupakan.
+          hiasan dinding sekolah, dibaca sekali, lalu dilupakan.
         </p>
         <p class="mt-5 max-w-130 border-l-2 border-lime pl-4 text-body font-medium text-white">
           LigaLestari memberi kelas alasan untuk benar-benar bergerak: tiap kilogram sampah terpilah
@@ -14,7 +14,7 @@
         </p>
       </div>
 
-      <!-- Data timbulan sampah nasional — sumber: SIPSN KLHK, 2023 -->
+      <!-- Data timbulan sampah nasional, sumber: SIPSN KLHK, 2023 -->
       <div v-anim="110" class="flex flex-col gap-5">
         <div class="border-t border-white/15 pt-4">
           <div class="font-display text-[2.75rem] leading-none font-bold">

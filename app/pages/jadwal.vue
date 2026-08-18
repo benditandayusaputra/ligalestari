@@ -9,7 +9,7 @@ useSeoMeta({
     'Jadwal round-robin dan hasil Duel Pekan LigaLestari: 4 duel antar-kelas tiap pekan, skor dari poin aksi terverifikasi, plus klasemen Juara Duel.',
 })
 
-/** Pekan yang sedang dilihat — bawaan: pekan berjalan musim ini. */
+/** Pekan yang sedang dilihat, bawaan: pekan berjalan musim ini. */
 const pekanDipilih = ref(MUSIM.pekan)
 const daftarPekan = JADWAL_DUEL.map((_, i) => i + 1)
 
@@ -33,7 +33,7 @@ function hasilSisi(duel: DuelPekan, sisi: 'kandang' | 'tandang') {
   const selisih = sisi === 'kandang' ? duel.skorKandang - duel.skorTandang : duel.skorTandang - duel.skorKandang
   if (selisih > 0) return { tanda: 'M', panah: '▲', kelas: 'text-hijau-teks', label: 'Menang' }
   if (selisih < 0) return { tanda: 'K', panah: '▼', kelas: 'text-merah-teks', label: 'Kalah' }
-  return { tanda: 'S', panah: '—', kelas: 'text-emas-teks', label: 'Seri' }
+  return { tanda: 'S', panah: '=', kelas: 'text-emas-teks', label: 'Seri' }
 }
 </script>
 
@@ -48,7 +48,7 @@ function hasilSisi(duel: DuelPekan, sisi: 'kandang' | 'tandang') {
         <h1 class="mt-2.5 max-w-170 text-h1 font-bold tracking-[-0.02em]">Jadwal & Hasil</h1>
         <p class="mt-3.5 max-w-150 text-body text-teks">
           Tiap pekan, 8 kelas dipasangkan head-to-head. Skor duel adalah poin aksi terverifikasi
-          yang dikumpulkan kelas pada pekan itu — menang +3 poin duel, seri +1, kalah 0.
+          yang dikumpulkan kelas pada pekan itu: menang +3 poin duel, seri +1, kalah 0.
           Rincian aturannya ada di
           <NuxtLink to="/aturan#duel-pekan" class="font-semibold text-hijau-teks hover:underline">Buku Aturan</NuxtLink>.
         </p>
@@ -190,7 +190,7 @@ function hasilSisi(duel: DuelPekan, sisi: 'kandang' | 'tandang') {
               </table>
             </div>
             <p class="mt-3 text-caption text-teks-samar">
-              Juara Duel adalah gelar terpisah — klasemen utama liga tetap diurutkan murni dari
+              Juara Duel adalah gelar terpisah; klasemen utama liga tetap diurutkan murni dari
               Poin Hijau. Rekor dihitung dari {{ MUSIM.pekan - 1 }} pekan duel yang sudah selesai.
             </p>
           </section>

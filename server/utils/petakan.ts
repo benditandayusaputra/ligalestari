@@ -31,7 +31,7 @@ export function petaArtikel(baris: BarisArtikel): Artikel {
 
 /**
  * Seluruh artikel dari database, terurut tanggal terbit. null bila
- * database belum dikonfigurasi/gagal — pemanggil memakai data demo.
+ * database belum dikonfigurasi/gagal, pemanggil memakai data demo.
  *
  * `tanggal` sengaja diformat di SQL: kolom `date` akan sampai sebagai
  * objek Date, sedangkan seluruh aplikasi (schema.org, formatTanggal)

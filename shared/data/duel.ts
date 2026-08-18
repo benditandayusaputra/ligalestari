@@ -2,17 +2,17 @@ import type { DuelPekan, RekorDuel, StatusDuel, TimKelas } from '#shared/types'
 import { KLASEMEN, MUSIM } from '#shared/data/klasemen'
 
 /**
- * Duel Pekan — kompetisi head-to-head antar-kelas di atas poin aksi.
+ * Duel Pekan: kompetisi head-to-head antar-kelas di atas poin aksi.
  *
  * Format musim 16 pekan untuk 8 tim:
  *   Pekan 1–7   : putaran 1 round-robin (metode lingkaran)
  *   Pekan 8–14  : putaran 2 (pasangan sama, posisi kandang/tandang ditukar)
- *   Pekan 15    : Pekan Wildcard — 4 duel paling ketat putaran 1 diulang
- *   Pekan 16    : Pekan Final — pasangan 1v2, 3v4, 5v6, 7v8 klasemen pekan 15
+ *   Pekan 15    : Pekan Wildcard, 4 duel paling ketat putaran 1 diulang
+ *   Pekan 16    : Pekan Final, pasangan 1v2, 3v4, 5v6, 7v8 klasemen pekan 15
  *
  * Skor duel = Poin Hijau (aksi terverifikasi) yang dikumpulkan tim pada
  * pekan itu. Menang +3 poin duel, seri +1, kalah 0. Poin duel TIDAK ikut
- * mengurutkan klasemen utama — ia jalur gelar terpisah "Juara Duel".
+ * mengurutkan klasemen utama, ia jalur gelar terpisah "Juara Duel".
  * Seluruh data deterministik dari KLASEMEN demi konsistensi demo.
  */
 
@@ -43,7 +43,7 @@ export function jadwalPutaran(ids: string[]): [string, string][][] {
 }
 
 /**
- * Poin aksi per pekan sebuah tim (pekan 1..MUSIM.pekan) — deterministik:
+ * Poin aksi per pekan sebuah tim (pekan 1..MUSIM.pekan), deterministik:
  * bobot pseudo-acak dari id tim + nomor pekan, dinormalkan agar jumlahnya
  * SAMA PERSIS dengan total poin tim di klasemen (klasemen ↔ duel konsisten).
  */
@@ -61,7 +61,7 @@ function poinPekanTim(id: string, total: number): number[] {
   return poin
 }
 
-/** Poin aksi per pekan seluruh tim — indeks 0 = pekan 1. */
+/** Poin aksi per pekan seluruh tim, indeks 0 = pekan 1. */
 export const POIN_PEKAN: Record<string, number[]> = Object.fromEntries(
   KLASEMEN.map((t) => [t.id, poinPekanTim(t.id, t.poin)]),
 )
@@ -91,7 +91,7 @@ const pekanTanding: DuelPekan[][] = [
 
 /**
  * Pekan 15 (Wildcard): 4 duel putaran 1 dengan selisih skor terkecil
- * diulang — deterministik karena seluruh putaran 1 sudah selesai. Duel
+ * diulang: deterministik karena seluruh putaran 1 sudah selesai. Duel
  * diambil rakus dari yang paling ketat; tiap tim maksimal tampil sekali
  * agar semua duel wildcard bisa dimainkan pada pekan yang sama.
  */
@@ -113,14 +113,14 @@ const duelWildcard: DuelPekan[] = []
 }
 
 /**
- * Pekan 16 (Final): pasangan menurut posisi klasemen pekan 15 — susunan di
+ * Pekan 16 (Final): pasangan menurut posisi klasemen pekan 15; susunan di
  * bawah masih proyeksi dari klasemen saat ini (lihat CATATAN_PEKAN).
  */
 const duelFinal: DuelPekan[] = [0, 2, 4, 6].map((i) =>
   buatDuel(PEKAN_FINAL, IDS[i]!, IDS[i + 1]!),
 )
 
-/** Jadwal lengkap musim — indeks 0 = pekan 1, berisi 4 duel per pekan. */
+/** Jadwal lengkap musim, indeks 0 = pekan 1, berisi 4 duel per pekan. */
 export const JADWAL_DUEL: DuelPekan[][] = [...pekanTanding, duelWildcard, duelFinal]
 
 /** Label tahap sebuah pekan pada jadwal. */
@@ -130,7 +130,7 @@ export function labelPekan(pekan: number): string {
   return pekan <= 7 ? 'Putaran 1' : 'Putaran 2'
 }
 
-/** Penjelasan pekan khusus — tampil di bawah daftar duelnya. */
+/** Penjelasan pekan khusus, tampil di bawah daftar duelnya. */
 export const CATATAN_PEKAN: Record<number, string> = {
   [PEKAN_WILDCARD]:
     'Empat duel paling ketat putaran 1 (selisih skor terkecil) diulang sebagai laga wildcard. ' +
@@ -142,7 +142,7 @@ export const CATATAN_PEKAN: Record<number, string> = {
 
 const rekorKosong = (): RekorDuel => ({ main: 0, menang: 0, seri: 0, kalah: 0, selisih: 0, poinDuel: 0 })
 
-/** Rekor duel per tim — hanya dari duel berstatus selesai (pekan 1–8). */
+/** Rekor duel per tim, hanya dari duel berstatus selesai (pekan 1–8). */
 export const REKOR_DUEL: Record<string, RekorDuel> = Object.fromEntries(IDS.map((id) => [id, rekorKosong()]))
 
 for (const duel of JADWAL_DUEL.flat()) {
@@ -177,7 +177,7 @@ export interface BarisKlasemenDuel {
 }
 
 /**
- * Klasemen Duel — jalur gelar "Juara Duel", diurutkan poin duel, lalu
+ * Klasemen Duel: jalur gelar "Juara Duel", diurutkan poin duel, lalu
  * selisih skor, lalu Poin Hijau. Terpisah dari klasemen utama.
  */
 export const KLASEMEN_DUEL: BarisKlasemenDuel[] = KLASEMEN.map((tim) => ({

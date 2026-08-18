@@ -1,6 +1,6 @@
 import { BUKTI_TANAM, KPI_HARI_INI } from '#shared/data/admin'
 
-/** KPI panel admin — dihitung langsung dari transaksi di database. */
+/** KPI panel admin, dihitung langsung dari transaksi di database. */
 export default defineEventHandler(async () => {
   const hasil = await kueri(async (sql) => {
     const [setoran, bukti] = await Promise.all([

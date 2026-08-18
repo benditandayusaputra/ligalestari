@@ -2,7 +2,7 @@ import type { PesanChat } from '#shared/types'
 import { CHAT_PEMBUKA, jawabanAsisten } from '#shared/data/asisten'
 
 /**
- * State dan logika tanya-jawab Asisten Hijau — dipakai widget mengambang
+ * State dan logika tanya-jawab Asisten Hijau: dipakai widget mengambang
  * dan halaman /dasbor/asisten. Jawaban dari API server; bila tidak
  * tersedia (hosting statis) memakai basis pengetahuan lokal yang sama.
  * Pesan hanya hidup selama sesi halaman (tanpa penyimpanan).

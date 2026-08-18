@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * Penanda musim & pekan liga — data asli, bukan tagline marketing.
+ * Penanda musim & pekan liga: data asli, bukan tagline marketing.
  * Gaya papan jadwal pertandingan: aksen garis kiri, tanpa pil, tanpa titik.
  */
 defineProps<{

@@ -14,7 +14,7 @@ const layar = ref<Layar>(props.layarAwal)
 
     <div class="flex min-w-0 flex-1 flex-col">
       <!-- Logo untuk tampilan tanpa panel kiri -->
-      <NuxtLink to="/" class="flex items-center gap-2.25 self-start px-5 pt-5 lg:hidden" aria-label="LigaLestari — beranda">
+      <NuxtLink to="/" class="flex items-center gap-2.25 self-start px-5 pt-5 lg:hidden" aria-label="LigaLestari, beranda">
         <LestariEmblem class="h-9 w-9 text-hijau-teks" />
         <span class="font-display text-lg font-bold tracking-[-0.02em]">LigaLestari</span>
       </NuxtLink>

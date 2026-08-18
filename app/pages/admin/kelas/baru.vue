@@ -53,7 +53,7 @@ async function buatKelas() {
         <h2 class="font-display text-xl font-bold">Kelas {{ nama }} dibuat!</h2>
         <p class="mt-1 text-[0.8125rem] text-teks-redup">Bagikan kode gabung berikut ke siswa:</p>
         <p class="my-2 font-display text-[1.875rem] font-bold tracking-[0.06em] text-hijau-teks">{{ kodeBaru }}</p>
-        <p class="text-[0.6875rem] text-teks-samar">Mode demo — kelas tersimpan permanen saat backend aktif.</p>
+        <p class="text-[0.6875rem] text-teks-samar">Mode demo: kelas tersimpan permanen saat backend aktif.</p>
         <NuxtLink to="/admin/kelas" class="mt-4 block w-full rounded-[13px] bg-hijau p-3.25 text-sm font-bold text-white transition-colors hover:bg-hijau-pekat">
           Kembali ke Daftar Kelas
         </NuxtLink>

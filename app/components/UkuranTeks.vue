@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * Pengatur ukuran huruf situs — berlaku seketika (realtime) dan tersimpan.
+ * Pengatur ukuran huruf situs: berlaku seketika (realtime) dan tersimpan.
  * Dua wujud: popover "Aa" (navbar) atau daftar chip inline (`inline`,
  * untuk sidebar/panel). Bisa dioperasikan penuh lewat keyboard.
  */

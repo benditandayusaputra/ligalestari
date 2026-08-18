@@ -9,7 +9,7 @@ const { data } = await useFetch('/api/metodologi', { key: 'metodologi' })
 const JENIS_POHON = computed(() => data.value?.jenisPohon ?? [])
 const SUMBER_METODOLOGI = computed(() => data.value?.sumber ?? [])
 
-// Nilai serapan terbesar — dihitung dari data supaya tag tidak salah sasaran
+// Nilai serapan terbesar, dihitung dari data supaya tag tidak salah sasaran
 // saat tabel acuan berubah.
 const serapanTertinggi = computed(() =>
   JENIS_POHON.value.length ? Math.max(...JENIS_POHON.value.map((p) => p.serapan)) : 0,
@@ -55,7 +55,7 @@ const serapanTertinggi = computed(() =>
           </div>
           <p class="mt-5.5 border-t border-white/10 pt-4.5 text-small text-white/75">
             Total dampak sebuah kelas adalah penjumlahan estimasi dari setiap jenis pohon yang
-            ditanam. Misal 3 trembesi + 5 angsana: (3 × 28.488,39) + (5 × 11,1) = 85.520,67 —
+            ditanam. Misal 3 trembesi + 5 angsana: (3 × 28.488,39) + (5 × 11,1) = 85.520,67;
             dibulatkan menjadi ≈ 85.520 kg CO₂ per tahun.
           </p>
         </div>
@@ -148,7 +148,7 @@ const serapanTertinggi = computed(() =>
           <p class="text-small text-teks">
             Nilai serapan CO₂ adalah <strong>estimasi</strong> dan dapat bervariasi menurut usia
             pohon, kondisi tanah, iklim, serta metode pengukuran. LigaLestari memakai angka acuan agar
-            perbandingan antar-kelas tetap adil dan konsisten — bukan klaim pengukuran karbon
+            perbandingan antar-kelas tetap adil dan konsisten, bukan klaim pengukuran karbon
             presisi.
           </p>
         </div>

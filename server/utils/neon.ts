@@ -5,11 +5,11 @@ export type Sql = NeonQueryFunction<false, false>
 let klien: Sql | null | undefined
 
 /**
- * Klien Neon (Postgres) sisi server — singleton per proses.
+ * Klien Neon (Postgres) sisi server: singleton per proses.
  * Kueri dikirim lewat HTTP driver Neon sehingga tidak menahan koneksi
  * TCP; cocok untuk fungsi serverless yang hidup singkat.
  *
- * Mengembalikan null bila DATABASE_URL belum diisi — pemanggil wajib
+ * Mengembalikan null bila DATABASE_URL belum diisi, pemanggil wajib
  * jatuh ke data demo lokal agar situs tetap berfungsi (termasuk saat
  * `nuxt generate` untuk pengumpulan lomba).
  */
@@ -28,7 +28,7 @@ export function pakaiDb(): Sql | null {
  * menulis `(await kueri(…)) ?? DATA_DEMO` tanpa try/catch berulang.
  *
  * Karena galat ditelan di sini, JANGAN memanggil `createError` di dalam
- * callback — putuskan 404/403 setelah hasilnya kembali.
+ * callback: putuskan 404/403 setelah hasilnya kembali.
  */
 export async function kueri<T>(jalan: (sql: Sql) => Promise<T>): Promise<T | null> {
   const sql = pakaiDb()

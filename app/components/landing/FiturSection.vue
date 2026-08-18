@@ -24,7 +24,7 @@ const FITUR = [
   {
     ikon: 'lucide:leaf',
     judul: 'Estimasi serapan CO₂',
-    teks: 'Tiap pohon dihitung dampak karbonnya per jenis — rumusnya terbuka untuk diperiksa.',
+    teks: 'Tiap pohon dihitung dampak karbonnya per jenis, rumusnya terbuka untuk diperiksa.',
     tautan: { label: 'Lihat metodologinya', ke: '/metodologi' },
   },
 ]
@@ -95,7 +95,7 @@ const FITUR = [
             </div>
           </div>
           <p class="mt-3 text-caption text-teks-samar">
-            Pratinjau kartu milik pemuncak klasemen pekan ini — dibuat otomatis, tinggal unggah.
+            Pratinjau kartu milik pemuncak klasemen pekan ini: dibuat otomatis, tinggal unggah.
           </p>
         </div>
 

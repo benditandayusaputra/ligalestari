@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Judul default + pola judul per halaman ("Judul · LigaLestari").
 useHead({
-  titleTemplate: (judul) => (judul ? `${judul} · LigaLestari` : 'LigaLestari — Pilah Sampah, Rebut Juara'),
+  titleTemplate: (judul) => (judul ? `${judul} · LigaLestari` : 'LigaLestari: Pilah Sampah, Rebut Juara'),
 })
 
 // Meta berbagi (Open Graph / Twitter) berlaku untuk semua halaman.
@@ -11,7 +11,7 @@ useSeoMeta({
   ogImage: '/og.jpg',
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  ogImageAlt: 'LigaLestari — liga misi hijau antar-kelas: pilah sampah, rebut juara',
+  ogImageAlt: 'LigaLestari, liga misi hijau antar-kelas: pilah sampah, rebut juara',
   twitterCard: 'summary_large_image',
 })
 </script>
@@ -23,7 +23,7 @@ useSeoMeta({
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <!-- Widget chatbot global — chunk terpisah, dihidrasi saat browser
+    <!-- Widget chatbot global, chunk terpisah, dihidrasi saat browser
          senggang: keluar dari bundle awal tanpa mengubah pengalaman. -->
     <LazyAsistenHijau hydrate-on-idle />
   </div>

@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
       notifikasi: notifikasi.map(
         (n): NotifikasiItem => ({ judul: n.judul, isi: n.isi, waktu: n.waktu, tag: n.tag, warna: n.warna, ikon: n.ikon, belumDibaca: n.belum_dibaca }),
       ),
-      // Kg per kategori — memakai data demo sampai tabelnya tersedia.
+      // Kg per kategori, memakai data demo sampai tabelnya tersedia.
       komposisi: KOMPOSISI_KELAS[kelasAktif] ?? null,
     }
   }

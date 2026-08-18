@@ -32,7 +32,7 @@ async function keluar() {
     @keydown.escape="buka = false"
   >
     <div class="mx-auto flex max-w-275 items-center justify-between px-4.5 py-2.75 lg:px-10 lg:py-3.25">
-      <NuxtLink to="/" class="flex items-center gap-2.25 text-teks-kuat" aria-label="LigaLestari — beranda">
+      <NuxtLink to="/" class="flex items-center gap-2.25 text-teks-kuat" aria-label="LigaLestari, beranda">
         <LestariEmblem class="h-9 w-9 text-hijau-teks" />
         <span class="font-display text-h3 font-bold tracking-[-0.02em]">LigaLestari</span>
       </NuxtLink>

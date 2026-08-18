@@ -9,7 +9,7 @@ const buka = ref(false)
 // Halaman chat penuh di dasbor sudah menjadi asistennya sendiri.
 const sembunyi = computed(() => route.path === '/dasbor/asisten')
 
-// Di area dasbor versi ponsel ada bilah tab bawah — angkat FAB di atasnya.
+// Di area dasbor versi ponsel ada bilah tab bawah, angkat FAB di atasnya.
 const diDasbor = computed(() => route.path.startsWith('/dasbor') || route.path.startsWith('/admin'))
 </script>
 

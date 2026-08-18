@@ -24,7 +24,7 @@ const peringkat = liga.value.tim.findIndex((t) => t.id === saya.kelasId) + 1
 const tim = liga.value.tim[peringkat - 1]!
 const kartuTerbuka = ref(false)
 
-/** Komposisi setoran tim per kategori — kg & persen, urutan baku kategori. */
+/** Komposisi setoran tim per kategori, kg & persen, urutan baku kategori. */
 const komposisi = computed(() => {
   const kgPerKategori = dasbor.value?.komposisi
   if (!kgPerKategori) return []

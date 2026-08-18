@@ -10,14 +10,14 @@ useSeoMeta({
 
 /** Langkah cara main liga, urut dari gabung sampai juara musim. */
 const CARA_MAIN = [
-  { judul: 'Gabung tim kelasmu', teks: 'Daftar dengan kode kelas dari wali kelas atau admin — satu kelas adalah satu tim liga.' },
+  { judul: 'Gabung tim kelasmu', teks: 'Daftar dengan kode kelas dari wali kelas atau admin; satu kelas adalah satu tim liga.' },
   { judul: 'Pilah sampah jadi 6 kategori', teks: 'Pisahkan organik, kertas, plastik, kaca, logam, dan B3 ringan sebelum dibawa ke bank sampah sekolah.' },
   { judul: 'Setor & timbang di bank sampah', teks: 'Admin menimbang setoran per kategori; poin langsung dihitung dari berat × tarif kategori.' },
   { judul: 'Tanam pohon & unggah bukti', teks: `Setiap pohon yang lolos verifikasi bernilai ${RATE.pohonPerBatang} poin plus estimasi serapan CO₂ untuk timmu.` },
   { judul: 'Rebut puncak klasemen', teks: 'Poin seluruh anggota terakumulasi ke tim; tim teratas di akhir musim jadi juara liga.' },
 ]
 
-/** Tarif tertinggi — dihitung dari data supaya tag tidak salah sasaran. */
+/** Tarif tertinggi, dihitung dari data supaya tag tidak salah sasaran. */
 const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k].tarif))
 </script>
 
@@ -152,15 +152,15 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
           </div>
           <ul class="mt-5.5 flex flex-col gap-2 border-t border-white/10 pt-4.5 text-small text-white/75">
             <li>
-              <strong class="text-white">Bonus event</strong> — saat event berlangsung, hasil rumus dikalikan
+              <strong class="text-white">Bonus event</strong>: saat event berlangsung, hasil rumus dikalikan
               pengali event (mis. Pekan Tanam Pohon 2×) sebelum masuk klasemen.
             </li>
             <li>
-              <strong class="text-white">Tanam pohon</strong> — setiap pohon yang lolos verifikasi bernilai
+              <strong class="text-white">Tanam pohon</strong>: setiap pohon yang lolos verifikasi bernilai
               {{ RATE.pohonPerBatang }} poin, di luar rumus setoran sampah.
             </li>
             <li>
-              <strong class="text-white">Verifikasi wajib</strong> — poin baru sah setelah setoran ditimbang admin
+              <strong class="text-white">Verifikasi wajib</strong>: poin baru sah setelah setoran ditimbang admin
               atau bukti tanam disetujui; tidak ada poin dari klaim tanpa bukti.
             </li>
           </ul>
@@ -175,7 +175,7 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
         <p v-anim class="mt-3 max-w-160 text-body text-teks">
           Di atas klasemen musim, setiap pekan 8 kelas dipasangkan head-to-head dalam 4 duel.
           Skor duel adalah <strong>poin aksi terverifikasi</strong> yang dikumpulkan kelas pada pekan
-          itu — tidak ada babak tambahan, cukup terus setor dan tanam. Jadwal lengkap dan hasilnya
+          itu: tidak ada babak tambahan, cukup terus setor dan tanam. Jadwal lengkap dan hasilnya
           ada di halaman
           <NuxtLink to="/jadwal" class="font-semibold text-hijau-teks hover:underline">Jadwal &amp; Hasil</NuxtLink>.
         </p>
@@ -208,15 +208,15 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
             <div class="mt-3.5 flex flex-col gap-3">
               <div class="flex items-center gap-4">
                 <span class="w-9 shrink-0 text-right font-display text-h3 font-bold text-hijau-teks tabular-nums">+3</span>
-                <span class="text-small text-teks">Menang — poin aksi pekan itu lebih tinggi dari lawan duel.</span>
+                <span class="text-small text-teks">Menang: poin aksi pekan itu lebih tinggi dari lawan duel.</span>
               </div>
               <div class="flex items-center gap-4">
                 <span class="w-9 shrink-0 text-right font-display text-h3 font-bold text-emas-teks tabular-nums">+1</span>
-                <span class="text-small text-teks">Seri — kedua kelas mencetak poin aksi sama persis.</span>
+                <span class="text-small text-teks">Seri: kedua kelas mencetak poin aksi sama persis.</span>
               </div>
               <div class="flex items-center gap-4">
                 <span class="w-9 shrink-0 text-right font-display text-h3 font-bold text-teks-samar tabular-nums">0</span>
-                <span class="text-small text-teks">Kalah — tidak dapat poin duel, tetapi seluruh poin aksinya tetap masuk klasemen.</span>
+                <span class="text-small text-teks">Kalah: tidak dapat poin duel, tetapi seluruh poin aksinya tetap masuk klasemen.</span>
               </div>
             </div>
             <p class="mt-4 border-t border-krem pt-3.5 text-small text-teks">
@@ -231,16 +231,16 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
           <h3 class="text-h3 font-semibold">Tiga jalur gelar dalam satu musim</h3>
           <ul class="mt-3 flex flex-col gap-2.5 text-small text-teks">
             <li class="flex gap-2.25">
-              <span class="shrink-0 font-semibold text-hijau-teks">Juara Liga</span>
-              <span>— total Poin Hijau tertinggi di akhir musim (klasemen utama).</span>
+              <span class="shrink-0 font-semibold text-hijau-teks">Juara Liga:</span>
+              <span>total Poin Hijau tertinggi di akhir musim (klasemen utama).</span>
             </li>
             <li class="flex gap-2.25">
-              <span class="shrink-0 font-semibold text-hijau-teks">Juara Duel</span>
-              <span>— poin duel terbanyak dari 16 pekan head-to-head; kelas menengah tetap bisa juara lewat kemenangan pekanannya.</span>
+              <span class="shrink-0 font-semibold text-hijau-teks">Juara Duel:</span>
+              <span>poin duel terbanyak dari 16 pekan head-to-head; kelas menengah tetap bisa juara lewat kemenangan pekanannya.</span>
             </li>
             <li class="flex gap-2.25">
-              <span class="shrink-0 font-semibold text-emas-teks">Kelas Terlestari</span>
-              <span>— Indeks Lestari tertinggi: poin dibagi jumlah siswa. Kelas berisi 24 siswa bertanding adil melawan kelas 38 siswa karena yang dinilai rerata kontribusi per orang.</span>
+              <span class="shrink-0 font-semibold text-emas-teks">Kelas Terlestari:</span>
+              <span>Indeks Lestari tertinggi: poin dibagi jumlah siswa. Kelas berisi 24 siswa bertanding adil melawan kelas 38 siswa karena yang dinilai rerata kontribusi per orang.</span>
             </li>
           </ul>
         </div>
@@ -265,7 +265,7 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
               </li>
               <li class="flex gap-2.25">
                 <span class="shrink-0 font-semibold text-hijau-teks tabular-nums">3.</span>
-                <span>Bukti yang meragukan ditolak — poin hanya lahir dari aksi yang terbukti.</span>
+                <span>Bukti yang meragukan ditolak; poin hanya lahir dari aksi yang terbukti.</span>
               </li>
             </ul>
           </div>
@@ -275,23 +275,23 @@ const tarifTertinggi = Math.max(...DAFTAR_KATEGORI.map((k) => KATEGORI_SAMPAH[k]
             <div class="mt-4 flex flex-col gap-4">
               <div class="flex items-center gap-4">
                 <span class="stempel-verif text-caption">Terverifikasi</span>
-                <span class="text-small text-teks">Bukti sah — poin masuk ke klasemen tim.</span>
+                <span class="text-small text-teks">Bukti sah, poin masuk ke klasemen tim.</span>
               </div>
               <div class="flex items-center gap-4">
                 <span class="stempel-verif text-caption" style="color: var(--emas-teks); border-color: var(--emas-teks)">Menunggu</span>
-                <span class="text-small text-teks">Sedang diperiksa admin — poin belum dihitung.</span>
+                <span class="text-small text-teks">Sedang diperiksa admin, poin belum dihitung.</span>
               </div>
               <div class="flex items-center gap-4">
                 <span class="stempel-verif text-caption" style="color: var(--merah-teks); border-color: var(--merah-teks)">Ditolak</span>
-                <span class="text-small text-teks">Bukti kurang jelas — unggah ulang dengan foto & lokasi.</span>
+                <span class="text-small text-teks">Bukti kurang jelas, unggah ulang dengan foto & lokasi.</span>
               </div>
             </div>
           </div>
         </div>
 
         <p v-anim class="mt-6 text-small text-teks-redup">
-          Aturan seketat ini yang membedakan LigaLestari dari aplikasi lingkungan lain —
-          <NuxtLink to="/mengapa-berbeda" class="font-semibold text-hijau-teks hover:underline">lihat perbandingannya</NuxtLink>.
+          Aturan seketat ini yang membedakan LigaLestari dari aplikasi lingkungan lain.
+          <NuxtLink to="/mengapa-berbeda" class="font-semibold text-hijau-teks hover:underline">Lihat perbandingannya</NuxtLink>.
         </p>
       </div>
     </section>

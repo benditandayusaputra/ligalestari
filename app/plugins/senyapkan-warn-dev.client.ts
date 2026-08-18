@@ -1,5 +1,5 @@
 /**
- * Hanya mode pengembangan: senyapkan satu pemberitahuan yang bukan masalah —
+ * Hanya mode pengembangan: senyapkan satu pemberitahuan yang bukan masalah, yaitu
  * "<Suspense> is an experimental feature" (dipakai internal Nuxt untuk async
  * setup). Vue mencetaknya lewat console.info mentah, bukan warnHandler, jadi
  * disaring di sini. Pesan lain apa pun tetap lewat, dan di build produksi

@@ -11,7 +11,7 @@ export const MUSIM = {
 }
 
 /**
- * Klasemen contoh untuk demo — sudah terurut dari poin tertinggi.
+ * Klasemen contoh untuk demo: sudah terurut dari poin tertinggi.
  * Halaman publik memakai 5 teratas; dasbor memakai semuanya.
  * Saat backend tersedia, data ini digantikan API server.
  */
@@ -44,13 +44,13 @@ export const KOMPOSISI_KELAS: Record<string, KomposisiSetoran> = {
   aphp: { organik: 52, kertas: 26, plastik: 30, kaca: 14, logam: 11, 'b3-ringan': 5 },
 }
 
-/** Komposisi seluruh liga — dijumlah dari komposisi per kelas. */
+/** Komposisi seluruh liga, dijumlah dari komposisi per kelas. */
 export const KOMPOSISI_LIGA: KomposisiSetoran = DAFTAR_KATEGORI.reduce((total, k) => {
   total[k] = Object.values(KOMPOSISI_KELAS).reduce((a, kelas) => a + kelas[k], 0)
   return total
 }, {} as KomposisiSetoran)
 
-/** Ringkasan dampak seluruh liga — dijumlah dari data tim di atas. */
+/** Ringkasan dampak seluruh liga, dijumlah dari data tim di atas. */
 export const DAMPAK = {
   sampahKg: KLASEMEN.reduce((a, t) => a + t.kg, 0),
   pohon: KLASEMEN.reduce((a, t) => a + t.pohon, 0),

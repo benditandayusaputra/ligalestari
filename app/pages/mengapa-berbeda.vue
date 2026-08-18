@@ -8,7 +8,7 @@ useSeoMeta({
     'Posisi LigaLestari di antara sembilan aplikasi lingkungan yang sudah ada: matriks perbandingan enam kriteria, enam klaim keunikan yang bisa dibuktikan langsung di situs, dan rencana pengembangan lintas musim.',
 })
 
-/** Tampilan tiap status matriks — ikon, warna, dan namanya untuk pembaca layar. */
+/** Tampilan tiap status matriks, ikon, warna, dan namanya untuk pembaca layar. */
 const GAYA_STATUS: Record<StatusKriteria, { ikon: string; label: string; warna: string }> = {
   ada: { ikon: 'lucide:check', label: 'Ada', warna: 'text-hijau-teks' },
   parsial: { ikon: 'lucide:minus', label: 'Sebagian', warna: 'text-emas-teks' },
@@ -38,7 +38,7 @@ function sorotan(platform: PlatformPembeda) {
           Aplikasi lingkungan di Indonesia sudah banyak. Yang belum ada adalah yang
           memperlakukan aksi hijau sebagai <strong>kompetisi bermusim antar-kelas</strong>.
           Halaman ini menaruh LigaLestari berdampingan dengan sembilan platform yang sudah
-          berjalan — lengkap dengan tautan bukti supaya setiap klaimnya bisa kamu periksa sendiri.
+          berjalan, lengkap dengan tautan bukti supaya setiap klaimnya bisa kamu periksa sendiri.
         </p>
       </div>
     </header>
@@ -67,7 +67,7 @@ function sorotan(platform: PlatformPembeda) {
             <h3 class="text-caption font-semibold tracking-[0.12em] text-lime uppercase">LigaLestari</h3>
             <p class="mt-2.5 text-h3 font-semibold text-white">Mengelola kompetisinya</p>
             <p class="mt-2 text-small text-white/75">
-              Sampah dan pohon adalah cara mencetak poin; yang dijalankan sistem adalah musimnya —
+              Sampah dan pohon adalah cara mencetak poin; yang dijalankan sistem adalah musimnya:
               klasemen bergerak tiap pekan, ada lawan duel, ada gelar yang diperebutkan sampai akhir.
             </p>
           </div>
@@ -80,7 +80,7 @@ function sorotan(platform: PlatformPembeda) {
       <div class="mx-auto max-w-190">
         <SectionHeading v-anim id="judul-klaim" kicker="Klaim & Bukti" judul="Enam hal yang bisa kamu periksa sendiri" />
         <p v-anim class="mt-2.5 mb-6 max-w-150 text-small text-teks-redup">
-          Setiap klaim di bawah punya halaman yang membuktikannya di situs ini juga — bukan
+          Setiap klaim di bawah punya halaman yang membuktikannya di situs ini juga, bukan
           janji yang berhenti di paragraf.
         </p>
 
@@ -122,8 +122,8 @@ function sorotan(platform: PlatformPembeda) {
           <SectionHeading v-anim id="judul-lanskap" kicker="Peta Lanskap" judul="Sembilan platform, enam kriteria" />
           <p v-anim class="mt-2.5 max-w-160 text-small text-teks-redup">
             Lima layanan bank sampah Indonesia, satu sistem pelaporan pemerintah, satu kampanye
-            penghijauan, dan dua aplikasi lingkungan global — diperiksa terhadap enam kriteria
-            yang sama.
+            penghijauan, dan dua aplikasi lingkungan global; semuanya diperiksa terhadap
+            enam kriteria yang sama.
           </p>
 
           <!-- Legenda simbol -->
@@ -208,7 +208,7 @@ function sorotan(platform: PlatformPembeda) {
                   aria-hidden="true"
                 />
                 <span>
-                  <span class="sr-only">{{ GAYA_STATUS[s.sel.status].label }} — </span>{{ s.kriteria }}<span
+                  <span class="sr-only">{{ GAYA_STATUS[s.sel.status].label }}: </span>{{ s.kriteria }}<span
                     v-if="s.sel.catatan"
                     class="text-teks-samar"
                   >
@@ -229,7 +229,7 @@ function sorotan(platform: PlatformPembeda) {
               Tidak ada satu pun pembanding yang memenuhi lebih dari
               {{ TERBANYAK_PESAING }} dari {{ KRITERIA_PEMBEDA.length }} kriteria secara penuh.
             </strong>
-            Masing-masing kuat di bidangnya — dan memang tidak dirancang untuk menjalankan liga
+            Masing-masing kuat di bidangnya, dan memang tidak dirancang untuk menjalankan liga
             sekolah. Celah itulah yang diisi LigaLestari.
           </p>
         </div>
@@ -242,7 +242,7 @@ function sorotan(platform: PlatformPembeda) {
         <SectionHeading v-anim id="judul-mitra" kicker="Posisi" judul="Bukan pesaing, calon mitra" />
         <p v-anim class="mt-3 max-w-160 text-body text-teks">
           Setiap kilogram sampah terpilah yang tercatat di sini adalah calon transaksi bagi bank
-          sampah — Smash.id dan Rekosistem lebih masuk akal sebagai <strong>penyerap</strong>
+          sampah: Smash.id dan Rekosistem lebih masuk akal sebagai <strong>penyerap</strong>
           setoran yang liga ini hasilkan ketimbang sebagai lawan. Begitu juga setiap titik tanam
           berkoordinat: satu baris data siap pakai untuk dashboard karbon tingkat dinas.
           LigaLestari mengisi lapisan yang belum ada di atas mereka, yaitu yang membuat siswa

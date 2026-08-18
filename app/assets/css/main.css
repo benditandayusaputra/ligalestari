@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Design system LigaLestari — token dua mode (terang & gelap).
+ * Design system LigaLestari, token dua mode (terang & gelap).
  * Nilai per mode ada di :root / .dark; @theme inline memetakannya ke
  * utilitas Tailwind sehingga seluruh komponen ikut berpindah tema.
  * Setiap pasangan teks/latar diverifikasi memenuhi kontras WCAG AA.
@@ -106,7 +106,7 @@
   --color-turun: var(--turun);
 
   /*
-   * Skala tipografi — satu sumber ukuran untuk seluruh situs.
+   * Skala tipografi, satu sumber ukuran untuk seluruh situs.
    * Judul memakai clamp() agar mengalir mulus di rentang tablet,
    * bukan melompat di satu breakpoint.
    */
@@ -129,7 +129,7 @@
   --text-display: clamp(2.5rem, 1.55rem + 3.8vw, 3.875rem);
   --text-display--line-height: 1.05;
 
-  /* Warna brand — konstan di kedua mode */
+  /* Warna brand, konstan di kedua mode */
   --color-tinta: #14231a; /* permukaan gelap brand (footer, header admin, dsb.) */
   --color-hijau: #0e6b46; /* zamrud: latar tombol/aksen (teks putih di atasnya) */
   /* Digeser dari #0a5a3a agar teks tembaga #e9b44c lulus AA 4,5:1 di atasnya. */
@@ -192,7 +192,7 @@
   }
 }
 
-/* Bilah kaca tipis — KHUSUS navbar; permukaan lain selalu solid. */
+/* Bilah kaca tipis, KHUSUS navbar; permukaan lain selalu solid. */
 @utility glass-tipis {
   background: color-mix(in oklab, var(--bg) 78%, transparent);
   backdrop-filter: blur(12px);
@@ -212,7 +212,7 @@
   text-shadow: 3px 3px 0 var(--angka-offset);
 }
 
-/* Kontur topografi — garis kontur konsentris samar untuk band gelap
+/* Kontur topografi, garis kontur konsentris samar untuk band gelap
    (pengganti blob; dipakai di panel bg-tinta / hijau-pekat). */
 @utility garis-lapangan {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440' viewBox='0 0 440 440'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath stroke-opacity='0.07' d='M220 60c78-14 154 26 168 96 15 74-38 150-118 168-84 19-170-24-190-102C62 150 130 76 220 60Z'/%3E%3Cpath stroke-opacity='0.06' d='M224 102c58-10 114 20 125 72 11 55-29 111-88 124-62 14-126-18-141-76-14-54 37-109 104-120Z'/%3E%3Cpath stroke-opacity='0.05' d='M228 146c38-6 74 14 82 48 8 36-19 72-58 81-41 9-83-12-93-50-9-36 25-72 69-79Z'/%3E%3Cpath stroke-opacity='0.05' d='M231 190c19-3 37 7 41 24 4 18-10 36-29 40-21 5-42-6-47-25-4-18 13-36 35-39Z'/%3E%3C/g%3E%3C/svg%3E");
@@ -220,7 +220,7 @@
   background-position: right -140px top -120px;
 }
 
-/* Strip panji — deretan segitiga bendera zamrud/tembaga (divider signature). */
+/* Strip panji, deretan segitiga bendera zamrud/tembaga (divider signature). */
 @utility panji {
   height: 9px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9' viewBox='0 0 28 9'%3E%3Cpath fill='%230e6b46' d='M0 0h14L7 9Z'/%3E%3Cpath fill='%23e9b44c' d='M14 0h14l-7 9Z'/%3E%3C/svg%3E");
@@ -228,7 +228,7 @@
   background-size: 28px 9px;
 }
 
-/* Label "stempel verifikasi" — uppercase renggang, bingkai dobel zamrud,
+/* Label "stempel verifikasi", uppercase renggang, bingkai dobel zamrud,
    sedikit miring seperti cap basah. */
 @utility stempel-verif {
   display: inline-block;
@@ -241,7 +241,7 @@
   transform: rotate(-3deg);
 }
 
-/* Lintasan progres — trek dengan marka putus-putus + isian zamrud.
+/* Lintasan progres, trek dengan marka putus-putus + isian zamrud.
    Struktur: <div class="lintasan"><div class="lintasan-isi" style="width:__%"/></div> */
 @utility lintasan {
   position: relative;
@@ -305,7 +305,7 @@
   animation: pop 0.3s ease;
 }
 
-/* Transisi antar halaman & antar layar autentikasi — halus, dan mati
+/* Transisi antar halaman & antar layar autentikasi, halus, dan mati
    otomatis bila pengguna mengaktifkan "kurangi gerakan" di sistemnya. */
 .page-enter-active,
 .page-leave-active {

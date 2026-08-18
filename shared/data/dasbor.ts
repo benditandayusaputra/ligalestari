@@ -19,7 +19,7 @@ export const SAYA = {
   poinKeLevelBerikut: 180,
 }
 
-/** Event yang sedang berlangsung — tampil sebagai banner di klasemen. */
+/** Event yang sedang berlangsung, tampil sebagai banner di klasemen. */
 export const EVENT_AKTIF = {
   label: 'Event aktif · 2× Poin',
   nama: 'Pekan Tanam Pohon',

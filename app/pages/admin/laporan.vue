@@ -19,7 +19,7 @@ const TITIK_PRATINJAU = [
   { x: 80, y: 38, warna: '#D14B3C' },
 ]
 
-/** Unduh ringkasan laporan sebagai CSV — berjalan penuh di sisi klien. */
+/** Unduh ringkasan laporan sebagai CSV, berjalan penuh di sisi klien. */
 function unduhCsv() {
   const baris = [
     ['Laporan Dampak LigaLestari', NAMA_MUSIM],
@@ -121,7 +121,7 @@ function unduhCsv() {
       <!-- Pratinjau peta sebaran -->
       <div class="relative mt-2.5 h-35 overflow-hidden rounded-2xl border border-garis bg-[repeating-linear-gradient(135deg,#E7EFE6_0_2px,#EEF4ED_2px_20px),radial-gradient(120%_120%_at_40%_30%,#DCEAD8,#E2EBDE)]">
         <NuxtLink to="/peta" class="absolute top-2.5 left-2.5 rounded-md bg-white/70 px-1.75 py-0.75 font-display text-[0.5625rem] font-semibold tracking-[0.06em] text-[#7A8A78] hover:bg-surface">
-          PETA SEBARAN · 41 TITIK — LIHAT SELENGKAPNYA
+          PETA SEBARAN · 41 TITIK · LIHAT SELENGKAPNYA
         </NuxtLink>
         <span
           v-for="(t, i) in TITIK_PRATINJAU"

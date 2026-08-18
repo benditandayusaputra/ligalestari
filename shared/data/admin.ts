@@ -3,12 +3,12 @@ import { KLASEMEN } from '#shared/data/klasemen'
 
 /**
  * Data demo untuk panel admin (OSIS / bank sampah / pembina).
- * Statis dulu — digantikan API + database pada tahap fullstack.
+ * Statis dulu, digantikan API + database pada tahap fullstack.
  */
 
 /**
  * Rate poin musim berjalan untuk aksi NON-sampah.
- * Tarif sampah kini per kategori — lihat `#shared/data/kategori-sampah`.
+ * Tarif sampah kini per kategori, lihat `#shared/data/kategori-sampah`.
  */
 export const RATE = { pohonPerBatang: 50 }
 
@@ -18,7 +18,7 @@ export const KPI_HARI_INI = {
   poinDibagikan: 2140,
 }
 
-/** Transaksi demo — poin selalu = kg × tarif kategori (lihat kategori-sampah). */
+/** Transaksi demo, poin selalu = kg × tarif kategori (lihat kategori-sampah). */
 export const SETORAN_HARI_INI: SetoranSampah[] = [
   { waktu: '09.42', kelas: 'XII RPL 1', kategori: 'plastik', kg: 12.5, poin: 150 },
   { waktu: '09.18', kelas: 'XI TKJ 2', kategori: 'organik', kg: 8, poin: 64 },
@@ -68,7 +68,7 @@ export const LAPORAN_SPESIES = [
 /* ---------- Kelola kelas ---------- */
 
 /**
- * Jumlah siswa terdaftar per kelas — diturunkan dari `jumlahSiswa` di
+ * Jumlah siswa terdaftar per kelas: diturunkan dari `jumlahSiswa` di
  * KLASEMEN (satu sumber kebenaran; dipakai juga oleh Indeks Lestari).
  */
 export const SISWA_PER_KELAS: Record<string, number> = Object.fromEntries(
@@ -81,7 +81,7 @@ export const KODE_GABUNG: Record<string, string> = {
   dkv: 'DKV1-2W7B', tb: 'TB2-9C4N', otkp: 'OTKP-6D3F', aphp: 'APHP-4G8H',
 }
 
-/** Contoh daftar siswa sebuah kelas — data minimal demi privasi. */
+/** Contoh daftar siswa sebuah kelas, data minimal demi privasi. */
 export const SISWA_KELAS = [
   { nama: 'Aditya Pratama', nis: 'NIS 2231045', poin: 520 },
   { nama: 'Siti Nurhaliza', nis: 'NIS 2231046', poin: 430 },

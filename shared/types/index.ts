@@ -23,7 +23,7 @@ export interface TimKelas {
   co2: number
   /** Pergeseran peringkat dibanding pekan lalu (+naik, -turun). */
   tren: number
-  /** Jumlah siswa kelas — pembagi Indeks Lestari (poin per kapita). */
+  /** Jumlah siswa kelas, pembagi Indeks Lestari (poin per kapita). */
   jumlahSiswa: number
 }
 
@@ -51,7 +51,7 @@ export interface RekorDuel {
   menang: number
   seri: number
   kalah: number
-  /** Akumulasi selisih skor — pemutus seri klasemen duel. */
+  /** Akumulasi selisih skor, pemutus seri klasemen duel. */
   selisih: number
   poinDuel: number
 }
@@ -70,7 +70,7 @@ export interface Artikel {
   kategori: KategoriArtikel
   menitBaca: number
   ringkasan: string
-  /** Tanggal terbit (ISO) — dipakai untuk metadata SEO. */
+  /** Tanggal terbit (ISO), dipakai untuk metadata SEO. */
   tanggal: string
   /** Ilustrasi placeholder: label singkat + teks alternatif. */
   thumb: { tag: string; alt: string }
@@ -94,7 +94,7 @@ export interface TitikTanam {
   foto?: string
 }
 
-/** Pusat peta sekolah — bisa diubah admin lewat panel Lokasi Peta. */
+/** Pusat peta sekolah, bisa diubah admin lewat panel Lokasi Peta. */
 export interface LokasiSekolah {
   lat: number
   lng: number
@@ -104,7 +104,7 @@ export interface LokasiSekolah {
 
 /** Titik tanam yang sudah digabung dengan data kelas pemiliknya. */
 export interface TitikPeta extends TitikTanam {
-  /** Indeks titik pada data sumber — dipakai sebagai identitas pilihan. */
+  /** Indeks titik pada data sumber, dipakai sebagai identitas pilihan. */
   indeks: number
   kelas: TimKelas
 }
@@ -180,7 +180,7 @@ export interface InfoKategoriSampah {
   tarif: number
   /** Warna semantik kategori (chip teks & bar komposisi). */
   warna: string
-  /** Contoh isi kategori — satu kalimat. */
+  /** Contoh isi kategori, satu kalimat. */
   deskripsi: string
   /** Alasan besaran tarif (kesulitan pemilahan & nilai lingkungan). */
   alasan: string
@@ -225,7 +225,7 @@ export interface SelPembeda {
 /** Satu baris matriks lanskap: sebuah platform dan enam selnya. */
 export interface PlatformPembeda {
   nama: string
-  /** Fokus utama platform — konteks singkat di bawah namanya. */
+  /** Fokus utama platform, konteks singkat di bawah namanya. */
   fokus: string
   /** Urutannya mengikuti KRITERIA_PEMBEDA (enam sel). */
   sel: SelPembeda[]

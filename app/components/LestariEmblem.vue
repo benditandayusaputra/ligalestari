@@ -2,7 +2,7 @@
   <!--
     Monogram "LL podium-tunas" LigaLestari: dua L tersusun seperti anak
     tangga podium, ujung kaki L kedua menekuk naik 45° menjadi ujung tunas.
-    Satu warna solid mengikuti currentColor — beri kelas teks (mis.
+    Satu warna solid mengikuti currentColor, beri kelas teks (mis.
     text-hijau-teks) agar ikut berpindah tema; sumber statis tersedia di
     assets/img/lestari-emblem.svg (+ varian putih).
   -->

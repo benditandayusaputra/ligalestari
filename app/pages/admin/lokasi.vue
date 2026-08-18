@@ -46,7 +46,7 @@ function kembaliKeBawaan() {
     <div class="px-4 lg:px-0">
       <section class="mt-3.5 rounded-[18px] border border-garis bg-surface p-4 lg:p-5" aria-label="Pengaturan lokasi sekolah">
         <p class="mb-4 max-w-135 text-[0.8125rem] leading-[1.55] text-teks">
-          Titik ini menjadi pusat Peta Persebaran Pohon di halaman publik — semua pin pohon digambar
+          Titik ini menjadi pusat Peta Persebaran Pohon di halaman publik; semua pin pohon digambar
           skematis di sekitarnya. Klik peta, seret penanda sekolah, atau isi koordinat secara manual.
           Bawaan demo: <strong class="font-bold">SMK Negeri 26 Jakarta</strong> (Rawamangun, Jakarta Timur).
         </p>
@@ -58,7 +58,7 @@ function kembaliKeBawaan() {
             class="rounded-[14px] border border-dashed border-garis-tegas bg-surface-2 px-4 py-6 text-center text-[0.78125rem] font-semibold text-teks-redup"
           >
             Peta pratinjau tidak dapat dimuat (kemungkinan sedang luring). Isi koordinat secara manual
-            di bawah — pengaturan tetap bisa disimpan.
+            di bawah; pengaturan tetap bisa disimpan.
           </p>
           <template #fallback>
             <div class="h-72 w-full animate-pulse rounded-[14px] border border-garis bg-surface-2 motion-reduce:animate-none lg:h-85" aria-hidden="true" />
@@ -121,7 +121,7 @@ function kembaliKeBawaan() {
             Kembali ke bawaan
           </button>
           <span v-if="status === 'tersimpan'" class="flex items-center gap-1.5 text-[0.78125rem] font-bold text-hijau-teks" role="status">
-            <Icon name="lucide:check" size="15" aria-hidden="true" /> Tersimpan — peta publik memakai pusat baru.
+            <Icon name="lucide:check" size="15" aria-hidden="true" /> Tersimpan, peta publik memakai pusat baru.
           </span>
           <span v-else-if="status === 'gagal'" class="text-[0.78125rem] font-bold text-[#C2410C]" role="status">
             Gagal menyimpan. Coba lagi.

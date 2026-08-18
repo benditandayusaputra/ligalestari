@@ -49,12 +49,12 @@ watch(() => route.path, () => {
 })
 
 async function keluar() {
-  // Di hosting statis tidak ada sesi — abaikan kegagalan dan tetap keluar.
+  // Di hosting statis tidak ada sesi, abaikan kegagalan dan tetap keluar.
   await clear().catch(() => {})
   await navigateTo('/masuk')
 }
 
-// Area dasbor pasca-masuk — tak perlu diindeks mesin pencari.
+// Area dasbor pasca-masuk, tak perlu diindeks mesin pencari.
 useSeoMeta({ robots: 'noindex, follow' })
 </script>
 
@@ -70,7 +70,7 @@ useSeoMeta({ robots: 'noindex, follow' })
 
     <!-- Sidebar (layar lebar) -->
     <aside class="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col overflow-y-auto border-r border-garis bg-surface px-3 py-5 lg:flex">
-      <NuxtLink to="/" class="flex items-center gap-2 px-2" aria-label="LigaLestari — beranda situs">
+      <NuxtLink to="/" class="flex items-center gap-2 px-2" aria-label="LigaLestari, beranda situs">
         <LestariEmblem class="h-7.5 w-7.5 text-hijau-teks" />
         <span class="font-display text-[0.9375rem] font-bold tracking-[-0.02em]">LigaLestari</span>
       </NuxtLink>
