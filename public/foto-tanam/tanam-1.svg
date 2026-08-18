@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+  <!-- Dokumentasi tanam (demo): bibit diikat ke ajir + penyiraman pagi -->
+  <rect width="400" height="250" fill="#2E7D46"/>
+  <circle cx="332" cy="46" r="26" fill="#C6F135" opacity="0.55"/>
+  <ellipse cx="70" cy="252" rx="210" ry="70" fill="#FFFFFF" opacity="0.08"/>
+  <ellipse cx="340" cy="262" rx="230" ry="80" fill="#FFFFFF" opacity="0.12"/>
+  <ellipse cx="150" cy="236" rx="120" ry="26" fill="#1F5C33"/>
+  <ellipse cx="150" cy="230" rx="52" ry="12" fill="#7A4E2B" opacity="0.85"/>
+  <rect x="170" y="118" width="7" height="112" rx="3.5" fill="#DFF0E2" opacity="0.9"/>
+  <rect x="143" y="150" width="9" height="82" rx="4" fill="#B9DCC4"/>
+  <path d="M147 156c-20-4-32-18-34-34 12 3 21 1 28-4-3-9-1-19 6-26 7 7 9 17 6 26 7 5 16 7 28 4-2 16-14 30-34 34z" fill="#C6F135" opacity="0.9"/>
+  <path d="M150 168h22" stroke="#DFF0E2" stroke-width="4" stroke-linecap="round"/>
+  <g transform="translate(258 168)">
+    <rect x="0" y="8" width="52" height="34" rx="9" fill="#DFF0E2"/>
+    <path d="M6 12c4-8 12-12 20-12" stroke="#DFF0E2" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M0 16l-26-14 4 22z" fill="#B9DCC4"/>
+    <circle cx="-32" cy="30" r="3" fill="#C6F135"/>
+    <circle cx="-40" cy="42" r="2.5" fill="#C6F135" opacity="0.8"/>
+    <circle cx="-26" cy="44" r="2.5" fill="#C6F135" opacity="0.6"/>
+  </g>
+  <ellipse cx="66" cy="60" rx="26" ry="9" fill="#FFFFFF" opacity="0.35"/>
+  <ellipse cx="96" cy="72" rx="18" ry="7" fill="#FFFFFF" opacity="0.25"/>
+</svg>

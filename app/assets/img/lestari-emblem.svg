@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <!-- Monogram "LL podium-tunas" LigaLestari:
+       L pertama (kiri) dengan kaki memanjang jadi dasar podium;
+       L kedua duduk setengah langkah lebih tinggi di atasnya,
+       ujung kaki horizontalnya menekuk naik 45 derajat dan meruncing jadi tunas. -->
+  <path fill="#0e6b46" d="M8 26h14v44h38v14H8Zm38-14h14v44h6l20-20 4 9-11 11v14H46Z"/>
+</svg>

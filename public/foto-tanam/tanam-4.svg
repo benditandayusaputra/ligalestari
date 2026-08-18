@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
+  <!-- Dokumentasi tanam (demo): pohon muda dengan dua ajir penyangga sore hari -->
+  <rect width="400" height="250" fill="#26603A"/>
+  <circle cx="66" cy="58" r="28" fill="#C6F135" opacity="0.45"/>
+  <ellipse cx="290" cy="258" rx="240" ry="76" fill="#FFFFFF" opacity="0.08"/>
+  <ellipse cx="208" cy="238" rx="160" ry="24" fill="#1D4B2D"/>
+  <ellipse cx="208" cy="232" rx="58" ry="13" fill="#7A4E2B" opacity="0.85"/>
+  <rect x="203" y="128" width="10" height="104" rx="5" fill="#B9DCC4"/>
+  <path d="M208 140c-26-4-42-22-45-42 15 4 26 2 35-5-4-11-1-24 10-33 11 9 14 22 10 33 9 7 20 9 35 5-3 20-19 38-45 42z" fill="#DFF0E2"/>
+  <path d="M208 108c-9-3-14-9-16-16 6 1 10 0 13-2 3 2 7 3 13 2-2 7-7 13-10 16z" fill="#C6F135" opacity="0.85"/>
+  <rect x="164" y="150" width="7" height="82" rx="3.5" fill="#DFF0E2" opacity="0.7"/>
+  <rect x="245" y="150" width="7" height="82" rx="3.5" fill="#DFF0E2" opacity="0.7"/>
+  <path d="M171 166l32-8M245 166l-32-8" stroke="#DFF0E2" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <ellipse cx="318" cy="64" rx="30" ry="10" fill="#FFFFFF" opacity="0.3"/>
+  <ellipse cx="284" cy="80" rx="18" ry="6" fill="#FFFFFF" opacity="0.22"/>
+</svg>

@@ -1,0 +1,429 @@
+@import "tailwindcss";
+
+/* Varian dark Tailwind mengikuti kelas .dark pada <html> (@nuxtjs/color-mode). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design system LigaLestari — token dua mode (terang & gelap).
+ * Nilai per mode ada di :root / .dark; @theme inline memetakannya ke
+ * utilitas Tailwind sehingga seluruh komponen ikut berpindah tema.
+ * Setiap pasangan teks/latar diverifikasi memenuhi kontras WCAG AA.
+ */
+:root {
+  /* Permukaan */
+  --bg: #eff3e8; /* kabut daun */
+  --surface: #ffffff;
+  --surface-2: #f7faf1; /* isian input / hover halus */
+  --surface-3: #e7ecdb; /* isian netral: bar, segmented, lencana peringkat */
+  --sorot: #f7faf1; /* baris pemuncak */
+
+  /* Teks */
+  --teks-kuat: #14231a; /* tinta */
+  --teks: #3d4b41;
+  --teks-redup: #47564b;
+  --teks-samar: #51604f;
+
+  /* Garis */
+  --garis: #d7ddc9;
+  --garis-tegas: #c6cdb4;
+  --garis-hijau: #d3e0d0;
+  --mint-garis: #bfdcc9;
+
+  /* Semburat zamrud */
+  --mint: #ddece2;
+  --hijau-muda: #e3ecdf;
+  --hijau-pucat: #e6f0e6;
+  --hijau-teks: #0e6b46; /* zamrud untuk TEKS (beda dgn bg tombol) */
+  --daun-teks: #8a4a12; /* teks tembaga yang lolos kontras di latar terang */
+  --merah-teks: #a83326; /* teks "turun peringkat" pada klasemen */
+  --emas-teks: #8a5a12; /* emas/tembaga yang lolos kontras untuk teks di latar terang */
+
+  /* Semantik tren klasemen */
+  --naik: #0f6a38;
+  --turun: #a83326;
+
+  /* Bayangan cetak-offset untuk .angka-outline */
+  --angka-offset: #e9b44c;
+}
+
+.dark {
+  --bg: #0b1411; /* malam pinus */
+  --surface: #152019;
+  --surface-2: #1b2820;
+  --surface-3: #24332a;
+  --sorot: #2b2415;
+
+  --teks-kuat: #e9efe6;
+  --teks: #c3cec3;
+  --teks-redup: #9fb2a4;
+  --teks-samar: #96a99b;
+
+  --garis: #24352c;
+  --garis-tegas: #35493d;
+  --garis-hijau: #27392f;
+  --mint-garis: #35573f;
+
+  --mint: #1c3226;
+  --hijau-muda: #14201a;
+  --hijau-pucat: #1e3428;
+  --hijau-teks: #4cc38a; /* zamrud terang */
+  --daun-teks: #e6b876; /* tembaga terang */
+  --merah-teks: #f08a76;
+  --emas-teks: #e9b44c;
+
+  --naik: #59c98f;
+  --turun: #f08a76;
+
+  --angka-offset: #8a5a1e; /* tembaga gelap */
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", var(--font-sans);
+
+  /* Token berpindah tema */
+  --color-krem: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-sorot: var(--sorot);
+  --color-teks-kuat: var(--teks-kuat);
+  --color-teks: var(--teks);
+  --color-teks-redup: var(--teks-redup);
+  --color-teks-samar: var(--teks-samar);
+  --color-garis: var(--garis);
+  --color-garis-tegas: var(--garis-tegas);
+  --color-garis-hijau: var(--garis-hijau);
+  --color-mint: var(--mint);
+  --color-mint-garis: var(--mint-garis);
+  --color-hijau-muda: var(--hijau-muda);
+  --color-hijau-pucat: var(--hijau-pucat);
+  --color-hijau-teks: var(--hijau-teks);
+  --color-daun-teks: var(--daun-teks);
+  --color-merah-teks: var(--merah-teks);
+  --color-emas-teks: var(--emas-teks);
+  --color-naik: var(--naik);
+  --color-turun: var(--turun);
+
+  /*
+   * Skala tipografi — satu sumber ukuran untuk seluruh situs.
+   * Judul memakai clamp() agar mengalir mulus di rentang tablet,
+   * bukan melompat di satu breakpoint.
+   */
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.45;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.6;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.65;
+  --text-baca: 1rem; /* khusus badan artikel panjang */
+  --text-baca--line-height: 1.75;
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.65;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.4;
+  --text-h2: clamp(1.625rem, 1.32rem + 1.2vw, 2.125rem);
+  --text-h2--line-height: 1.15;
+  --text-h1: clamp(2.125rem, 1.45rem + 2.7vw, 3rem);
+  --text-h1--line-height: 1.08;
+  --text-display: clamp(2.5rem, 1.55rem + 3.8vw, 3.875rem);
+  --text-display--line-height: 1.05;
+
+  /* Warna brand — konstan di kedua mode */
+  --color-tinta: #14231a; /* permukaan gelap brand (footer, header admin, dsb.) */
+  --color-hijau: #0e6b46; /* zamrud: latar tombol/aksen (teks putih di atasnya) */
+  /* Digeser dari #0a5a3a agar teks tembaga #e9b44c lulus AA 4,5:1 di atasnya. */
+  --color-hijau-pekat: #095536;
+  --color-hijau-terang: #4cc38a;
+  --color-lime: #e9b44c; /* tembaga-trofi: isian (teks di atasnya WAJIB tinta) */
+  --color-daun: #d9a13a; /* tembaga lebih pekat: hover isian tembaga */
+  --color-emas: #e9b44c;
+  --color-perak: #aab2bb;
+  --color-perunggu: #c77f3e;
+}
+
+@layer base {
+  body {
+    @apply bg-krem font-sans text-teks-kuat antialiased;
+  }
+
+  /* Tautan jangkar (mis. "Lihat cara main" → #cara): gulir halus dan
+     judul section tidak tertutup navbar lengket. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  [id] {
+    scroll-margin-top: 4.75rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  /* Judul display Archivo: karakter tegas lewat weight berat + tracking
+     sedikit negatif (instance statis Google tidak menyediakan font-stretch). */
+  h1,
+  h2 {
+    font-weight: 900;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-tinta);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--hijau-teks);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--garis-tegas);
+    border-radius: 8px;
+  }
+}
+
+/* Bilah kaca tipis — KHUSUS navbar; permukaan lain selalu solid. */
+@utility glass-tipis {
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Motif garis daun samar untuk latar section (line art, opasitas rendah). */
+@utility motif-daun {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%230e6b46' stroke-opacity='0.07' stroke-width='1.4'%3E%3Cpath d='M30 78c0-22 14-38 34-42-4 20-16 36-34 42z'/%3E%3Cpath d='M34 74C46 62 54 52 62 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Angka besar bergaya CETAK-OFFSET: isi tinta solid + bayangan tembaga
+   tegas tanpa blur (nuansa cetakan poster liga). Nama kelas dipertahankan
+   agar seluruh pemakaian lama ikut berubah tanpa edit markup. */
+@utility angka-outline {
+  color: var(--teks-kuat);
+  text-shadow: 3px 3px 0 var(--angka-offset);
+}
+
+/* Kontur topografi — garis kontur konsentris samar untuk band gelap
+   (pengganti blob; dipakai di panel bg-tinta / hijau-pekat). */
+@utility garis-lapangan {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440' viewBox='0 0 440 440'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath stroke-opacity='0.07' d='M220 60c78-14 154 26 168 96 15 74-38 150-118 168-84 19-170-24-190-102C62 150 130 76 220 60Z'/%3E%3Cpath stroke-opacity='0.06' d='M224 102c58-10 114 20 125 72 11 55-29 111-88 124-62 14-126-18-141-76-14-54 37-109 104-120Z'/%3E%3Cpath stroke-opacity='0.05' d='M228 146c38-6 74 14 82 48 8 36-19 72-58 81-41 9-83-12-93-50-9-36 25-72 69-79Z'/%3E%3Cpath stroke-opacity='0.05' d='M231 190c19-3 37 7 41 24 4 18-10 36-29 40-21 5-42-6-47-25-4-18 13-36 35-39Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right -140px top -120px;
+}
+
+/* Strip panji — deretan segitiga bendera zamrud/tembaga (divider signature). */
+@utility panji {
+  height: 9px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9' viewBox='0 0 28 9'%3E%3Cpath fill='%230e6b46' d='M0 0h14L7 9Z'/%3E%3Cpath fill='%23e9b44c' d='M14 0h14l-7 9Z'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 28px 9px;
+}
+
+/* Label "stempel verifikasi" — uppercase renggang, bingkai dobel zamrud,
+   sedikit miring seperti cap basah. */
+@utility stempel-verif {
+  display: inline-block;
+  padding: 0.3em 0.85em;
+  border: 3px double var(--hijau-teks);
+  color: var(--hijau-teks);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  transform: rotate(-3deg);
+}
+
+/* Lintasan progres — trek dengan marka putus-putus + isian zamrud.
+   Struktur: <div class="lintasan"><div class="lintasan-isi" style="width:__%"/></div> */
+@utility lintasan {
+  position: relative;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: var(--surface-3);
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 16px,
+    var(--garis-tegas) 16px 18px
+  );
+
+  & > .lintasan-isi {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--hijau-teks);
+  }
+}
+
+/* Pola garis diagonal untuk ilustrasi placeholder artikel. */
+@utility pola-garis {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(255 255 255 / 0.16) 0 11px,
+    transparent 11px 22px
+  );
+}
+
+/* Skeleton pemuatan peta: sengaja terang di KEDUA tema, karena tile peta
+   yang menggantikannya juga selalu terang ("pulau terang"). */
+@utility peta-skeleton {
+  border: 1px solid #c2d8bd;
+  background: #dcead7;
+}
+
+/* Garis bantu kotak-kotak pada kanvas denah sekolah (selalu terang). */
+@utility peta-grid {
+  background-image:
+    linear-gradient(rgb(20 90 40 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(20 90 40 / 0.07) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* Animasi "pop" untuk popup peta & panel sukses (memakai properti scale
+   agar tidak bentrok dengan transform posisi). */
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.88;
+  }
+  60% {
+    scale: 1.03;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@utility anim-pop {
+  animation: pop 0.3s ease;
+}
+
+/* Transisi antar halaman & antar layar autentikasi — halus, dan mati
+   otomatis bila pengguna mengaktifkan "kurangi gerakan" di sistemnya. */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.15s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+.naik-enter-active {
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+.naik-enter-from {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.naik-leave-active {
+  transition: opacity 0.15s ease;
+}
+.naik-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active,
+  .naik-enter-active,
+  .naik-leave-active {
+    transition: none;
+  }
+  .anim-pop {
+    animation: none;
+  }
+}
+
+/* ---------- Pin peta MapLibre (elemen dibuat imperatif, gaya global) ---------- */
+.pin-pohon {
+  width: 34px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.pin-pohon-bentuk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin: 2px auto 0;
+  border: 2.5px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 4px 10px rgb(20 32 22 / 0.35);
+  color: #fff;
+  transform: rotate(-45deg);
+  transition: transform 0.18s ease;
+}
+.pin-pohon-bentuk svg {
+  transform: rotate(45deg);
+}
+.pin-pohon:hover .pin-pohon-bentuk,
+.pin-pohon:focus-visible .pin-pohon-bentuk {
+  transform: rotate(-45deg) scale(1.16);
+}
+.pin-pohon:focus-visible {
+  outline: 2px solid #0e6b46;
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+.pin-pohon.pin-aktif {
+  z-index: 5;
+}
+.pin-pohon.pin-aktif .pin-pohon-bentuk {
+  transform: rotate(-45deg) scale(1.22);
+}
+.pin-sekolah {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid #0e6b46;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgb(20 32 22 / 0.25);
+}
+/* Peta adalah "pulau terang" di kedua tema; samakan tipografi kontrolnya. */
+.peta-libre.maplibregl-map,
+.peta-pilih.maplibregl-map {
+  font-family: inherit;
+}
+
+/* ---------- Animasi gulir (directive v-anim) ----------
+   Elemen disembunyikan HANYA saat pengguna tidak meminta "kurangi gerakan"
+   dan JS aktif (directive yang menambahkan kelasnya), sehingga konten selalu
+   terbaca oleh pembaca layar, mesin pencari, dan pengguna tanpa JS. */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-awal {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .anim-awal.anim-masuk {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s ease,
+      transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition-delay: var(--anim-tunda, 0s);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-pohon-bentuk {
+    transition: none;
+  }
+}

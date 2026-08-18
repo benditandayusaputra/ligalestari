@@ -1,0 +1,38 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+.claude
+
+# Berkas lokal di luar karya (guidebook lomba, arsip snapshot deploy)
+*.pdf
+ekoliga.vercel.app-*.html
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Sumber proposal (dokumen lomba, tidak ikut repo)
+proposal-sumber.html
+PRD-LigaLestari-INVENTION2026.md
+
+# Arsip mockup & prototype lomba (referensi desain, tidak ikut repo)
+mockups/
+mockups.zip
+prototype/
