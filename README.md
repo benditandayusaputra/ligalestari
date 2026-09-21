@@ -7,18 +7,9 @@ menjalankan misi hijau (memilah dan menyetor sampah, menanam pohon), setiap aksi
 diverifikasi lewat bukti lalu dikonversi menjadi **Poin Hijau** dan **dampak CO₂
 terukur**, dan kelas-kelas bersaing di klasemen ala liga olahraga sepanjang satu musim.
 
-Karya **Bendi Tandayu Saputra** untuk **INVENTION 2026, Web Design Competition** ·
-Subtema: _Going Green Through Smart Digital Solutions_.
-
-**Pengembangan signifikan dari karya sebelumnya (EkoLiga).** LigaLestari dibangun sebagai
-pengembangan menyeluruh atas karya sebelumnya, EkoLiga, sesuai aturan improvement lomba,
-perubahan pokoknya: **rebrand penuh** (nama, palet zamrud–tembaga, monogram LL, tipografi
-Archivo, tagline); **tarif poin 6 kategori sampah** (organik/kertas/plastik/kaca/logam/B3
-ringan dengan tarif poin per kg berbeda, bukan tarif tunggal); **Duel Pekan** (jadwal
-round-robin head-to-head antar-kelas tiap pekan dengan jalur gelar Juara Duel); **Indeks
-Lestari** (klasemen poin per kapita agar kelas kecil adil bersaing, dengan gelar Kelas
-Terlestari); serta dua halaman publik baru **Aturan Liga** (/aturan) dan **Jadwal & Hasil**
-(/jadwal).
+Karya **Bendi Tandayu Saputra** untuk **Trunodjoyo Creative Competition 2026**, cabang
+**Vibe Code** · Subtema: _Web Application Development_ · Tema: _Shaping Tomorrow: Digital
+Innovation, Artificial Intelligence, and Sustainable Communities_.
 
 ## Teknologi
 
@@ -58,7 +49,8 @@ npm run preview    # pratinjau hasil build
 
 Saat deploy, atur env `NUXT_PUBLIC_SITE_URL` ke URL hosting agar canonical, sitemap, dan
 robots.txt menunjuk domain yang benar, serta `DATABASE_URL` dan `NUXT_SESSION_PASSWORD`
-agar database dan sesi login aktif. Tanpa ketiganya situs tetap jalan memakai data demo.
+agar database dan sesi login aktif, plus `GEMINI_API_KEY` agar Asisten Hijau menjawab lewat
+LLM. Tanpa keempatnya situs tetap jalan memakai data demo dan jawaban asisten lokal.
 
 ## Struktur Proyek
 
@@ -105,7 +97,8 @@ Endpoint utama (`server/api/`); respons otomatis bertipe di sisi klien lewat `us
 - `GET /api/peta`: titik tanam yang sudah digabung data kelasnya.
 - `GET /api/metodologi`: tabel serapan CO₂ + sumber.
 - `GET /api/dasbor`: profil siswa, rincian poin, anggota, riwayat, badge, notifikasi.
-- `POST /api/asisten`: jawaban Asisten Hijau (tempat integrasi AI berikutnya).
+- `POST /api/asisten`: jawaban Asisten Hijau lewat Gemini, dengan basis pengetahuan lokal
+  sebagai rujukan fakta sekaligus cadangan bila API tak tersedia.
 - `POST /api/auth/masuk` · `POST /api/auth/gabung`: validasi akun demo & kode kelas.
 - `GET|POST /api/admin/setoran` · `GET /api/admin/event` · `GET /api/admin/ringkasan` ·
   `GET /api/admin/laporan`: data panel admin; setoran baru tersimpan di memori server.
@@ -195,7 +188,8 @@ Dasbor siswa (view statis, `noindex`; data dari `app/data/`):
   dibagikan (WhatsApp/X/Telegram + salin caption).
 - `/dasbor/saya`: kontribusi pribadi berupa level, statistik, dan koleksi badge.
 - `/dasbor/notifikasi`: Daftar notifikasi liga.
-- `/dasbor/asisten`: **Chatbot Asisten Hijau** dengan jawaban edukasi lokal (tanpa backend).
+- `/dasbor/asisten`: **Chatbot Asisten Hijau** bertenaga Gemini, dibumikan pada aturan liga
+  dan jatuh ke basis pengetahuan lokal saat API mati (demo tak pernah kosong).
 
 Panel admin (view statis, `noindex`):
 

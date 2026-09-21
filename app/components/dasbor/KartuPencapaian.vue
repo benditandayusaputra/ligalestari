@@ -103,7 +103,7 @@ async function salinCaption() {
 
             <div class="border-t border-white/15 pt-3.5 text-center">
               <div class="font-display text-[0.9375rem] font-bold text-lime">Pilah sampah, rebut juara.</div>
-              <div class="mt-0.75 text-[0.625rem] text-white/55">SMK Negeri 4 · #LigaLestari · @invention.udayana</div>
+              <div class="mt-0.75 text-[0.625rem] text-white/55">SMK Negeri 4 · #LigaLestari · @tcc.triplec</div>
             </div>
           </div>
         </div>

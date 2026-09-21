@@ -58,6 +58,10 @@ export default defineNuxtConfig({
   // browser). Nilai diisi dari .env (lihat .env.example).
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL ?? '',
+    // LLM Asisten Hijau (endpoint OpenAI-compatible); kosong = jawaban basis pengetahuan lokal.
+    aiLlmBaseUrl: process.env.AI_LLM_BASE_URL ?? '',
+    aiLlmApiKey: process.env.AI_LLM_API_KEY ?? '',
+    aiLlmModel: process.env.AI_LLM_MODEL ?? '',
     public: {
       // Penjaga sesi /dasbor & /admin. Build statis lomba mematikannya
       // (tidak ada server sesi) lewat skrip `npm run generate`.
