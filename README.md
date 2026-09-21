@@ -7,6 +7,9 @@ menjalankan misi hijau (memilah dan menyetor sampah, menanam pohon), setiap aksi
 diverifikasi lewat bukti lalu dikonversi menjadi **Poin Hijau** dan **dampak CO₂
 terukur**, dan kelas-kelas bersaing di klasemen ala liga olahraga sepanjang satu musim.
 
+**Coba langsung: <https://ligalestari.vercel.app>** (Asisten Hijau aktif di situs ini;
+salinan lokal menjawab dari basis pengetahuan bawaan sampai `AI_LLM_*` diisi).
+
 Karya **Bendi Tandayu Saputra** untuk **Trunodjoyo Creative Competition 2026**, cabang
 **Vibe Code** · Subtema: _Web Application Development_ · Tema: _Shaping Tomorrow: Digital
 Innovation, Artificial Intelligence, and Sustainable Communities_.

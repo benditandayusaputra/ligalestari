@@ -96,7 +96,15 @@ const { data: liga } = await useFetch("/api/klasemen", { key: "klasemen" });
         class="mx-auto flex max-w-275 flex-col gap-1.5 px-5 py-4.5 text-caption text-white/55 lg:flex-row lg:items-center lg:justify-between lg:px-10"
       >
         <p>© 2026 Bendi Tandayu Saputra</p>
-        <p>
+        <p class="flex items-center gap-2">
+          <!-- Logo UKM Triple-C, wajib dicantumkan peserta menurut guidebook TCC 2026. -->
+          <img
+            src="/logo-tcc.webp"
+            alt="Logo UKM Triple-C"
+            width="28"
+            height="28"
+            class="h-7 w-7 shrink-0"
+          />
           Subtema TCC 2026: Web Application Development
         </p>
       </div>
