@@ -105,7 +105,13 @@ export default defineNuxtConfig({
   // konsol tidak 404. Pada build server rute-rute ini wajib dinamis:
   // /api/_auth/session yang dibekukan akan disajikan CDN sebagai sesi
   // kosong, sehingga login tidak pernah dikenali penjaga rute.
-  nitro: { prerender: { routes: buildStatis ? ['/dasbor', '/admin', '/api/_auth/session'] : [] } },
+  nitro: {
+    prerender: { routes: buildStatis ? ['/dasbor', '/admin', '/api/_auth/session'] : [] },
+    // Asisten Hijau memanggil LLM yang terukur 6-14 detik, sedangkan fungsi
+    // serverless Vercel berhenti di 10 detik secara bawaan dan akan memutus
+    // jawaban di tengah jalan. Plafonnya dinaikkan agar jalur AI tetap utuh.
+    vercel: { functions: { maxDuration: 60 } },
+  },
 
   // Font di-host sendiri saat build: cepat & tanpa request pihak ketiga.
   fonts: {
