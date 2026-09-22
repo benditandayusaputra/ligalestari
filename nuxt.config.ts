@@ -61,7 +61,7 @@ export default defineNuxtConfig({
     // LLM Asisten Hijau (endpoint OpenAI-compatible); kosong = jawaban basis pengetahuan lokal.
     aiLlmBaseUrl: process.env.AI_LLM_BASE_URL ?? '',
     aiLlmApiKey: process.env.AI_LLM_API_KEY ?? '',
-    aiLlmModel: process.env.AI_LLM_MODEL ?? '',
+    aiLlmModel: process.env.AI_LLM_MODEL ?? 'gemini-3.1-flash-lite',
     public: {
       // Penjaga sesi /dasbor & /admin. Build statis lomba mematikannya
       // (tidak ada server sesi) lewat skrip `npm run generate`.
